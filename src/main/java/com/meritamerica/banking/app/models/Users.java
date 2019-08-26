@@ -1,6 +1,7 @@
 package com.meritamerica.banking.app.models;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,7 +42,7 @@ public class Users {
 	
 	@Column
 	// Joses Validations
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 	
 	@Column
 	// Joses Validations
@@ -58,16 +59,16 @@ public class Users {
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     // Joses Validations
-    private Date createdAt;
+    private LocalDateTime createdAt;
     
     @Column
     // Joses Validations
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 	
 	public Users() {}
 
     public Users(String firstName, String lastName, String email, String userName, String password,
-			Date dateOfBirth, String ssn, String primaryPhone, String secondaryPhone) {
+    		LocalDate dateOfBirth, String ssn, String primaryPhone, String secondaryPhone) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -97,8 +98,8 @@ public class Users {
 	public String getPassword() {return password;}
 	public void setPassword(String password) {this.password = password;}
 	
-	public Date getDateOfBirth() {return dateOfBirth;}
-	public void setDateOfBirth(Date dateOfBirth) {this.dateOfBirth = dateOfBirth;}
+	public LocalDate getDateOfBirth() {return dateOfBirth;}
+	public void setDateOfBirth(LocalDate dateOfBirth) {this.dateOfBirth = dateOfBirth;}
 	
 	public String getSsn() {return ssn;}
 	public void setSsn(String ssn) {this.ssn = ssn;}
@@ -109,19 +110,19 @@ public class Users {
 	public String getSecondaryPhone() {return secondaryPhone;}
 	public void setSecondaryPhone(String secondaryPhone) {this.secondaryPhone = secondaryPhone;}
 	
-	public Date getCreatedAt() {return createdAt;}
-	public void setCreatedAt(Date createdAt) {this.createdAt = createdAt;}
+	public LocalDateTime getCreatedAt() {return createdAt;}
+	public void setCreatedAt(LocalDateTime createdAt) {this.createdAt = createdAt;}
 	
-	public Date getUpdatedAt() {return updatedAt;}
-	public void setUpdatedAt(Date updatedAt) {this.updatedAt = updatedAt;}
+	public LocalDateTime getUpdatedAt() {return updatedAt;}
+	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
 
 	@PrePersist
     protected void onCreate(){
-        this.createdAt = new Date();
+        this.createdAt = LocalDateTime.now();
     }
     @PreUpdate
     protected void onUpdate(){
-        this.updatedAt = new Date();
+        this.updatedAt = LocalDateTime.now();
     }
     
 

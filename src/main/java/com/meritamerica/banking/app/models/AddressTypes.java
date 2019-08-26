@@ -1,6 +1,6 @@
 package com.meritamerica.banking.app.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,11 +26,11 @@ public class AddressTypes {
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     // Joses Validations
-    private Date createdAt;
+    private LocalDateTime createdAt;
     
     @Column
     // Joses Validations
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 	
 	public AddressTypes() {}
 	
@@ -44,19 +44,19 @@ public class AddressTypes {
 	public String getBusinessTypeName() {return businessTypeName;}
 	public void setBusinessTypeName(String businessTypeName) {this.businessTypeName = businessTypeName;}
 
-	public Date getCreatedAt() {return createdAt;}
-	public void setCreatedAt(Date createdAt) {this.createdAt = createdAt;}
+	public LocalDateTime getCreatedAt() {return createdAt;}
+	public void setCreatedAt(LocalDateTime createdAt) {this.createdAt = createdAt;}
 
-	public Date getUpdatedAt() {return updatedAt;}
-	public void setUpdatedAt(Date updatedAt) {this.updatedAt = updatedAt;}
+	public LocalDateTime getUpdatedAt() {return updatedAt;}
+	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
 
 	@PrePersist
     protected void onCreate(){
-        this.createdAt = new Date();
+        this.createdAt = LocalDateTime.now();
     }
     @PreUpdate
     protected void onUpdate(){
-        this.updatedAt = new Date();
+        this.updatedAt = LocalDateTime.now();
     }
 
 }
