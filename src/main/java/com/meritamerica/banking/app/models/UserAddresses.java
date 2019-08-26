@@ -10,9 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="userAddresses")
+@Table(name="user_addresses")
 public class UserAddresses {
 
 	@Id
@@ -20,32 +25,34 @@ public class UserAddresses {
     private Long id;
 	
 	@Column
-	// Joses Validations
+	@NotNull
     private String street;
 	
 	@Column
-	// Joses Validations
+	@NotNull
     private String street2;
 	
 	@Column
-	// Joses Validations
+	@NotNull
     private String city;
 	
 	@Column
-	// Joses Validations
+	@NotNull
+	@Size(min = 2, max = 2)
     private String state;
 	
 	@Column
-	// Joses Validations
+	@NotNull
+	@Max(11)
     private String zipcode;
 	
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
-    // Joses Validations
+    @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime createdAt;
     
     @Column
-    // Joses Validations
+    @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
     
     public UserAddresses() {}

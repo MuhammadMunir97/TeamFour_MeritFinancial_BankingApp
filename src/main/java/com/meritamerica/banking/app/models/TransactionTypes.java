@@ -10,9 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="transactionTypes")
+@Table(name="transaction_type")
 public class TransactionTypes {
 
 	@Id
@@ -20,16 +23,16 @@ public class TransactionTypes {
     private int id;
 	
 	@Column
-	// Joses Validations
+	@NotNull
     private String transactionTypeName;
 	
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
-    // Joses Validations
+    @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime createdAt;
     
     @Column
-    // Joses Validations
+    @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
     public TransactionTypes() {}

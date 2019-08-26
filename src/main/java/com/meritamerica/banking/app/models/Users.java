@@ -11,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="users")
@@ -21,48 +26,53 @@ public class Users {
     private Long id;
 	
 	@Column
-	// Joses Validations
+	@NotNull
     private String firstName;
 	
 	@Column
-	// Joses Validations
+	@NotNull
     private String lastName;
 	
 	@Column
-	// Joses Validations
+	@NotNull
+	@Email
     private String email;
 	
 	@Column
-	// Joses Validations
+	@NotNull
+	@Size(min = 6, max = 12, message = "Username must be between 6 and 12 characters")
     private String userName;
 	
 	@Column
-	// Joses Validations
+	@NotNull
+	@Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
     private String password;
 	
 	@Column
-	// Joses Validations
+	@NotNull
+	@DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDate dateOfBirth;
 	
 	@Column
-	// Joses Validations
+	@NotNull
+	@Size(min = 10, max = 10)
     private String ssn;
 	
 	@Column
-	// Joses Validations
+	@NotNull
     private String primaryPhone;
 	
 	@Column
-	// Joses Validations
+	@NotNull
     private String secondaryPhone;
 	
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
-    // Joses Validations
+    @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime createdAt;
     
     @Column
-    // Joses Validations
+    @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
 	public Users() {}
