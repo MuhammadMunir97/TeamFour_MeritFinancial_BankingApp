@@ -23,7 +23,6 @@ public class AddressTypes {
     private int id;
 	
 	@Column
-	@NotNull
     private String businessTypeName;
 	
     // This will not allow the createdAt column to be updated after creation

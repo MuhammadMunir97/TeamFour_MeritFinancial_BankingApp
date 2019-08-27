@@ -59,11 +59,9 @@ public class Users {
     private String ssn;
 	
 	@Column
-	@NotNull
     private String primaryPhone;
 	
 	@Column
-	@NotNull
     private String secondaryPhone;
 	
     // This will not allow the createdAt column to be updated after creation

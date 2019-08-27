@@ -27,7 +27,6 @@ public class AccountsInternal {
     private Long accountNumber;
 	
 	@Column
-	@NotNull
     private Double presentBalance;
 	
     // This will not allow the createdAt column to be updated after creation

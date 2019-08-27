@@ -25,24 +25,19 @@ public class UserAddresses {
     private Long id;
 	
 	@Column
-	@NotNull
     private String street;
 	
 	@Column
-	@NotNull
     private String street2;
 	
 	@Column
-	@NotNull
     private String city;
 	
 	@Column
-	@NotNull
 	@Size(min = 2, max = 2)
     private String state;
 	
 	@Column
-	@NotNull
 	@Max(11)
     private String zipcode;
 	

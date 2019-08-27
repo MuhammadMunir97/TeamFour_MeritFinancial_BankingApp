@@ -23,7 +23,6 @@ public class TransactionTypes {
     private int id;
 	
 	@Column
-	@NotNull
     private String transactionTypeName;
 	
     // This will not allow the createdAt column to be updated after creation
