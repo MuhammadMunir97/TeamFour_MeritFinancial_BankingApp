@@ -4,8 +4,8 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.meritamerica.banking.app.models.ActivityStatus;
+import com.meritamerica.banking.app.models.TransactionLog;
 @Repository
-public interface ActivityStatusRepository extends CrudRepository<ActivityStatus, Long>{
+public interface TransactionLogRepository extends CrudRepository<TransactionLog, Long> {
 
 }
