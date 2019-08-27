@@ -15,15 +15,16 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="address_types")
-public class AddressTypes {
-	
+@Table(name="transaction_type")
+public class TransactionType {
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
 	@Column
-    private String businessTypeName;
+	//
+    private String transactionTypeName;
 	
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -34,17 +35,17 @@ public class AddressTypes {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
-	public AddressTypes() {}
+    public TransactionType() {}
 	
-    public AddressTypes(String businessTypeName) {
-		this.businessTypeName = businessTypeName;
+    public TransactionType(String transactionTypeName) {
+		this.transactionTypeName = transactionTypeName;
 	}
 
 	public int getId() {return id;}
 	public void setId(int id) {this.id = id;}
 
-	public String getBusinessTypeName() {return businessTypeName;}
-	public void setBusinessTypeName(String businessTypeName) {this.businessTypeName = businessTypeName;}
+	public String getTransactionTypeName() {return transactionTypeName;}
+	public void setTransactionTypeName(String transactionTypeName) {this.transactionTypeName = transactionTypeName;}
 
 	public LocalDateTime getCreatedAt() {return createdAt;}
 	public void setCreatedAt(LocalDateTime createdAt) {this.createdAt = createdAt;}
@@ -60,5 +61,5 @@ public class AddressTypes {
     protected void onUpdate(){
         this.updatedAt = LocalDateTime.now();
     }
-
+	
 }

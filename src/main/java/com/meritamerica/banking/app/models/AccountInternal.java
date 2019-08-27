@@ -10,36 +10,26 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="user_addresses")
-public class UserAddresses {
+@Table(name="account_internal")
+public class AccountInternal {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
 	@Column
-    private String street;
+	//
+	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
+    private Long accountNumber;
 	
 	@Column
-    private String street2;
-	
-	@Column
-    private String city;
-	
-	@Column
-	@Size(min = 2, max = 2)
-    private String state;
-	
-	@Column
-	@Max(11)
-    private String zipcode;
+	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
+    private Double presentBalance;
 	
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -49,38 +39,26 @@ public class UserAddresses {
     @Column
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
+	
+    public AccountInternal() {}
     
-    public UserAddresses() {}
-    
-    public UserAddresses(String street, String street2, String city, String state, String zipcode) {
-		this.street = street;
-		this.street2 = street2;
-		this.city = city;
-		this.state = state;
-		this.zipcode = zipcode;
+    public AccountInternal(Long accountNumber, Double presentBalance) {
+		this.accountNumber = accountNumber;
+		this.presentBalance = presentBalance;
 	}
 
 	public Long getId() {return id;}
 	public void setId(Long id) {this.id = id;}
-	
-	public String getStreet() {return street;}
-	public void setStreet(String street) {this.street = street;}
-	
-	public String getStreet2() {return street2;}
-	public void setStreet2(String street2) {this.street2 = street2;}
-	
-	public String getCity() {return city;}
-	public void setCity(String city) {this.city = city;}
-	
-	public String getState() {return state;}
-	public void setState(String state) {this.state = state;}
-	
-	public String getZipcode() {return zipcode;}
-	public void setZipcode(String zipcode) {this.zipcode = zipcode;}
-	
+
+	public Long getAccountNumber() {return accountNumber;}
+	public void setAccountNumber(Long accountNumber) {this.accountNumber = accountNumber;}
+
+	public Double getPresentBalance() {return presentBalance;}
+	// For security there will be NO setters (balance can only be modified through the deposit/withdraw methods
+
 	public LocalDateTime getCreatedAt() {return createdAt;}
 	public void setCreatedAt(LocalDateTime createdAt) {this.createdAt = createdAt;}
-	
+
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
 

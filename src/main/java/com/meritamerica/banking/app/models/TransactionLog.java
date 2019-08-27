@@ -1,5 +1,6 @@
 package com.meritamerica.banking.app.models;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -15,16 +16,25 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="account_type")
-public class AccountTypes {
+@Table(name="transaction_log")
+public class TransactionLog {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 	
 	@Column
-	@NotNull
-    private String accTypeName;
+	//
+	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
+    private String description;
+	
+	@Column
+	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
+    private Double amount;
+	
+	@Column
+	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
+    private Timestamp postDate;
 	
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -34,18 +44,26 @@ public class AccountTypes {
     @Column
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
-	
-	public AccountTypes() {}
     
-    public AccountTypes(String accTypeName) {
-		this.accTypeName = accTypeName;
+    public TransactionLog() {}
+	
+    public TransactionLog(String description, Double amount, Timestamp postDate) {
+		this.description = description;
+		this.amount = amount;
+		this.postDate = postDate;
 	}
 
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
+	public Long getId() {return id;}
+	public void setId(Long id) {this.id = id;}
 
-	public String getAccTypeName() {return accTypeName;}
-	public void setAccTypeName(String accTypeName) {this.accTypeName = accTypeName;}
+	public String getDescription() {return description;}
+	public void setDescription(String description) {this.description = description;}
+
+	public Double getAmount() {return amount;}
+	public void setAmount(Double amount) {this.amount = amount;}
+
+	public Timestamp getPostDate() {return postDate;}
+	public void setPostDate(Timestamp postDate) {this.postDate = postDate;}
 
 	public LocalDateTime getCreatedAt() {return createdAt;}
 	public void setCreatedAt(LocalDateTime createdAt) {this.createdAt = createdAt;}

@@ -18,50 +18,51 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="users")
-public class Users {
+@Table(name="user")
+public class User {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
 	@Column
-	@NotNull
+	//
+	@Size(min = 2, message = "Please enter a valid first name of at least 2 characters")
     private String firstName;
 	
 	@Column
-	@NotNull
+	@Size(min = 3, message = "Please enter a valid last name of at least 3 characters")
     private String lastName;
 	
 	@Column
-	@NotNull
-	@Email
+	@Email(message = "Please enter a valid email format")
     private String email;
 	
 	@Column
-	@NotNull
 	@Size(min = 6, max = 12, message = "Username must be between 6 and 12 characters")
     private String userName;
 	
 	@Column
-	@NotNull
 	@Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
     private String password;
 	
 	@Column
-	@NotNull
+	@NotNull(message = "Birthday can not be empty")
 	@DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDate dateOfBirth;
 	
 	@Column
-	@NotNull
-	@Size(min = 10, max = 10)
+	@Size(min = 10, max = 10, message = "A valid SSN must consist of 10 numbers")
     private String ssn;
 	
 	@Column
+	// in case we want to validate phone numbers at a later time
+	// @Pattern(regexp="(^$|[0-9]{10})")   
     private String primaryPhone;
 	
 	@Column
+	// in case we want to validate phone numbers at a later time
+	// @Pattern(regexp="(^$|[0-9]{10})")   
     private String secondaryPhone;
 	
     // This will not allow the createdAt column to be updated after creation
@@ -73,9 +74,9 @@ public class Users {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
-	public Users() {}
+	public User() {}
 
-    public Users(String firstName, String lastName, String email, String userName, String password,
+    public User(String firstName, String lastName, String email, String userName, String password,
     		LocalDate dateOfBirth, String ssn, String primaryPhone, String secondaryPhone) {
 		this.firstName = firstName;
 		this.lastName = lastName;

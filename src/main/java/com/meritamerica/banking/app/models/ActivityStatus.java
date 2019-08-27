@@ -23,6 +23,7 @@ public class ActivityStatus {
     private int id;
 	
 	@Column
+	//
     private String status;
 	
     // This will not allow the createdAt column to be updated after creation
