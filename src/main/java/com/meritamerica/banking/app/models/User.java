@@ -2,12 +2,15 @@ package com.meritamerica.banking.app.models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -18,7 +21,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 	
 	@Id
@@ -74,6 +77,9 @@ public class User {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    private List<UserAddress> userAddresses;
+    
 	public User() {}
 
     public User(String firstName, String lastName, String email, String userName, String password,

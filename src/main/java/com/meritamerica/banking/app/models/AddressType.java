@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="address_type")
+@Table(name="address_types")
 public class AddressType {
 	
 	@Id

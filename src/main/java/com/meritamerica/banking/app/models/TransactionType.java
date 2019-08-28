@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="transaction_type")
+@Table(name="transaction_types")
 public class TransactionType {
 
 	@Id

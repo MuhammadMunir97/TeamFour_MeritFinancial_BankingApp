@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="activity_status")
+@Table(name="activity_statusses")
 public class ActivityStatus {
 
 	@Id

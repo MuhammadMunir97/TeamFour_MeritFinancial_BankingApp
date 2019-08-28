@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="transaction_log")
+@Table(name="transaction_logs")
 public class TransactionLog {
 
 	@Id

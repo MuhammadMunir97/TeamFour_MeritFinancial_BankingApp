@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="user_address")
+@Table(name="user_addresses")
 public class UserAddress {
 
 	@Id
