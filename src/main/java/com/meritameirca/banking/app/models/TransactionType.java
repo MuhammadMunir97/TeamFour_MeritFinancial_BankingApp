@@ -1,4 +1,4 @@
-package com.meritamerica.banking.app.models;
+package com.meritameirca.banking.app.models;
 
 import java.time.LocalDateTime;
 
@@ -15,8 +15,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="activity_statusses")
-public class ActivityStatus {
+@Table(name="transaction_types")
+public class TransactionType {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class ActivityStatus {
 	
 	@Column
 	//
-    private String status;
+    private String transactionTypeName;
 	
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -34,18 +34,18 @@ public class ActivityStatus {
     @Column
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
-    
-    public ActivityStatus() {}
-
-    public ActivityStatus(String status) {
-		this.status = status;
+	
+    public TransactionType() {}
+	
+    public TransactionType(String transactionTypeName) {
+		this.transactionTypeName = transactionTypeName;
 	}
 
 	public int getId() {return id;}
 	public void setId(int id) {this.id = id;}
 
-	public String getStatus() {return status;}
-	public void setStatus(String status) {this.status = status;}
+	public String getTransactionTypeName() {return transactionTypeName;}
+	public void setTransactionTypeName(String transactionTypeName) {this.transactionTypeName = transactionTypeName;}
 
 	public LocalDateTime getCreatedAt() {return createdAt;}
 	public void setCreatedAt(LocalDateTime createdAt) {this.createdAt = createdAt;}
@@ -61,6 +61,5 @@ public class ActivityStatus {
     protected void onUpdate(){
         this.updatedAt = LocalDateTime.now();
     }
-    
 	
 }

@@ -1,11 +1,11 @@
-package com.meritamerica.banking.app.repositories;
+package com.meritameirca.banking.app.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.meritamerica.banking.app.models.UserAddress;
+import com.meritameirca.banking.app.models.UserAddress;
 @Repository
 public interface UserAddressRepository extends CrudRepository<UserAddress, Long> {
 

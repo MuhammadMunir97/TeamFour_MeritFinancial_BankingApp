@@ -1,4 +1,4 @@
-package com.meritamerica.banking.app.models;
+package com.meritameirca.banking.app.models;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -56,12 +56,12 @@ public class UserAddress {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
-    private User user;
-    
-    @OneToMany(mappedBy="user_address", fetch = FetchType.LAZY)
-    private List<AddressType> addressType;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="user_id")
+//    private User user;
+//    
+//    @OneToMany(mappedBy="user_address", fetch = FetchType.LAZY)
+//    private List<AddressType> addressType;
     
     public UserAddress() {}
     

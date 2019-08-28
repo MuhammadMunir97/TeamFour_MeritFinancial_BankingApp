@@ -1,4 +1,4 @@
-package com.meritamerica.banking.app.models;
+package com.meritameirca.banking.app.models;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

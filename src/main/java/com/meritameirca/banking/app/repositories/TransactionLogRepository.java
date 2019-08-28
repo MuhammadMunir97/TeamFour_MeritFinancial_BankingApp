@@ -1,10 +1,10 @@
-package com.meritamerica.banking.app.repositories;
+package com.meritameirca.banking.app.repositories;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.meritamerica.banking.app.models.TransactionLog;
+import com.meritameirca.banking.app.models.TransactionLog;
 @Repository
 public interface TransactionLogRepository extends CrudRepository<TransactionLog, Long> {
 
