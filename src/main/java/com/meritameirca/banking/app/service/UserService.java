@@ -30,6 +30,15 @@ public class UserService {
 		}
 	}
 	
+	public User loginUserThroughUserNameAndPass(String userName , String password) {
+		Optional<User> user = userRepository.findByUserNameAndPassword(userName, password);
+		if(user.isPresent()) {
+			return user.get();
+		}else {
+			return null;
+		}
+	}
+	
 	public void saveUser(User user) {
 		userRepository.save(user);
 	}

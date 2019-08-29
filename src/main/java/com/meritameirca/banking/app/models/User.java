@@ -55,7 +55,7 @@ public class User {
     private LocalDate dateOfBirth;
 	
 	@Column
-	@Size(min = 9, max = 9, message = "A valid SSN must consist of 10 numbers")
+	@Size(min = 9, max = 9, message = "A valid SSN must consist of 9 numbers")
     private String ssn;
 	
 	@Column
