@@ -22,8 +22,7 @@ public class TransactionType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
-	@Column
-	//
+	@Column(columnDefinition = "VARCHAR(45)")
     private String transactionTypeName;
 	
     // This will not allow the createdAt column to be updated after creation
@@ -31,7 +30,6 @@ public class TransactionType {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime createdAt;
     
-    @Column
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	

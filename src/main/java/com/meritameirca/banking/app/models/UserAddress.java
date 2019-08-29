@@ -29,21 +29,19 @@ public class UserAddress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@Column
-	//
     private String street;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(45)")
     private String street2;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(45)")
     private String city;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(2)")
 	@Size(min = 2, max = 2, message = "Please enter a valid US state abbreviation")
     private String state;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(11)")
 	@Size(min = 5, max = 11, message = "Please enter a valid US zicode of at least 5 numbers ")
     private String zipcode;
 	
@@ -52,7 +50,6 @@ public class UserAddress {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime createdAt;
     
-    @Column
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
     

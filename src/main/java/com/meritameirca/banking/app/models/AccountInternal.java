@@ -22,12 +22,9 @@ public class AccountInternal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@Column
-	//
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
     private Long accountNumber;
 	
-	@Column
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
     private Double presentBalance;
 	
@@ -36,7 +33,6 @@ public class AccountInternal {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime createdAt;
     
-    @Column
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	

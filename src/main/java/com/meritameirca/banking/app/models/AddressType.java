@@ -25,8 +25,7 @@ public class AddressType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
-	@Column
-	//
+	@Column(columnDefinition = "VARCHAR(45)")
     private String businessTypeName;
 	
     // This will not allow the createdAt column to be updated after creation
@@ -34,7 +33,6 @@ public class AddressType {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime createdAt;
     
-    @Column
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
