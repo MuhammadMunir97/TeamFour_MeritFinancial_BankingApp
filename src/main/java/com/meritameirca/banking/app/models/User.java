@@ -40,7 +40,7 @@ public class User {
 	@Email(message = "Please enter a valid email format")
     private String email;
 	
-	@Column(columnDefinition = "VARCHAR(65)")
+	@Column(columnDefinition = "VARCHAR(65)", unique=true)
 	@Size(min = 6, max = 12, message = "Username must be between 6 and 12 characters")
     private String userName;
 	
