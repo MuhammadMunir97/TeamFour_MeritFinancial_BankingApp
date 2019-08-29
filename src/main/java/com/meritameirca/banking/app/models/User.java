@@ -15,6 +15,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -30,22 +31,27 @@ public class User {
 	
 	@Column(columnDefinition = "VARCHAR(65)")
 	@Size(min = 2, message = "Please enter a valid first name of at least 2 characters")
+	@NotBlank(message = "Please enter your first name")
     private String firstName;
 	
 	@Column(columnDefinition = "VARCHAR(65)")
-	@Size(min = 3, message = "Please enter a valid last name of at least 3 characters")
+	@Size(min = 3, message = "Please enter a valid last name of at least 2 characters")
+	@NotBlank(message = "Please enter your last name")
     private String lastName;
 	
 	@Column(columnDefinition = "VARCHAR(100)")
 	@Email(message = "Please enter a valid email format")
+	@NotBlank(message = "Please enter your email")
     private String email;
 	
 	@Column(columnDefinition = "VARCHAR(65)", unique=true)
 	@Size(min = 6, max = 12, message = "Username must be between 6 and 12 characters")
+	@NotBlank(message = "Please enter a valid username")
     private String userName;
 	
 	@Column(columnDefinition = "VARCHAR(65)")
 	@Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
+	@NotBlank(message = "Please enter a valid password")
     private String password;
 	
 	@NotNull(message = "Birthday can not be empty")
@@ -53,7 +59,8 @@ public class User {
     private LocalDate dateOfBirth;
 	
 	@Column(columnDefinition = "VARCHAR(9)")
-	@Size(min = 9, max = 9, message = "A valid SSN must consist of 10 numbers")
+	@Size(min = 10, max = 10, message = "A valid SSN must consist of 10 numbers")
+	@NotBlank(message = "Please enter your SSN")
     private String ssn;
 	
 	@Column(columnDefinition = "VARCHAR(10)")
