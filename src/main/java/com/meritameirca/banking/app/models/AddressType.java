@@ -38,9 +38,9 @@ public class AddressType {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="user_address_id")
-//    private UserAddress userAddress;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_address_id")
+    private UserAddress userAddress;
     
 	public AddressType() {}
 	

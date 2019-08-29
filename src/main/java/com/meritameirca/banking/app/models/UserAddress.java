@@ -56,12 +56,12 @@ public class UserAddress {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
     
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="user_id")
-//    private User user;
-//    
-//    @OneToMany(mappedBy="user_address", fetch = FetchType.LAZY)
-//    private List<AddressType> addressType;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id")
+    private User user;
+    
+    @OneToMany(mappedBy="userAddress", fetch = FetchType.LAZY)
+    private List<AddressType> addressType;
     
     public UserAddress() {}
     
