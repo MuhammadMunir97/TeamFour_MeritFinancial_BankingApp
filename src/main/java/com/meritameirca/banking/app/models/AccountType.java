@@ -22,8 +22,7 @@ public class AccountType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
-	@Column
-	//
+	@Column(columnDefinition = "VARCHAR(45)")
 	// For now don't think validation rule is needed here until we build an admin portal where bank employees would be permitted to add new account types
     private String accTypeName;
 	
@@ -32,7 +31,6 @@ public class AccountType {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime createdAt;
     
-    @Column
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	

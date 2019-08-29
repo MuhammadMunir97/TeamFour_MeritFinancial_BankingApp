@@ -23,16 +23,12 @@ public class TransactionLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@Column
-	//
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
     private String description;
 	
-	@Column
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
     private Double amount;
 	
-	@Column
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
     private Timestamp postDate;
 	
@@ -41,7 +37,6 @@ public class TransactionLog {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime createdAt;
     
-    @Column
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
     

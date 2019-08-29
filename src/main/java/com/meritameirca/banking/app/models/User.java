@@ -28,42 +28,40 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@Column
-	//
+	@Column(columnDefinition = "VARCHAR(65)")
 	@Size(min = 2, message = "Please enter a valid first name of at least 2 characters")
     private String firstName;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(65)")
 	@Size(min = 3, message = "Please enter a valid last name of at least 3 characters")
     private String lastName;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(100)")
 	@Email(message = "Please enter a valid email format")
     private String email;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(65)")
 	@Size(min = 6, max = 12, message = "Username must be between 6 and 12 characters")
     private String userName;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(65)")
 	@Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
     private String password;
 	
-	@Column
 	@NotNull(message = "Birthday can not be empty")
 	@DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDate dateOfBirth;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(9)")
 	@Size(min = 9, max = 9, message = "A valid SSN must consist of 10 numbers")
     private String ssn;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(10)")
 	// in case we want to validate phone numbers at a later time
 	// @Pattern(regexp="(^$|[0-9]{10})")   
     private String primaryPhone;
 	
-	@Column
+	@Column(columnDefinition = "VARCHAR(10)")
 	// in case we want to validate phone numbers at a later time
 	// @Pattern(regexp="(^$|[0-9]{10})")   
     private String secondaryPhone;
@@ -73,7 +71,6 @@ public class User {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime createdAt;
     
-    @Column
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
