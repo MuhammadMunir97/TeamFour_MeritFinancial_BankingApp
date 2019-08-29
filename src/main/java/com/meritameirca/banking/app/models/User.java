@@ -52,13 +52,8 @@ public class User {
 	@DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDate dateOfBirth;
 	
-<<<<<<< HEAD
-	@Column
-	@Size(min = 9, max = 9, message = "A valid SSN must consist of 9 numbers")
-=======
 	@Column(columnDefinition = "VARCHAR(9)")
 	@Size(min = 9, max = 9, message = "A valid SSN must consist of 10 numbers")
->>>>>>> 01b81ae6a443a21886ba72061232a94766c91ffe
     private String ssn;
 	
 	@Column(columnDefinition = "VARCHAR(10)")
