@@ -35,7 +35,7 @@ public class User {
     private String firstName;
 	
 	@Column(columnDefinition = "VARCHAR(65)")
-	@Size(min = 3, message = "Please enter a valid last name of at least 2 characters")
+	@Size(min = 2, message = "Please enter a valid last name of at least 2 characters")
 	@NotBlank(message = "Please enter your last name")
     private String lastName;
 	
@@ -59,7 +59,7 @@ public class User {
     private LocalDate dateOfBirth;
 	
 	@Column(columnDefinition = "VARCHAR(9)")
-	@Size(min = 10, max = 10, message = "A valid SSN must consist of 10 numbers")
+	@Size(min = 9, max = 9, message = "A valid SSN must consist of 9 numbers")
 	@NotBlank(message = "Please enter your SSN")
     private String ssn;
 	
