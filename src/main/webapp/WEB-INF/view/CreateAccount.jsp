@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+    <%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,12 +39,12 @@
     <p>
         <form:label path="dateOfBirth">dateOfBirth</form:label>
         <form:errors path="dateOfBirth"/>
-        <form:textarea path="dateOfBirth"/>
+        <form:input path="dateOfBirth"/>
     </p>
     <p>
         <form:label path="ssn">Social Security Number</form:label>
         <form:errors path="ssn"/>
-        <form:textarea path="ssn"/>
+        <form:date path="ssn"/>
     </p>
     <p>
         <form:label path="primaryPhone">Primary Phone</form:label>
