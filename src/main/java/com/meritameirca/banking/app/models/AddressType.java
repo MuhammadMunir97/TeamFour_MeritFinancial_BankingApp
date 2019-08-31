@@ -57,6 +57,9 @@ public class AddressType {
 
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
+	
+	public UserAddress getUserAddress() {	return userAddress;	}
+	public void setUserAddress(UserAddress userAddress) {	this.userAddress = userAddress;	}
 
 	@PrePersist
     protected void onCreate(){

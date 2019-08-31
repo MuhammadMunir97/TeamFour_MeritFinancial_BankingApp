@@ -5,9 +5,12 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -40,6 +43,14 @@ public class TransactionLog {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="account_internal_id")
+    private AccountInternal accountInternal;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="transaction_type_id")
+    private TransactionType transactionType;
+    
     public TransactionLog() {}
 	
     public TransactionLog(String description, Double amount, Timestamp postDate) {
@@ -65,6 +76,13 @@ public class TransactionLog {
 
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
+	
+	public AccountInternal getAccountInternal() {	return accountInternal;	}
+	public void setAccountInternal(AccountInternal accountInternal) {	this.accountInternal = accountInternal;	}
+
+	public TransactionType getTransactionType() {	return transactionType;	}
+	public void setTransactionType(TransactionType transactionType) {	this.transactionType = transactionType;	}
+
 
 	@PrePersist
     protected void onCreate(){

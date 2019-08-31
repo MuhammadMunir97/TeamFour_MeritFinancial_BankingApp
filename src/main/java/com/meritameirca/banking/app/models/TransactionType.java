@@ -1,12 +1,17 @@
 package com.meritameirca.banking.app.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -33,6 +38,9 @@ public class TransactionType {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
+    @OneToMany(mappedBy="transactionType", fetch = FetchType.LAZY)
+    private List<TransactionLog> transactionLogs;
+    
     public TransactionType() {}
 	
     public TransactionType(String transactionTypeName) {
@@ -50,6 +58,9 @@ public class TransactionType {
 
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
+
+	public List<TransactionLog> getTransactionLogs() {	return transactionLogs;	}
+	public void setTransactionLogs(List<TransactionLog> transactionLogs) {	this.transactionLogs = transactionLogs;	}
 
 	@PrePersist
     protected void onCreate(){

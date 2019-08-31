@@ -1,12 +1,15 @@
 package com.meritameirca.banking.app.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -33,6 +36,12 @@ public class ActivityStatus {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
     
+    @OneToMany(mappedBy="activityStatus", fetch = FetchType.LAZY)
+    private List<User> users;
+    
+    @OneToMany(mappedBy="activityStatus", fetch = FetchType.LAZY)
+    private List<AccountInternal> accountsInternal;
+    
     public ActivityStatus() {}
 
     public ActivityStatus(String status) {
@@ -50,6 +59,12 @@ public class ActivityStatus {
 
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
+	
+	public List<User> getUsers() {	return users;	}
+	public void setUsers(List<User> users) {	this.users = users;	}
+
+	public List<AccountInternal> getAccountsInternal() {	return accountsInternal;	}
+	public void setAccountsInternal(List<AccountInternal> accountsInternal) {	this.accountsInternal = accountsInternal;	}
 
 	@PrePersist
     protected void onCreate(){

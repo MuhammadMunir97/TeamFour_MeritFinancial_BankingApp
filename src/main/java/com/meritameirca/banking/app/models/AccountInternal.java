@@ -1,12 +1,17 @@
 package com.meritameirca.banking.app.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -36,13 +41,28 @@ public class AccountInternal {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id")
+    private User user;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="activity_status_id")
+    private ActivityStatus activityStatus;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="account_type_id")
+    private AccountType accountType;
+    
+    @OneToMany(mappedBy="accountInternal", fetch = FetchType.LAZY)
+    private List<TransactionLog> transactionLogs;
+    
     public AccountInternal() {}
     
     public AccountInternal(Long accountNumber, Double presentBalance) {
 		this.accountNumber = accountNumber;
 		this.presentBalance = presentBalance;
 	}
-
+    
 	public Long getId() {return id;}
 	public void setId(Long id) {this.id = id;}
 
@@ -57,6 +77,19 @@ public class AccountInternal {
 
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
+	
+	public User getUser() {	return user;}
+	public void setUser(User user) {this.user = user;}
+
+	public ActivityStatus getActivityStatus() {return activityStatus;}
+	public void setActivityStatus(ActivityStatus activityStatus) {this.activityStatus = activityStatus;}
+
+	public AccountType getAccountType() {return accountType;}
+	public void setAccountType(AccountType accountType) {this.accountType = accountType;}
+
+	public List<TransactionLog> getTransactionLogs() {return transactionLogs;}
+	public void setTransactionLogs(List<TransactionLog> transactionLogs) {this.transactionLogs = transactionLogs;}
+
 
 	@PrePersist
     protected void onCreate(){

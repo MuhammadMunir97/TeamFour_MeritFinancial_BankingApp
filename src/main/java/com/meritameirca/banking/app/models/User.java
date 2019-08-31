@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -89,6 +91,13 @@ public class User {
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private List<UserAddress> userAddresses;
     
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    private List<AccountInternal> accountInternals;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="activity_status_id")
+    private ActivityStatus activityStatus;
+
 	public User() {}
 
     public User(String firstName, String lastName, String email, String userName, String password,
@@ -140,6 +149,18 @@ public class User {
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
 
+	public String getPasswordConfirmation() {	return passwordConfirmation;	}
+	public void setPasswordConfirmation(String passwordConfirmation) {	this.passwordConfirmation = passwordConfirmation;	}
+
+	public List<UserAddress> getUserAddresses() {	return userAddresses;	}
+	public void setUserAddresses(List<UserAddress> userAddresses) {	this.userAddresses = userAddresses;	}
+
+	public List<AccountInternal> getAccountInternals() {	return accountInternals;	}
+	public void setAccountInternals(List<AccountInternal> accountInternals) {	this.accountInternals = accountInternals;	}
+
+	public ActivityStatus getActivityStatus() {	return activityStatus;	}
+	public void setActivityStatus(ActivityStatus activityStatus) {	this.activityStatus = activityStatus;	}
+	
 	@PrePersist
     protected void onCreate(){
         this.createdAt = LocalDateTime.now();

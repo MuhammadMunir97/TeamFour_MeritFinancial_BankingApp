@@ -59,8 +59,8 @@ public class UserAddress {
     
     @OneToMany(mappedBy="userAddress", fetch = FetchType.LAZY)
     private List<AddressType> addressType;
-    
-    public UserAddress() {}
+
+	public UserAddress() {}
     
     public UserAddress(String street, String street2, String city, String state, String zipcode) {
 		this.street = street;
@@ -93,6 +93,12 @@ public class UserAddress {
 	
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
+	
+	public User getUser() {	return user;	}
+	public void setUser(User user) {	this.user = user;	}
+
+	public List<AddressType> getAddressType() {	return addressType;	}
+	public void setAddressType(List<AddressType> addressType) {	this.addressType = addressType;	}
 
 	@PrePersist
     protected void onCreate(){
