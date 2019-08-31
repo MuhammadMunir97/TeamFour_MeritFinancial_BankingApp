@@ -19,6 +19,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.meritameirca.banking.app.service.transactions.Transaction;
+
 @Entity
 @Table(name="account_internals")
 public class AccountInternal {
@@ -28,6 +30,8 @@ public class AccountInternal {
     private Long id;
 	
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
+	// #Muhammad they would require the validations as all of them need to be unique
+	@Column(unique=true)
     private Long accountNumber;
 	
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
@@ -90,6 +94,9 @@ public class AccountInternal {
 	public List<TransactionLog> getTransactionLogs() {return transactionLogs;}
 	public void setTransactionLogs(List<TransactionLog> transactionLogs) {this.transactionLogs = transactionLogs;}
 
+	public void transaction(Double money , Transaction process) {
+		presentBalance = process.processingMoney(money, presentBalance);
+	}
 
 	@PrePersist
     protected void onCreate(){
