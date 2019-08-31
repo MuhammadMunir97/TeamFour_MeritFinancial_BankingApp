@@ -19,6 +19,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.annotation.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -50,9 +51,13 @@ public class User {
     private String userName;
 	
 	@Column(columnDefinition = "VARCHAR(65)")
-	@Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
+	@Size(message = "Password must be between 8 and 16 characters")
 	@NotBlank(message = "Please enter a valid password")
     private String password;
+	
+	@Transient
+	@Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
+    private String passwordConfirmation;
 	
 	@NotNull(message = "Birthday can not be empty")
 	@DateTimeFormat(pattern="MM-dd-yyyy")

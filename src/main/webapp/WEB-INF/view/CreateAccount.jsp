@@ -44,7 +44,7 @@
     <p>
         <form:label path="ssn">Social Security Number</form:label>
         <form:errors path="ssn"/>
-        <form:date path="ssn"/>
+        <form:input path="ssn"/>
     </p>
     <p>
         <form:label path="primaryPhone">Primary Phone</form:label>

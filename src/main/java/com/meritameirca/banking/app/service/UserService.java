@@ -3,6 +3,7 @@ package com.meritameirca.banking.app.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.meritameirca.banking.app.models.User;
@@ -39,9 +40,31 @@ public class UserService {
 		}
 	}
 	
-	public void saveUser(User user) {
-		userRepository.save(user);
+	public User registerUser(User user) {
+		String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashed);
+        return userRepository.save(user);
 	}
+	
+	public User findByUserName(String userName) {
+		return userRepository.findByUserName(userName);
+	}
+	
+	public boolean authenticateUser(String userName, String password) {
+        // first find the user by email
+        User user = userRepository.findByUserName(userName);
+        // if we can't find it by email, return false
+        if(user == null) {
+            return false;
+        } else {
+            // if the passwords match, return true, else, return false
+            if(BCrypt.checkpw(password, user.getPassword())) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 	
 	public void deleteUserById(Long id) {
 		userRepository.deleteById(id);

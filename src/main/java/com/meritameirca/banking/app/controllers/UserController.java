@@ -1,5 +1,6 @@
 package com.meritameirca.banking.app.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -22,15 +23,23 @@ public class UserController {
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
-	@RequestMapping("/user")
+	@RequestMapping("/login")
 	public String user(){
 		return "/view/Login.jsp";
 	}
 	
 	@PostMapping("/login")
-	public String login(@RequestParam("username") String userName , @RequestParam("password") String password , Model model) {
-		model.addAttribute("user", userService.loginUserThroughUserNameAndPass(userName, password));
-		return "/view/User.jsp";
+	public String loginUser(@RequestParam("username") String userName , @RequestParam("password") String password , Model model , HttpSession session) {
+		boolean isAuthenticated = userService.authenticateUser(userName, password);
+		if(isAuthenticated) {
+			User user = userService.findByUserName(userName);
+			model.addAttribute("user", user);
+			session.setAttribute("userId", user.getId());
+			return "/view/User.jsp";
+		}else {
+			model.addAttribute("error", "Invalid credentials");
+			return "/view/Login.jsp";
+		}
 	}
 	
 	@RequestMapping("/create_account")
@@ -44,8 +53,8 @@ public class UserController {
 			errorRedirect.addFlashAttribute("errors", bindingResult.getAllErrors());
 			return "/view/CreateAccount.jsp";
 		}else {
-			userService.saveUser(user);
-			return "redirect:/user";
+			userService.registerUser(user);
+			return "redirect:/login";
 		}
 	}
 }

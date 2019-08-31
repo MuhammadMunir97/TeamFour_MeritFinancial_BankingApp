@@ -9,12 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <h1>Login</h1>
+    <p><c:out value="${error}" /></p>
 <form:form action="/login" method="POST">
     <p>
 	<label>UserName <input type="text" name="username"></label>
 	</p>
 	<p>
-	<label>Password <input type="text" name="password"></label>
+	<label>Password <input type="password" name="password"></label>
 	</p>
     <input type="submit" value="Submit"/>
  </form:form>
