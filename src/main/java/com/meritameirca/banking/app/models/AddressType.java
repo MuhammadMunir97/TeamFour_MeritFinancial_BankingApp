@@ -1,6 +1,7 @@
 package com.meritameirca.banking.app.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -23,7 +25,7 @@ public class AddressType {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 	
 	@Column(columnDefinition = "VARCHAR(45)")
     private String businessTypeName;
@@ -36,9 +38,8 @@ public class AddressType {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_address_id")
-    private UserAddress userAddress;
+    @OneToMany(mappedBy="addressType", fetch = FetchType.LAZY)
+    private List<UserAddress> userAddress;
     
 	public AddressType() {}
 	
@@ -46,8 +47,8 @@ public class AddressType {
 		this.businessTypeName = businessTypeName;
 	}
 
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
+	public Long getId() {return id;}
+	public void setId(Long id) {this.id = id;}
 
 	public String getBusinessTypeName() {return businessTypeName;}
 	public void setBusinessTypeName(String businessTypeName) {this.businessTypeName = businessTypeName;}
@@ -58,8 +59,7 @@ public class AddressType {
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
 	
-	public UserAddress getUserAddress() {	return userAddress;	}
-	public void setUserAddress(UserAddress userAddress) {	this.userAddress = userAddress;	}
+	
 
 	@PrePersist
     protected void onCreate(){

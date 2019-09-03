@@ -9,6 +9,7 @@
 <title>All accounts</title>
 </head>
 <body>
+${error}
 <table>
     <thead>
         <tr>
@@ -27,6 +28,6 @@
         </c:forEach>
     </tbody>
 </table>
-<a href="/createNewAccount">Create New Account</a>
+<a href="/newBankAccount">Create New Account</a>
 </body>
 </html>

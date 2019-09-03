@@ -22,22 +22,23 @@ public class AccountService {
 		return accountInternalRepository.findByUser(user);
 	}
 	
-	public String createNewAccount(User user , AccountInternal account) {
+	public boolean createNewAccount(User user , AccountInternal account) {
 		List<AccountInternal> accountsOfType = accountInternalRepository.findByUserAndAccountType(user, account.getAccountType());
 		boolean allowedToCreateMoreAccountOfType = checkIfUserCanCreateMoreAccountOfType(accountsOfType , account.getAccountType());
 		if(allowedToCreateMoreAccountOfType) {
+			account.setUser(user);
 			accountInternalRepository.save(account);
-			return "A new " + account.getAccountType().getAccTypeName() + " account has been created for you";
+			return true;
 		}else {
-			return "Request rejected, you have reached the limit for " + account.getAccountType().getAccTypeName() + " account type";
+			return false;
 		}
 	}
 	
 	public boolean checkIfUserCanCreateMoreAccountOfType(List<AccountInternal> accountsOfType , AccountType accountType) {
-		if(accountsOfType == null) {
+		if(accountsOfType == null || accountsOfType.size() == 0 || accountType.getId() == 4) {
 			return true;
 		}
-		if(accountType.getId() == 1 || accountType.getId() == 2) {
+		if(accountType.getId() == 1 || accountType.getId() == 2 || accountType.getId() == 5 || accountType.getId() == 6 || accountType.getId() == 7) {
 				return false;
 		}
 		if(accountType.getId() == 3) {

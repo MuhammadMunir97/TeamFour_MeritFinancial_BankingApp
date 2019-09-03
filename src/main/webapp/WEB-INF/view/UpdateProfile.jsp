@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
     <%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Account</title>
+<title>Update User Account</title>
 </head>
 <body>
-<form:form action="/create_account" method="POST" modelAttribute="user">
+<h1>Update Profile and add address</h1>
+<form:form action="/updateProfile" method="POST" modelAttribute="user">
+	<input type="hidden" name="_method" value="put">
 	<p>
         <form:label path="firstName">First Name</form:label>
         <form:errors path="firstName"/>

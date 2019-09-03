@@ -57,9 +57,13 @@ public class UserAddress {
     @JoinColumn(name="user_id")
     private User user;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="address_type_id")
+    private AddressType addressType;
+    
     @OneToMany(mappedBy="userAddress", fetch = FetchType.LAZY)
-    private List<AddressType> addressType;
-
+    private List<AccountInternal> accountInternals;
+    
 	public UserAddress() {}
     
     public UserAddress(String street, String street2, String city, String state, String zipcode) {
@@ -97,8 +101,22 @@ public class UserAddress {
 	public User getUser() {	return user;	}
 	public void setUser(User user) {	this.user = user;	}
 
-	public List<AddressType> getAddressType() {	return addressType;	}
-	public void setAddressType(List<AddressType> addressType) {	this.addressType = addressType;	}
+	
+	public List<AccountInternal> getAccountInternals() {
+		return accountInternals;
+	}
+
+	public void setAccountInternals(List<AccountInternal> accountInternals) {
+		this.accountInternals = accountInternals;
+	}
+
+	public AddressType getAddressType() {
+		return addressType;
+	}
+
+	public void setAddressType(AddressType addressType) {
+		this.addressType = addressType;
+	}
 
 	@PrePersist
     protected void onCreate(){

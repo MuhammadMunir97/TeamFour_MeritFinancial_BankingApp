@@ -31,7 +31,7 @@ public class AccountInternal {
 	
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
 	// #Muhammad they would require the validations as all of them need to be unique
-	@Column(unique=true)
+	//@Column(unique=true)
     private Long accountNumber;
 	
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
@@ -60,7 +60,13 @@ public class AccountInternal {
     @OneToMany(mappedBy="accountInternal", fetch = FetchType.LAZY)
     private List<TransactionLog> transactionLogs;
     
-    public AccountInternal() {}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_address_id")
+    private UserAddress userAddress;
+    
+    public AccountInternal() {
+ 
+    }
     
     public AccountInternal(Long accountNumber, Double presentBalance) {
 		this.accountNumber = accountNumber;
@@ -97,10 +103,19 @@ public class AccountInternal {
 	public void transaction(Double money , Transaction process) {
 		presentBalance = process.processingMoney(money, presentBalance);
 	}
+	
+	public UserAddress getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
+	}
 
 	@PrePersist
     protected void onCreate(){
         this.createdAt = LocalDateTime.now();
+        presentBalance = (double) 0;
     }
     @PreUpdate
     protected void onUpdate(){

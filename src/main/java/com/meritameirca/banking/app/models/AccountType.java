@@ -23,7 +23,7 @@ public class AccountType {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 	
 	@Column(columnDefinition = "VARCHAR(45)")
 	// For now don't think validation rule is needed here until we build an admin portal where bank employees would be permitted to add new account types
@@ -46,8 +46,8 @@ public class AccountType {
 		this.accTypeName = accTypeName;
 	}
 
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
+	public Long getId() {return id;}
+	public void setId(Long id) {this.id = id;}
 
 	public String getAccTypeName() {return accTypeName;}
 	public void setAccTypeName(String accTypeName) {this.accTypeName = accTypeName;}
