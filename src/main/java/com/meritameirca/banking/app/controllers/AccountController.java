@@ -51,7 +51,7 @@ public class AccountController {
 	}
 	
 	@RequestMapping("/newBankAccount")
-	public String newBankAccount(Model model, HttpSession session) {
+	public String newBankAccount(Model model, HttpSession session , @ModelAttribute("accountInternal") AccountInternal accountInternal) {
 		Long userId = (Long) session.getAttribute("userId");
 		if(userId == null) {
 			return "redirect:/login";
@@ -61,23 +61,25 @@ public class AccountController {
 		}
 	}
 	
-	@RequestMapping("/newBankAccount/{accountTypeId}")
-	public String addBankAccount(HttpSession session , Model model, @PathVariable("accountTypeId") Long accountTypeId) {
+	@PostMapping("/newBankAccount")
+	public String addBankAccount(HttpSession session , Model model, @Valid @ModelAttribute("accountInternal") AccountInternal accountInternal , BindingResult bindingResult) {
 		Long userId = (Long) session.getAttribute("userId");
 		if(userId == null) {
 			return "redirect:/login";
-		}else {		
+		}else {	
+			if(bindingResult.hasErrors()) {
+				return "/view/UserAccounts.jsp";
+			}else {
 				User user = userService.findUserById(userId);
-				AccountType accountType = accountTypeService.findById(accountTypeId);
-				AccountInternal accountInternal = new AccountInternal();
-				accountInternal.setAccountType(accountType);
+				accountInternal.setUser(user);
 				boolean accountCreated = accountService.createNewAccount(user, accountInternal);
 				if(accountCreated){
-					return "redirect:/login";
+					return "redirect:/accounts";
 				}else {
 					model.addAttribute("error", "Request rejected! account could not be created");
 					model.addAttribute("allAccounts", accountService.findAllUserAccount(user));
 					return "/view/UserAccounts.jsp";
+				}
 			}
 		}
 	}

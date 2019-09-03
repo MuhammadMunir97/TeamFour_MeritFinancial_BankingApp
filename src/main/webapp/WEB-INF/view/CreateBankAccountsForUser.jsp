@@ -9,8 +9,15 @@
 <title>Create Bank Account</title>
 </head>
 <body>
-	<c:forEach items="${account_types}" var="singleAccountType">
-		 <a href="/newBankAccount/${singleAccountType.id}">${singleAccountType.accTypeName}</a>	<br>
-   	</c:forEach>		
+<form:form action="/newBankAccount" method="POST" modelAttribute="accountInternal">
+	<form:select  path="accountType">
+		<c:forEach items="${account_types}" var="type">
+			 <form:option value="${type.id}">
+			 	${type.accTypeName}
+			 </form:option>
+    	</c:forEach>
+	</form:select>
+    <input type="submit" value="Submit"/>
+</form:form>
 </body>
 </html>
