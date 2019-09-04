@@ -31,13 +31,6 @@
         <form:errors path="zipcode"/>
         <form:input path="zipcode"/>
     </p>
-    <form:select  path="addressType">
-			<c:forEach items="${addressTypes}" var="type">
-				 <form:option value="${type.id}">
-				 	${type.businessTypeName}
-				 </form:option>
-	    	</c:forEach>
-	</form:select>
  <input type="submit" value="Submit"/>
  </form:form>
 </body>

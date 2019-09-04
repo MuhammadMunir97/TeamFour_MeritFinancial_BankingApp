@@ -58,6 +58,31 @@
         <form:errors path="secondaryPhone"/>
         <form:input path="secondaryPhone"/>
     </p>
+    <p>
+        <form:label path="userAddress.street">street</form:label>
+        <form:errors path="userAddress.street"/>
+        <form:input path="userAddress.street"/>
+    </p>
+    <p>
+        <form:label path="userAddress.street2">street2</form:label>
+        <form:errors path="userAddress.street2"/>
+        <form:input path="userAddress.street2"/>
+    </p>
+    <p>
+        <form:label path="userAddress.city">city</form:label>
+        <form:errors path="userAddress.city"/>
+        <form:input path="userAddress.city"/>
+    </p>
+    <p>
+        <form:label path="userAddress.state">state</form:label>
+        <form:errors path="userAddress.state"/>
+        <form:input path="userAddress.state"/>
+    </p>
+    <p>
+        <form:label path="userAddress.zipcode">zipcode</form:label>
+        <form:errors path="userAddress.zipcode"/>
+        <form:input path="userAddress.zipcode"/>
+    </p>
     <input type="submit" value="Submit"/>
  </form:form>
 </body>

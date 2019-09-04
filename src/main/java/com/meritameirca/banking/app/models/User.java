@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -88,17 +90,19 @@ public class User {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
-    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-    private List<UserAddress> userAddresses;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="address_id")
+    private UserAddress userAddress;
     
-    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<AccountInternal> accountInternals;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="activity_status_id")
     private ActivityStatus activityStatus;
 
-	public User() {}
+	public User() {
+	}
 
     public User(String firstName, String lastName, String email, String userName, String password,
     		LocalDate dateOfBirth, String ssn, String primaryPhone, String secondaryPhone) {
@@ -152,8 +156,8 @@ public class User {
 	public String getPasswordConfirmation() {	return passwordConfirmation;	}
 	public void setPasswordConfirmation(String passwordConfirmation) {	this.passwordConfirmation = passwordConfirmation;	}
 
-	public List<UserAddress> getUserAddresses() {	return userAddresses;	}
-	public void setUserAddresses(List<UserAddress> userAddresses) {	this.userAddresses = userAddresses;	}
+	public UserAddress getUserAddress() {	return userAddress;	}
+	public void setUserAddress(UserAddress userAddress) {	this.userAddress = userAddress;	}
 
 	public List<AccountInternal> getAccountInternals() {	return accountInternals;	}
 	public void setAccountInternals(List<AccountInternal> accountInternals) {	this.accountInternals = accountInternals;	}

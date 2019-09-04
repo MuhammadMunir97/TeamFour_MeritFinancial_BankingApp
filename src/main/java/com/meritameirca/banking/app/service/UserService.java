@@ -31,14 +31,6 @@ public class UserService {
 		}
 	}
 	
-	public User loginUserThroughUserNameAndPass(String userName , String password) {
-		Optional<User> user = userRepository.findByUserNameAndPassword(userName, password);
-		if(user.isPresent()) {
-			return user.get();
-		}else {
-			return null;
-		}
-	}
 	
 	public User registerUser(User user) {
 		String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());

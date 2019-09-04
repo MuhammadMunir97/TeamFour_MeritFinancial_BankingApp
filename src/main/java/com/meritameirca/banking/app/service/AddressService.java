@@ -21,7 +21,7 @@ public class AddressService {
 		return userAddressRepository.findAll();
 	}
 	
-	public List<UserAddress> findByUserId(Long id){
+	public UserAddress findByUserId(Long id){
 		return userAddressRepository.findByUserId(id);
 	}
 	

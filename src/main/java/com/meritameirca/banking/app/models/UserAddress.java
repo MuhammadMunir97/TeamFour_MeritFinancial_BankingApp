@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -53,16 +54,8 @@ public class UserAddress {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
+    @OneToOne(mappedBy="userAddress", fetch = FetchType.LAZY)
     private User user;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="address_type_id")
-    private AddressType addressType;
-    
-    @OneToMany(mappedBy="userAddress", fetch = FetchType.LAZY)
-    private List<AccountInternal> accountInternals;
     
 	public UserAddress() {}
     
@@ -100,23 +93,6 @@ public class UserAddress {
 	
 	public User getUser() {	return user;	}
 	public void setUser(User user) {	this.user = user;	}
-
-	
-	public List<AccountInternal> getAccountInternals() {
-		return accountInternals;
-	}
-
-	public void setAccountInternals(List<AccountInternal> accountInternals) {
-		this.accountInternals = accountInternals;
-	}
-
-	public AddressType getAddressType() {
-		return addressType;
-	}
-
-	public void setAddressType(AddressType addressType) {
-		this.addressType = addressType;
-	}
 
 	@PrePersist
     protected void onCreate(){
