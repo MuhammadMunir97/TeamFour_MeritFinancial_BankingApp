@@ -13,7 +13,6 @@ import com.meritameirca.banking.app.repositories.AccountInternalRepository;
 public class AccountService {
 	
 	private final AccountInternalRepository accountInternalRepository;
-	private static long accNumber = 000000000;
 
 	public AccountService(AccountInternalRepository accountInternalRepository) {
 		this.accountInternalRepository = accountInternalRepository;
@@ -53,9 +52,8 @@ public class AccountService {
 		return false;
 	}
 	public void newAccountNumber(AccountInternal account) {
-		Long newNumber = accNumber++;
+		Long newNumber = account.getId();
 		account.setAccountNumber(newNumber);
-		accNumber = newNumber;
 	}
 	
 }
