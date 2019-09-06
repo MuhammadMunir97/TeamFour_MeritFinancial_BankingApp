@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.meritameirca.banking.app.models.TransactionType;
 @Repository
-public interface TransactionTypeRepository extends CrudRepository<TransactionType, Long> {
-
+public interface TransactionTypeRepository extends CrudRepository<TransactionType, Long> {	
+	public List<TransactionType> findALl();
 }
