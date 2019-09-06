@@ -1,0 +1,16 @@
+
+/*home page/Login*/
+
+*{
+  
+
+ }
+
+ body{
+  background-image: url("PlaceHolder.jpg");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-attachment: fixed;
+  background-size: 1500px 700px;
+ }
+

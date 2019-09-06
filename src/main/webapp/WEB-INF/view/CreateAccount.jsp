@@ -8,14 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Create Account</title>
+	<link rel="stylesheet" type="text/css" href='CSS/box-styles.css'>
+  	<link rel='stylesheet' type="text/css" href='CSS/header-styles.css'/>
+	<link rel='stylesheet' type="text/css" href='CSS/main-styles.css'/>
+	<link rel='stylesheet' type="text/css" href='CSS/footer-styles.css'/>
 </head>
 <body>
 <form:form action="/create_account" method="POST" modelAttribute="user">
-	<p>
-        <form:label path="firstName">First Name</form:label>
-        <form:errors path="firstName"/>
-        <form:input path="firstName"/>
-    </p>
+		<form:label path="firstName">First Name</form:label>
+		<form:errors path="firstName"/>
+		<form:input path="firstName"/><span class="req">*</span>
     <p>
         <form:label path="lastName">Last Name</form:label>
         <form:errors path="lastName"/>
