@@ -167,7 +167,19 @@
 			      <form:input path="userAddress.zipcode" type="text" class="form-control" id="zipcode" placeholder="Zipcode"/>
 			      <form:errors path="userAddress.zipcode" class="errors"/>
 			    </div>
-				    
+			    
+			    <div class="form-group col-md-3">
+					<label for=primaryPhone>Primary Phone</label>
+					<form:input path="primaryPhone" type="text" class="form-control" id="primaryPhone" placeholder="Primary Phone"/>
+					<form:errors path="primaryPhone" class="errors"/>
+				</div>
+			  		
+		  		<div class="form-group col-md-3">
+					<label for=secondaryPhone>Secondary Phone</label>
+					<form:input path="secondaryPhone" type="text" class="form-control" id="secondaryPhone" placeholder="Secondary Phone"/>
+					<form:errors path="secondaryPhone" class="errors"/>
+				</div>
+
 				<input type="submit" value="Submit"/>
 			</form:form>
 		</div>
