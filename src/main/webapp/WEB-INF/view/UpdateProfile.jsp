@@ -30,6 +30,7 @@
 			</div>
 		</div>
 	
+		<!-- Test Bootstrap Form -->
 		<div class="main-box col-md-6 d-flex justify-content-center align-items-center">
 			
 			<form:form class="form-row" action="/updateProfile" method="POST" modelAttribute="user">
@@ -186,8 +187,9 @@
 		
 	</section>
 	
+	
 
-<!--  
+<!-- 
 <h1>Update Profile and add address</h1>
 <form:form action="/updateProfile" method="POST" modelAttribute="user">
 	<input type="hidden" name="_method" value="put">
@@ -263,8 +265,8 @@
     </p>
     <input type="submit" value="Submit"/>
  </form:form>
+  -->
  
- -->
  
  	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

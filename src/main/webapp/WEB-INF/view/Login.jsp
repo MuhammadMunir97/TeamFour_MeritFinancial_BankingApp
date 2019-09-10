@@ -42,7 +42,7 @@
 						<button>Log in</button>
 					</div>
 				</form:form>
-				<form:form class="registerform" action="/create_account"
+				<form:form class="registerform" action="/updateProfile"
 					method="POST" modelAttribute="user">
 					<ul class="toggle-register">
 						<li id="login-tab"><a href="#login">Log In</a></li>
