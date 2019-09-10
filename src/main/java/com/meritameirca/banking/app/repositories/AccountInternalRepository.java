@@ -12,4 +12,5 @@ import com.meritameirca.banking.app.models.User;
 public interface AccountInternalRepository extends CrudRepository<AccountInternal, Long>{
 	public List<AccountInternal> findByUser(User user);
 	public List<AccountInternal> findByUserAndAccountType(User user, AccountType accountType);
+	
 }

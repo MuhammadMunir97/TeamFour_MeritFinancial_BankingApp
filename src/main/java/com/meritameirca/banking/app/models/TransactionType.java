@@ -25,7 +25,7 @@ public class TransactionType {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 	
 	@Column(columnDefinition = "VARCHAR(45)")
     private String transactionTypeName;
@@ -47,8 +47,8 @@ public class TransactionType {
 		this.transactionTypeName = transactionTypeName;
 	}
 
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
+	public Long getId() {return id;}
+	public void setId(Long id) {this.id = id;}
 
 	public String getTransactionTypeName() {return transactionTypeName;}
 	public void setTransactionTypeName(String transactionTypeName) {this.transactionTypeName = transactionTypeName;}

@@ -21,9 +21,9 @@ ${error}
     <tbody>
         <c:forEach items="${allAccounts}" var="account">
         <tr>
-        	<td><c:out value="${account.accountNumber}"/></a></td>
-        	<td><c:out value="${account.presentBalance}"/></a></td>
-        	<td><c:out value="${account.accountType.accTypeName}"/></a></td>
+        	<td> <a href="accounts/${account.id}"><c:out value="${account.accountNumber}"/></a></td>
+        	<td><c:out value="${account.presentBalance}"/></td>
+        	<td><c:out value="${account.accountType.accTypeName}"/></td>
         </tr>
         </c:forEach>
     </tbody>
