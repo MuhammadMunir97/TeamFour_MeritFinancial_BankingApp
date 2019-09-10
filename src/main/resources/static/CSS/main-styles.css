@@ -1,16 +1,15 @@
+/*All pages CSS things like background img, Web page size, */
 
-/*home page/Login*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-*{
-  
-
- }
-
- body{
-  background-image: url("PlaceHolder.jpg");
-  background-repeat: no-repeat;
+body {
+  background-image: radial-gradient(rgb(131, 66, 133), rgb(36, 4, 37));
   background-position: top left;
-  background-attachment: fixed;
-  background-size: 1500px 700px;
- }
-
+  background-attachment: scroll;
+  width: auto;
+  height: auto;
+}

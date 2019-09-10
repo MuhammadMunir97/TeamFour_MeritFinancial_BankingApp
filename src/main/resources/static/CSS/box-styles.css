@@ -1,179 +1,209 @@
 
- *{
+* {}
 
- }
- /* Logo */
- .site-logo{
-     border: solid;
-     height: 100px;
-     width: 100px;
-     margin-left: 700px;
- }
- /*Login Box*/
- *, *:before, *:after {
-    box-sizing: border-box;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #1ab188;
-    transition: .5s ease;
-  }
-  a:hover {
-    color: #179b77;
-  }
-  
-  .form {
-    background: rgba(19, 35, 47, 0.9);
-    padding: 40px;
-    max-width: 600px;
-    margin: 40px auto;
-    border-radius: 4px;
-    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-  }
-  
-  .tab-group {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 40px 0;
-  }
-  .tab-group:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  .tab-group li a {
-    display: block;
-    text-decoration: none;
-    padding: 15px;
-    background: rgba(160, 179, 176, 0.25);
-    color: #a0b3b0;
-    font-size: 20px;
-    float: left;
-    width: 50%;
-    text-align: center;
-    cursor: pointer;
-    transition: .5s ease;
-  }
-  .tab-group li a:hover {
-    background: #179b77;
-    color: #ffffff;
-  }
-  .tab-group .active a {
-    background: #1ab188;
-    color: #ffffff;
-  }
-  
-  .tab-content > div:last-child {
-    display: none;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #ffffff;
-    font-weight: 300;
-    margin: 0 0 40px;
-  }
-  
-  label {
-    position: absolute;
-    -webkit-transform: translateY(6px);
-            transform: translateY(6px);
-    left: 13px;
-    color: rgba(255, 255, 255, 0.5);
-    transition: all 0.25s ease;
-    -webkit-backface-visibility: hidden;
-    pointer-events: none;
-    font-size: 22px;
-  }
-  label .req {
-    margin: 2px;
-    color: #1ab188;
-  }
-  
-  label.active {
-    -webkit-transform: translateY(50px);
-            transform: translateY(50px);
-    left: 2px;
-    font-size: 14px;
-  }
-  label.active .req {
-    opacity: 0;
-  }
-  
-  label.highlight {
-    color: #ffffff;
-  }
-  
-  input, textarea {
-    font-size: 22px;
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 5px 10px;
-    background: none;
-    background-image: none;
-    border: 1px solid #a0b3b0;
-    color: #ffffff;
-    border-radius: 0;
-    transition: border-color .25s ease, box-shadow .25s ease;
-  }
-  input:focus, textarea:focus {
-    outline: 0;
-    border-color: #1ab188;
-  }
-  
-  textarea {
-    border: 2px solid #a0b3b0;
-    resize: vertical;
-  }
-  
-  .field-wrap {
-    position: relative;
-    margin-bottom: 40px;
-  }
-  
-  .top-row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  .top-row > div {
-    float: left;
-    width: 48%;
-    margin-right: 4%;
-  }
-  .top-row > div:last-child {
-    margin: 0;
-  }
-  
-  .button {
-    border: 0;
-    outline: none;
-    border-radius: 0;
-    padding: 15px 0;
-    font-size: 2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    background: #1ab188;
-    color: #ffffff;
-    transition: all 0.5s ease;
-    -webkit-appearance: none;
-  }
-  .button:hover, .button:focus {
-    background: #179b77;
-  }
-  
-  .button-block {
-    display: block;
-    width: 100%;
-  }
-  
-  .forgot {
-    margin-top: -20px;
-    text-align: right;
-  }
-  
- 
- 
+/*This CSS is to the style for Login/Sign Up Box/ Will add other box like User register/ transaction box etc*/
+
+/*Login Box*/
+.login-page {
+  /*width: 360px;
+  margin: 0 auto;
+  */
+
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logincontainer {
+  /* 
+  position: relative;
+  z-index: 1;
+  background: rgba(73, 109, 89, 0.87);
+  */
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 25px;
+  text-align: center;
+}
+
+.logincontainer input {
+  font-family: "Roboto", sans-serif;
+  outline: 1;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 9px;
+  box-sizing: border-box;
+  font-size: 14px;
+
+}
+
+.logincontainer button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  background: rgb(56, 47, 46);
+  color: #ffffff;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.logincontainer .registerform {
+  display: none;
+}
+
+.login-box {
+  background: rgba(73, 109, 89, 0.87);
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 15px;
+  text-align: left;
+  border-radius: 10px;
+  color: rgba(226, 241, 233, 0.87);
+}
+
+/*
+.active {
+  background: rgba(58, 110, 82, 0.87);
+  cursor: pointer;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+.active::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.active li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 20px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  transition: .5s ease;
+}
+
+.active li a:hover {
+  background: rgb(95, 81, 80);
+  color: #ffffff;
+}
+*/
+
+.login-input {
+  text-align: left;
+}
+
+.login-active-gradient {
+  padding: 15px 15px 10px;
+  background-image: linear-gradient(rgb(50, 75, 67), rgb(70, 105, 94), rgb(70, 105, 94));
+}
+
+.toggle-login {
+  background: rgba(58, 110, 82, 0.87);
+  cursor: pointer;
+  list-style: none;
+  /*padding: 0; */
+  /*margin: 0 0 40px 0; */
+}
+
+.toggle-login::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.toggle-login li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 20px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  transition: .5s ease;
+}
+
+#register-tab li a {
+  border-radius: 0px, 55px, 0px, 0px;
+}
+
+.toggle-login li a:hover {
+  background: rgb(63, 94, 84);
+  color: #ffffff;
+}
+
+#login-active a:hover {
+  background: rgb(63, 94, 84);
+  color: #ffffff;
+}
+
+#login-active a {
+  background: #334C44;
+  color: #ffffff;
+}
+
+
+.register-active-gradient {
+  padding: 15px 15px 10px;
+  background-image: linear-gradient(rgb(50, 75, 67), rgb(70, 105, 94), #46695E);
+}
+
+.toggle-register {
+  background: rgba(58, 110, 82, 0.87);
+  cursor: pointer;
+  list-style: none;
+  /*padding: 0;*/
+  /*margin: 0 0 40px 0;*/
+}
+
+.toggle-register::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.toggle-register li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 20px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  transition: .5s ease;
+}
+
+.toggle-register li a:hover {
+  background: rgb(63, 94, 84);
+  color: #ffffff;
+}
+
+#register-active a:hover {
+  background: rgb(63, 94, 84);
+  color: #ffffff;
+}
+
+#register-active a {
+  background: #334C44;
+  color: #ffffff;
+}
