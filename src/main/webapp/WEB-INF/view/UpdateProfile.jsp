@@ -38,13 +38,13 @@
 				<div class="form-row">
 					<div class="form-group col-md-3">
 						<label for="firstName">First Name</label>
-						<form:input path="firstName" class="form-control" placeholder="First Name"/>
+						<form:input path="firstName" type="text" class="form-control" id="firstName" placeholder="First Name"/>
 						<form:errors path="firstName" class="errors"/>
 					</div>
 					
 					<div class="form-group col-md-3">
 						<label for=lastName>Last Name</label>
-						<form:input path="lastName" class="form-control" placeholder="Last Name"/>
+						<form:input path="lastName" type="text" class="form-control" id="lastName" placeholder="Last Name"/>
 						<form:errors path="lastName" class="errors"/>
 					</div>
 					
@@ -61,25 +61,25 @@
 					
 					<div class="form-group col-md-3">
 						<label for=ssn>SSN Number</label>
-						<form:input id="ssn" path="ssn" class="form-control" placeholder="SSN Number"/>
+						<form:input path="ssn" type="text" class="form-control" id="ssn" placeholder="SSN Number"/>
 						<form:errors path="ssn" class="errors"/>
 					</div>
 			
 					<div class="form-group col-md-3">
 						<label for=userName>Username</label>
-						<form:input path="userName" class="form-control" placeholder="Username"/>
+						<form:input path="userName" type="text" class="form-control" id="userName" placeholder="Username"/>
 						<form:errors path="userName" class="errors"/>
 					</div>
 					
 					<div class="form-group col-md-3">
 						<label for=password>Password</label>
-						<form:input type="password" path="password" class="form-control" placeholder="Password"/>
+						<form:input path="password" type="password" class="form-control" id="password" placeholder="Password"/>
 						<form:errors path="password" class="errors"/>
 					</div>
 					
 					<div class="form-group col-md-6">
 			    		<label for="email">Email Address</label>
-			    		<form:input path="email" class="form-control" placeholder="Email Address"/>
+			    		<form:input path="email" type="text" class="form-control" id="email" placeholder="Email Address"/>
 			    		<form:errors path="email" class="errors"/>
 			  		</div>
 				</div>
@@ -87,25 +87,25 @@
 
 			  	<div class="form-group col-md-6">
 			    	<label for="userAddress.street">Address</label>
-			    	<form:input path="userAddress.street" class="form-control" placeholder="1234 Main St"/>
+			    	<form:input path="userAddress.street" type="text" class="form-control" id="street" placeholder="1234 Main St"/>
 			    	<form:errors path="userAddress.street" class="errors"/>
 			  	</div>
 			  	
-			  	<div class="form-group col-md-6"">
+			  	<div class="form-group col-md-6">
 			    	<label for="userAddress.street2">Address 2</label>
-			    	<form:input path="userAddress.street2" class="form-control" placeholder="Apartment, studio, or floor"/>
+			    	<form:input path="userAddress.street2" type="text" class="form-control" id="street2" placeholder="Apartment, studio, or floor"/>
 			    	<form:errors path="userAddress.street2" class="errors"/>
 			 	</div>
 
 			    <div class="form-group col-md-6">
 			      <label for="userAddress.city">City</label>
-			      <form:input path="userAddress.city" class="form-control"/>
+			      <form:input path="userAddress.city" type="text" class="form-control" id="city" placeholder="City"/>
 			      <form:errors path="userAddress.city" class="errors"/>
 			    </div>
 				    
 			    <div class="form-group col-md-4">
 			      <label for="userAddress.state">State</label>
-			      <form:select path="userAddress.state" class="custom-select">
+			      <form:select path="userAddress.state" type="text" class="custom-select">
 			        <option selected>${userAddress.state}</option>
 					  	<option value="AL">Alabama</option>
 						<option value="AK">Alaska</option>
@@ -164,7 +164,7 @@
 				    
 			    <div class="form-group col-md-2">
 			      <label for="userAddress.zipcode">Zipcode</label>
-			      <form:input path="userAddress.zipcode" class="form-control"/>
+			      <form:input path="userAddress.zipcode" type="text" class="form-control" id="zipcode" placeholder="Zipcode"/>
 			      <form:errors path="userAddress.zipcode" class="errors"/>
 			    </div>
 				    
@@ -261,7 +261,7 @@
     <!-- Bootstrap DatePicker JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
 	<!-- Custom JS for DatePicker -->
-	 <script type="text/javascript" src="JavaScript/updateProfile.js"></script>
+	 <script type="text/javascript" src="JavaScript/date_ssn_app.js"></script>
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/a6aa666e27.js"></script>
  
