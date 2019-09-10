@@ -13,6 +13,7 @@ import com.meritameirca.banking.app.repositories.TransactionLogRepository;
 import com.meritameirca.banking.app.repositories.TransactionTypeRepository;
 import com.meritameirca.banking.app.service.transactions.Deposit;
 import com.meritameirca.banking.app.service.transactions.Transaction;
+import com.meritameirca.banking.app.service.transactions.Withdraw;
 
 @Service
 public class TransactionService {
@@ -35,9 +36,24 @@ public class TransactionService {
 		if(transactionLog.getTransactionType().getId() == 1) {
 			Transaction deposit = new Deposit();
 			accountInternal.transaction(money, deposit);
-			transactionLog.setAccountInternal(accountInternal);
-			transactionLogRepository.save(transactionLog);
-			return true;
+			boolean isTransactionSuccessfull = deposit.getIsTransactionSuccessfull();
+			if(isTransactionSuccessfull) {
+				transactionLog.setAccountInternal(accountInternal);
+				transactionLogRepository.save(transactionLog);
+				return true;
+			}
+			return false;
+		}
+		if(transactionLog.getTransactionType().getId() == 2) {
+			Transaction withdraw = new Withdraw();
+			accountInternal.transaction(money, withdraw);
+			boolean isTransactionSuccessfull = withdraw.getIsTransactionSuccessfull();
+			if(isTransactionSuccessfull) {
+				transactionLog.setAccountInternal(accountInternal);
+				transactionLogRepository.save(transactionLog);
+				return true;
+			}
+			return false;
 		}
 		return false;
 	}

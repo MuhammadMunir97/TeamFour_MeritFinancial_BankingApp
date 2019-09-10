@@ -36,26 +36,34 @@ public class TransactionController {
 		}else {
 			model.addAttribute("account" , accountService.findById(id));
 			model.addAttribute("transactionTypes", transactionService.findAllTransactionTypes());
+			if(session.getAttribute("isTransActionSuccessfull") != null) {
+				boolean isTransActionSuccessfull = (boolean) session.getAttribute("isTransActionSuccessfull");
+				if(isTransActionSuccessfull) {
+					model.addAttribute("message", "transaction successfull");
+				}else {
+					model.addAttribute("message", "transaction Rejected");
+				}
+			}
 			return "/view/Transaction.jsp";
 		}
 	}
 	
-	@PostMapping("/accounts/{id}")
-	public String processTransaction(@Valid @ModelAttribute("tranasction") TransactionLog transactionLog , BindingResult bindingResult ,  @PathVariable("id") Long id , HttpSession session) {
+	@PostMapping("/accounts/{accountId}")
+	public String processTransaction(@Valid @ModelAttribute("tranasction") TransactionLog transactionLog , BindingResult bindingResult ,  @PathVariable("accountId") Long accountId , HttpSession session , Model model) {
 		Long userId = (Long) session.getAttribute("userId");
 		if(userId == null) {
 			return "redirect:/login";
 		}else {
 			if(bindingResult.hasErrors()) {
 				System.out.println("error");
-				return "redirect:/accounts/{id}";
+				return "redirect:/accounts/{accountId}";
 			}else {
-				System.out.println("notAerror");
-				transactionLog.setAccountInternal(accountService.findById(id));
-				//Timestamp postDate = new Timestamp(System.currentTimeMillis());
-				//transactionLog.setPostDate(postDate);
-				System.out.print(transactionService.saveTransaction(transactionLog));
-				return "redirect:/accounts/{id}";
+				transactionLog.setAccountInternal(accountService.findById(accountId));
+				Timestamp postDate = new Timestamp(System.currentTimeMillis());
+				transactionLog.setPostDate(postDate);
+				boolean isTransActionSuccessfull = transactionService.saveTransaction(transactionLog);
+				session.setAttribute("isTransActionSuccessfull", isTransActionSuccessfull);
+				return "redirect:/accounts/{accountId}";
 			}
 		}
 	}

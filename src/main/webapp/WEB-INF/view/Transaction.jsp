@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:out value="${message}" />
 <table>
     <thead>
         <tr>

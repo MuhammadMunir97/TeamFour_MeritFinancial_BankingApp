@@ -30,38 +30,12 @@
 			</div>
 			<div class="login-box">
 				<form:form class="loginform" action="/login" method="POST">
-					<ul class="toggle-login">
-						<li id="login-active"><a href="#login">Log In</a></li>
-						<li id="register-tab"><a href="#signup">Sign Up</a></li>
-					</ul>
 					<div class="login-active-gradient">
 						<div class="login-input">
 							<label>Username<input type="text" name="username" placeholder="Username" /></label>
 							<label>Password<input type="password" name="password" placeholder="Password"></label>
 						</div>
 						<button>Log in</button>
-					</div>
-				</form:form>
-				<form:form class="registerform" action="/updateProfile"
-					method="POST" modelAttribute="user">
-					<ul class="toggle-register">
-						<li id="login-tab"><a href="#login">Log In</a></li>
-						<li id="register-active"><a href="#signup">Sign Up</a></li>
-					</ul>
-					<div class="register-active-gradient">
-						<form:label path="firstName">First Name</form:label>
-						<form:errors path="firstName" />
-						<form:input type="text" path="firstName" placeholder="First Name" />
-						<form:label path="lastName">Last Name</form:label>
-						<form:errors path="lastName" />
-						<form:input type="text" path="lastName" placeholder="Last Name" />
-						<form:label path="email">Email</form:label>
-						<form:errors path="email" />
-						<form:input type="text" path="email" placeholder="Email" />
-						<form:label path="password">Password</form:label>
-						<form:errors path="password" />
-						<form:input type="password" path="password" placeholder="Password"/>
-						<button>Create</button>
 					</div>
 				</form:form>
 			</div>
