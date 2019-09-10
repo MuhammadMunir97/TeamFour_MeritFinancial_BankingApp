@@ -25,7 +25,7 @@ public class UserController {
 		this.userService = userService;
 	}
 	@RequestMapping("/login")
-	public String user(){
+	public String user(@ModelAttribute("user") User user){
 		return "/view/Login.jsp";
 	}
 	

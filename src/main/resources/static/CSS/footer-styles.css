@@ -1,11 +1,30 @@
 .site-footer
-{ 
-  background-color:#26272b;
-  padding:45px 0 20px;
-  font-size:15px;
-  line-height:24px;
-  color:#737373;
-  border-style: solid; /*need to be remove*/
-  height: 120px;
+{ text-align: center;
+    background-color:rgb(26, 21, 21) ;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
 }
+.site-footer .footer-copyright{
+    background-color: rgb(41, 36, 36);
+    color: #9ee2c8;
+    height: 50px;
+    text-align: center;
+    
 
+
+}
+.site-footer p{
+    padding: 10px;
+
+}
+.team-name li a{
+    color: #9ee2c8;
+}
+.team-name li{
+    display: inline;
+    padding: 30px;
+
+}

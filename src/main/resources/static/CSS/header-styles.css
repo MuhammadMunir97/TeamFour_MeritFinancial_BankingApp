@@ -1,8 +1,20 @@
-*{
+* {}
 
+/*Logo Box*/
+.site-logo {
+  margin: 0 auto 50px;
+  margin-top: 50px;
+  width: 150px;
+  height: 150px;
+  border: solid black 0.5px;
+  border-radius: 10px;
+  background: white;
 }
-.site-header{
-  border-style: solid; /*need to be remove*/
-  height: 120px;
+
+.site-logo img {
+  width: 150px;
+  height: 150px;
 }
+
+.site-header {}
 
