@@ -29,7 +29,7 @@
 				<img src="Images/MeritBankingLogo.png" alt="Merit Banking Logo">
 			</div>
 			<div class="login-box">
-				<form:form action="/login" method="POST">
+				<form:form class="loginform" action="/login" method="POST">
 					<ul class="toggle-login">
 						<li id="login-active"><a href="#login">Log In</a></li>
 						<li id="register-tab"><a href="#signup">Sign Up</a></li>
@@ -37,9 +37,9 @@
 					<div class="login-active-gradient">
 						<div class="login-input">
 							<label>Username<input type="text" name="username" placeholder="Username" /></label>
-							<label>Password<input type="text" name="password" placeholder="Password"></label>
+							<label>Password<input type="password" name="password" placeholder="Password"></label>
 						</div>
-						<input type="submit" value="submit">
+						<button>Log in</button>
 					</div>
 				</form:form>
 				<form:form class="registerform" action="/create_account"
