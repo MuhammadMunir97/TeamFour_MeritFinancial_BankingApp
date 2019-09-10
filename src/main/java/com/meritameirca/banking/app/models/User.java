@@ -2,6 +2,7 @@ package com.meritameirca.banking.app.models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -64,11 +65,11 @@ public class User {
     private String passwordConfirmation;
 	
 	@NotNull(message = "Birthday can not be empty")
-	@DateTimeFormat(pattern="MM-dd-yyyy")
-    private LocalDate dateOfBirth;
+	//@DateTimeFormat(pattern="mm-dd-yyyy")
+    private Date dateOfBirth;
 	
-	@Column(columnDefinition = "VARCHAR(9)")
-	@Size(min = 9, max = 9, message = "A valid SSN must consist of 9 numbers")
+	@Column(columnDefinition = "VARCHAR(11)")
+	@Size(min = 11, max = 11, message = "A valid SSN must consist of 9 numbers")
 	@NotBlank(message = "Please enter your SSN")
     private String ssn;
 	
@@ -105,7 +106,7 @@ public class User {
 	}
 
     public User(String firstName, String lastName, String email, String userName, String password,
-    		LocalDate dateOfBirth, String ssn, String primaryPhone, String secondaryPhone) {
+    		Date dateOfBirth, String ssn, String primaryPhone, String secondaryPhone) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -135,8 +136,8 @@ public class User {
 	public String getPassword() {return password;}
 	public void setPassword(String password) {this.password = password;}
 	
-	public LocalDate getDateOfBirth() {return dateOfBirth;}
-	public void setDateOfBirth(LocalDate dateOfBirth) {this.dateOfBirth = dateOfBirth;}
+	public Date getDateOfBirth() {return dateOfBirth;}
+	public void setDateOfBirth(Date dateOfBirth) {this.dateOfBirth = dateOfBirth;}
 	
 	public String getSsn() {return ssn;}
 	public void setSsn(String ssn) {this.ssn = ssn;}
