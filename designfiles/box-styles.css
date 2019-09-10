@@ -1,0 +1,219 @@
+* {}
+
+/*This CSS is to the style for Login/Sign Up Box/ Will add other box like User register/ transaction box etc*/
+
+/*Login Box*/
+.login-page {
+  /*width: 360px;
+  margin: 0 auto;
+  */
+
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logincontainer {
+  /* 
+  position: relative;
+  z-index: 1;
+  background: rgba(73, 109, 89, 0.87);
+  */
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 25px;
+  text-align: center;
+}
+
+.logincontainer input {
+  font-family: "Roboto", sans-serif;
+  outline: 1;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 9px;
+  box-sizing: border-box;
+  font-size: 14px;
+
+}
+
+.logincontainer button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  background: rgb(56, 47, 46);
+  color: #ffffff;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.logincontainer .registerform {
+  display: none;
+}
+
+.login-box {
+  background: rgba(73, 109, 89, 0.87);
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 15px;
+  text-align: left;
+  color: rgba(226, 241, 233, 0.87);
+}
+
+/*
+.active {
+  background: rgba(58, 110, 82, 0.87);
+  cursor: pointer;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+.active::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.active li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 20px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  transition: .5s ease;
+}
+
+.active li a:hover {
+  background: rgb(95, 81, 80);
+  color: #ffffff;
+}
+*/
+
+.login-input {
+  text-align: left:
+}
+
+.login-active-gradient {
+  padding: 15px 15px 0px;
+  background-image: linear-gradient(rgb(50, 75, 67), rgb(70, 105, 94), #46695E);
+}
+
+.toggle-login {
+  background: rgba(58, 110, 82, 0.87);
+  cursor: pointer;
+  list-style: none;
+  /*padding: 0; */
+  /*margin: 0 0 40px 0; */
+}
+
+.toggle-login::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.toggle-login li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 20px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  transition: .5s ease;
+}
+
+.toggle-login li a:hover {
+  background: rgb(63, 94, 84);
+  color: #ffffff;
+}
+
+#login-active a:hover {
+  background: rgb(63, 94, 84);
+  color: #ffffff;
+}
+
+#login-active a {
+  background: #334C44;
+  color: #ffffff;
+}
+
+
+.register-active-gradient {
+  padding: 15px 15px 0px;
+  background-image: linear-gradient(rgb(50, 75, 67), rgb(70, 105, 94), #46695E);
+}
+
+.toggle-register {
+  background: rgba(58, 110, 82, 0.87);
+  cursor: pointer;
+  list-style: none;
+  /*padding: 0;*/
+  /*margin: 0 0 40px 0;*/
+}
+
+.toggle-register::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.toggle-register li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 20px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  transition: .5s ease;
+}
+
+.toggle-register li a:hover {
+  background: rgb(63, 94, 84);
+  color: #ffffff;
+}
+
+#register-active a:hover {
+  background: rgb(63, 94, 84);
+  color: #ffffff;
+}
+
+#register-active a {
+  background: #334C44;
+  color: #ffffff;
+}
+
+/* Profile update form*/
+.registrationform {
+  font-weight: bold;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  padding: 10px;
+  box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+  margin-bottom: 100px;
+  margin-top: -20px;
+  width: 700px;
+  height: auto;
+  background: rgb(96, 126, 106);
+  }
