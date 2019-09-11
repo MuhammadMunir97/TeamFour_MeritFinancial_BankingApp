@@ -1,6 +1,7 @@
 package com.meritameirca.banking.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,15 @@ public class AccountService {
 
 	public AccountService(AccountInternalRepository accountInternalRepository) {
 		this.accountInternalRepository = accountInternalRepository;
+	}
+	
+	public AccountInternal findById(Long id){
+		Optional<AccountInternal> accountInternal = accountInternalRepository.findById(id);
+		if(accountInternal.isPresent()) {
+			return accountInternal.get();
+		}else {
+			return null;
+		}
 	}
 	
 	public List<AccountInternal> findAllUserAccount(User user){
@@ -52,8 +62,17 @@ public class AccountService {
 		return false;
 	}
 	public void newAccountNumber(AccountInternal account) {
-		Long newNumber = account.getId();
+		Long newNumber =  (long) 100000000 ;
+		newNumber += (long) (accountInternalRepository.findTopByOrderByIdDesc().getId() + 1);
 		account.setAccountNumber(newNumber);
 	}
 	
+	public AccountInternal findByAccountNumber(Long acccountNumber) {
+		Optional<AccountInternal> accountInternal = accountInternalRepository.findByAccountNumber(acccountNumber);
+		if(accountInternal.isPresent()) {
+			return accountInternal.get();
+		}else {
+			return null;
+		}
+	}
 }

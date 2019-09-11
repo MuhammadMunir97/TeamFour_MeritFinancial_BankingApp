@@ -36,7 +36,7 @@ public class UserController {
 			User user = userService.findByUserName(userName);
 			model.addAttribute("user", user);
 			session.setAttribute("userId", user.getId());
-			return "/view/User.jsp";
+			return "redirect:/accounts";
 		}else {
 			model.addAttribute("error", "Invalid credentials");
 			return "/view/Login.jsp";

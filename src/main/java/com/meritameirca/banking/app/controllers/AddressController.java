@@ -69,22 +69,4 @@ public class AddressController {
 			}
 		}
 	}
-	
-//	@RequestMapping("/addAddress")
-//	public String newAddress(@ModelAttribute("address") UserAddress userAddress , Model model) {
-//		return "/view/AddAddress.jsp";
-//	}
-//	
-//	@PostMapping("/addAddress")
-//	public String addAddress(@Valid @ModelAttribute("address") UserAddress userAddress  , BindingResult bindingResult ,  RedirectAttributes errorRedirect ,  HttpSession session) {
-//		if(bindingResult.hasErrors()) {
-//			errorRedirect.addFlashAttribute("errors", bindingResult.getAllErrors());
-//			return "/view/AddAddress.jsp";
-//		}else {
-//			Long userId = (Long) session.getAttribute("userId");
-//			userAddress.setUser(userService.findUserById(userId));
-//			addressService.saveAddress(userAddress);
-//			return "redirect:/accounts";
-//		}
-//	}
 }

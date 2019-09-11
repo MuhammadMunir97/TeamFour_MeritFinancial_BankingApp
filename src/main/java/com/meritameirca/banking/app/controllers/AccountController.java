@@ -39,13 +39,14 @@ public class AccountController {
 	}
 
 	@RequestMapping("/accounts")
-	public String showAccounts(HttpSession session , Model model) {
+	public String showAccounts(HttpSession session , Model model ,  @ModelAttribute("accountInternal") AccountInternal accountInternal) {
 		Long userId = (Long) session.getAttribute("userId");
 		if(userId == null) {
 			return "redirect:/login";
 		}else {
 			User user = userService.findUserById(userId);
 			model.addAttribute("allAccounts", accountService.findAllUserAccount(user));
+			model.addAttribute("account_types", accountTypeService.findAllAccountTypes());
 			return "/view/UserAccounts.jsp";
 		}
 	}

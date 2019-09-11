@@ -21,13 +21,24 @@ ${error}
     <tbody>
         <c:forEach items="${allAccounts}" var="account">
         <tr>
-        	<td><c:out value="${account.accountNumber}"/></a></td>
-        	<td><c:out value="${account.presentBalance}"/></a></td>
-        	<td><c:out value="${account.accountType.accTypeName}"/></a></td>
+        	<td> <a href="accounts/${account.id}"><c:out value="${account.accountNumber}"/></a></td>
+        	<td><c:out value="${account.presentBalance}"/></td>
+        	<td><c:out value="${account.accountType.accTypeName}"/></td>
         </tr>
         </c:forEach>
     </tbody>
 </table>
+<h1>Create Account</h1>
+<form:form action="/newBankAccount" method="POST" modelAttribute="accountInternal">
+	<form:select  path="accountType">
+		<c:forEach items="${account_types}" var="type">
+			 <form:option value="${type.id}">
+			 	${type.accTypeName}
+			 </form:option>
+    	</c:forEach>
+	</form:select>
+    <input type="submit" value="Submit"/>
+</form:form>
 <a href="/newBankAccount">Create New Account</a>
 </body>
 </html>
