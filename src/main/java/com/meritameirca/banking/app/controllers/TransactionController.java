@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.meritameirca.banking.app.models.AccountInternal;
 import com.meritameirca.banking.app.models.TransactionLog;
 import com.meritameirca.banking.app.service.AccountService;
 import com.meritameirca.banking.app.service.TransactionService;
@@ -61,7 +62,19 @@ public class TransactionController {
 				transactionLog.setAccountInternal(accountService.findById(accountId));
 				Timestamp postDate = new Timestamp(System.currentTimeMillis());
 				transactionLog.setPostDate(postDate);
-				boolean isTransActionSuccessfull = transactionService.saveTransaction(transactionLog);
+				boolean isTransActionSuccessfull = false;
+				if(transactionLog.getTransactionType().getId() == 3) {
+					AccountInternal accountTransferedTo = accountService.findByAccountNumber(transactionLog.getAccountInternalTransferTo());
+					if(accountTransferedTo == null) {
+						session.setAttribute("isTransActionSuccessfull", false);
+						System.out.println("im here");
+						return "redirect:/accounts/{accountId}";
+					}else {
+						isTransActionSuccessfull = transactionService.saveTransaction(transactionLog , accountTransferedTo);
+					}
+				}else {
+					isTransActionSuccessfull = transactionService.saveTransaction(transactionLog);
+				}
 				session.setAttribute("isTransActionSuccessfull", isTransActionSuccessfull);
 				return "redirect:/accounts/{accountId}";
 			}

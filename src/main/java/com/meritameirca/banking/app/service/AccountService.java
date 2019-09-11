@@ -63,8 +63,16 @@ public class AccountService {
 	}
 	public void newAccountNumber(AccountInternal account) {
 		Long newNumber =  (long) 100000000 ;
-		newNumber += (long) (accountInternalRepository.count() + 1);
+		newNumber += (long) (accountInternalRepository.findTopByOrderByIdDesc().getId() + 1);
 		account.setAccountNumber(newNumber);
 	}
 	
+	public AccountInternal findByAccountNumber(Long acccountNumber) {
+		Optional<AccountInternal> accountInternal = accountInternalRepository.findByAccountNumber(acccountNumber);
+		if(accountInternal.isPresent()) {
+			return accountInternal.get();
+		}else {
+			return null;
+		}
+	}
 }

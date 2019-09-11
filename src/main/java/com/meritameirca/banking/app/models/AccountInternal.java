@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PostPersist;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -31,7 +32,7 @@ public class AccountInternal {
 	
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)
 	// #Muhammad they would require the validations as all of them need to be unique
-	//@Column(unique=true)
+	@Column(unique=true , updatable=false)
     private Long accountNumber;
 	
 	// Don't think we will need a validation here because this shouldn't be subject to user entry (should be programmatically set)

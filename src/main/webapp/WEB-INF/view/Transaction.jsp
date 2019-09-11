@@ -59,6 +59,11 @@
 			 </form:option>
     	</c:forEach>
 	</form:select>
+	<p>
+        <form:label path="AccountInternalTransferTo">AccountInternalTransferTo</form:label>
+        <form:errors path="AccountInternalTransferTo"/>
+        <form:input path="AccountInternalTransferTo"/>
+    </p>
     <input type="submit" value="Submit"/>
 </form:form>
 </body>

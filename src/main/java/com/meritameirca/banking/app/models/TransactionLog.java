@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -42,6 +43,9 @@ public class TransactionLog {
     
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
+    
+    @Transient
+    private Long accountInternalTransferTo;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="account_internal_id")
@@ -83,6 +87,13 @@ public class TransactionLog {
 	public TransactionType getTransactionType() {	return transactionType;	}
 	public void setTransactionType(TransactionType transactionType) {	this.transactionType = transactionType;	}
 
+	public Long getAccountInternalTransferTo() {
+		return accountInternalTransferTo;
+	}
+
+	public void setAccountInternalTransferTo(Long accountInternalTransferTo) {
+		this.accountInternalTransferTo = accountInternalTransferTo;
+	}
 
 	@PrePersist
     protected void onCreate(){

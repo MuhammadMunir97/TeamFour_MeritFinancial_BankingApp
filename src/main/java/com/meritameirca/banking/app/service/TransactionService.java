@@ -49,6 +49,7 @@ public class TransactionService {
 			accountInternal.transaction(money, withdraw);
 			boolean isTransactionSuccessfull = withdraw.getIsTransactionSuccessfull();
 			if(isTransactionSuccessfull) {
+				transactionLog.setAmount(-transactionLog.getAmount());
 				transactionLog.setAccountInternal(accountInternal);
 				transactionLogRepository.save(transactionLog);
 				return true;
@@ -56,6 +57,32 @@ public class TransactionService {
 			return false;
 		}
 		return false;
+	}
+	
+	public boolean saveTransaction(TransactionLog transactionLog , AccountInternal accountInternalTo) {
+		if(transactionLog.getTransactionType().getId() == 3) {
+			AccountInternal accountInternalFrom = transactionLog.getAccountInternal();
+			Double money = transactionLog.getAmount();
+			Transaction withdraw = new Withdraw();
+			Transaction deposit = new Deposit();
+			accountInternalFrom.transaction(money, withdraw);
+			boolean isTransactionOneSuccessfull = withdraw.getIsTransactionSuccessfull();
+			accountInternalTo.transaction(money, deposit);
+			boolean isTransactionTwoSuccessfull = deposit.getIsTransactionSuccessfull();
+			if(isTransactionOneSuccessfull && isTransactionTwoSuccessfull) {
+				transactionLog.setAmount(-transactionLog.getAmount());
+				transactionLog.setAccountInternal(accountInternalFrom);
+				TransactionLog transactionLogTo = new TransactionLog(null , -transactionLog.getAmount() , transactionLog.getPostDate());
+				transactionLogTo.setAccountInternal(accountInternalTo);
+				transactionLogTo.setTransactionType(transactionLog.getTransactionType());
+				transactionLogRepository.save(transactionLogTo);
+				transactionLogRepository.save(transactionLog);
+				return true;
+			}
+			return false;
+		}else {
+			return false;
+		}
 	}
 	
 	public List<TransactionLog> findByAccountId(Long id){

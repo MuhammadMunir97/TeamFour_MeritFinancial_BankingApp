@@ -28,6 +28,17 @@ ${error}
         </c:forEach>
     </tbody>
 </table>
+<h1>Create Account</h1>
+<form:form action="/newBankAccount" method="POST" modelAttribute="accountInternal">
+	<form:select  path="accountType">
+		<c:forEach items="${account_types}" var="type">
+			 <form:option value="${type.id}">
+			 	${type.accTypeName}
+			 </form:option>
+    	</c:forEach>
+	</form:select>
+    <input type="submit" value="Submit"/>
+</form:form>
 <a href="/newBankAccount">Create New Account</a>
 </body>
 </html>
