@@ -6,10 +6,18 @@
   box-sizing: border-box;
 }
 
-body {
-  background-image: radial-gradient(rgb(131, 66, 133), rgb(36, 4, 37));
-  background-position: top left;
-  background-attachment: scroll;
-  width: auto;
-  height: auto;
+html, body {
+	/* */
+ 	background-position: top left;
+  	background-attachment: scroll;
+  	width: auto;
+  	height: 100%;
+  	font-family: "Segoe UI", "Segoe WP", "Segoe Regular", sans-serif;
+  	font-size: 15px;
+  	line-height: 1.7em;
+  	background: #d7e3ee;
+}
+
+.errors{
+	color: red;
 }

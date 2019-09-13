@@ -1,6 +1,6 @@
-.site-footer
-{ text-align: center;
-    background-color:rgb(26, 21, 21) ;
+.site-footer{
+	text-align: center;
+    background-color:#356E90;
     color: #ffffff;
     position: fixed;
     bottom: 0;
@@ -12,19 +12,14 @@
     color: #9ee2c8;
     height: 50px;
     text-align: center;
-    
-
-
 }
 .site-footer p{
     padding: 10px;
-
 }
 .team-name li a{
-    color: #9ee2c8;
+    color: #D7E3EE;
 }
 .team-name li{
     display: inline;
     padding: 30px;
-
 }

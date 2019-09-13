@@ -64,7 +64,7 @@ public class User {
 	@Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
     private String passwordConfirmation;
 	
-	@NotNull(message = "Birthday can not be empty")
+	//@NotNull(message = "Birthday can not be empty")
 	//@DateTimeFormat(pattern="mm-dd-yyyy")
     private Date dateOfBirth;
 	

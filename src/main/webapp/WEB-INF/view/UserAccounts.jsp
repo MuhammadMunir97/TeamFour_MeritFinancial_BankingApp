@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>All accounts</title>
+<title>Merit Bank | Dashboard</title>
 </head>
 <body>
 ${error}
