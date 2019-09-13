@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>All accounts</title>
+<link rel='stylesheet' href='CSS/Transaction.css' />
 </head>
 <body>
 ${error}

@@ -7,8 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<body>
+<body onload="hideTransactionField()">
 <c:out value="${message}" />
 <table>
     <thead>
@@ -52,7 +53,7 @@
         <form:errors path="amount"/>
         <form:input path="amount"/>
     </p>
-	<form:select  path="transactionType">
+	<form:select path="transactionType" onchange="transactionCheck(this)">
 		<c:forEach items="${transactionTypes}" var="type">
 			 <form:option value="${type.id}">
 			 	${type.transactionTypeName}
@@ -62,9 +63,21 @@
 	<p>
         <form:label path="AccountInternalTransferTo">AccountInternalTransferTo</form:label>
         <form:errors path="AccountInternalTransferTo"/>
-        <form:input path="AccountInternalTransferTo"/>
+        <form:input id="ifTransaction" path="AccountInternalTransferTo"/>
     </p>
     <input type="submit" value="Submit"/>
 </form:form>
+<script>
+function hideTransactionField(){
+	$("#ifTransaction").hide();
+}
+function transactionCheck(that) {
+	if (that.value == "3") {
+        $("#ifTransaction").show("slow");
+    } else {
+    	$("#ifTransaction").hide();
+    }
+}
+</script>
 </body>
 </html>
