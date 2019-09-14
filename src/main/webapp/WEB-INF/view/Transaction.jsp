@@ -8,10 +8,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel='stylesheet' href='CSS/transaction.css' />
 </head>
 <body onload="hideTransactionField()">
 <c:out value="${message}" />
-<table>
+<div class="container">
+<table class="accountInfo">
     <thead>
         <tr>
             <th><h3>AccountNumber</h3></th>
@@ -27,6 +29,7 @@
        </tr>
     </tbody>
 </table>
+<div class="transactions">
 <h1>Transactions</h1>
 <table>
     <thead>
@@ -40,12 +43,13 @@
 	    <c:forEach items="${account.transactionLogs}" var="transaction">
 			<tr>
 				<td><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
-				<td><c:out value="${transaction.amount}"/></td>
+				<td>$ <c:out value="${transaction.amount}"/></td>
 				<td><c:out value="${transaction.postDate}"/></td>
 			</tr>
 		</c:forEach>
     </tbody>
 </table>
+</div>
 <br><br><br><br>
 <form:form action="/accounts/${account.id}" method="POST" modelAttribute="tranasction">
 	<p>
@@ -60,22 +64,26 @@
 			 </form:option>
     	</c:forEach>
 	</form:select>
-	<p>
-        <form:label path="AccountInternalTransferTo">AccountInternalTransferTo</form:label>
+	<div id="ifTransaction">
+        <form:label id="translabel" path="AccountInternalTransferTo">Transfer Amount</form:label>
         <form:errors path="AccountInternalTransferTo"/>
-        <form:input id="ifTransaction" path="AccountInternalTransferTo"/>
-    </p>
+        <form:input path="AccountInternalTransferTo"/>
+    </div>
     <input type="submit" value="Submit"/>
 </form:form>
+</div>
 <script>
 function hideTransactionField(){
 	$("#ifTransaction").hide();
+	$("#transLabel").hide();
 }
 function transactionCheck(that) {
 	if (that.value == "3") {
         $("#ifTransaction").show("slow");
+        $("#transLabel").show("slow");
     } else {
-    	$("#ifTransaction").hide();
+    	$("#ifTransaction").hide("slow");
+    	$("#transLabel").hide("slow");
     }
 }
 </script>
