@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,10 +38,17 @@ public class AddressController {
 			return "redirect:/login";
 		}else {
 			User user = userService.findUserById(userId);
+			// Robert added this for the settings page
+			UserAddress userAddress = addressService.findById(userId);
 			model.addAttribute("user", user);
+			// Robert added this for the settings page
+			model.addAttribute("userAddress", userAddress);
+			/* Robert commented this out because it was generating errors on the Settings page
 			if(user.getUserAddress().getId() != null) {
 				session.setAttribute("addressId", user.getUserAddress().getId());
 			}
+			*/
+			
 			return "/view/UpdateProfile.jsp";
 		}
 	}

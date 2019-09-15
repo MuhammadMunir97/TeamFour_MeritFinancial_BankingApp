@@ -66,6 +66,7 @@ public class User {
 	
 	//@NotNull(message = "Birthday can not be empty")
 	//@DateTimeFormat(pattern="mm-dd-yyyy")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dateOfBirth;
 	
 	@Column(columnDefinition = "VARCHAR(11)")
@@ -91,8 +92,7 @@ public class User {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="address_id")
+    @OneToOne(mappedBy="user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private UserAddress userAddress;
     
     @OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
@@ -154,17 +154,17 @@ public class User {
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
 
-	public String getPasswordConfirmation() {	return passwordConfirmation;	}
-	public void setPasswordConfirmation(String passwordConfirmation) {	this.passwordConfirmation = passwordConfirmation;	}
+	public String getPasswordConfirmation() {return passwordConfirmation;}
+	public void setPasswordConfirmation(String passwordConfirmation) {this.passwordConfirmation = passwordConfirmation;}
 
-	public UserAddress getUserAddress() {	return userAddress;	}
-	public void setUserAddress(UserAddress userAddress) {	this.userAddress = userAddress;	}
+	public UserAddress getUserAddress() {return userAddress;}
+	public void setUserAddress(UserAddress userAddress) {this.userAddress = userAddress;}
 
-	public List<AccountInternal> getAccountInternals() {	return accountInternals;	}
-	public void setAccountInternals(List<AccountInternal> accountInternals) {	this.accountInternals = accountInternals;	}
+	public List<AccountInternal> getAccountInternals() {return accountInternals;}
+	public void setAccountInternals(List<AccountInternal> accountInternals) {this.accountInternals = accountInternals;}
 
-	public ActivityStatus getActivityStatus() {	return activityStatus;	}
-	public void setActivityStatus(ActivityStatus activityStatus) {	this.activityStatus = activityStatus;	}
+	public ActivityStatus getActivityStatus() {return activityStatus;}
+	public void setActivityStatus(ActivityStatus activityStatus) {this.activityStatus = activityStatus;}
 	
 	@PrePersist
     protected void onCreate(){
