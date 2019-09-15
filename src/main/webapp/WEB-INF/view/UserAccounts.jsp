@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 
 <title>All accounts</title>
-
 </head>
 <body>
 ${error}
