@@ -56,7 +56,18 @@
 						<form:input path="lastName" type="text" class="form-control" id="lastName" placeholder="Last Name"/>
 						<form:errors path="lastName" class="errors"/>
 					</div>
-
+					
+					<div class="form-group col-md-3">
+						<label for=dateOfBirth>Date of Birth</label>
+						<div class="input-group">
+						    <form:input type="date" required="required" path="dateOfBirth" class="form-control" id="dateOfBirth" placeholder="mm-dd-yyyy"></form:input>
+						    <form:errors path="dateOfBirth" class="errors"/>
+						    <div class="input-group-append">
+						    	<div class="input-group-text"><span><i class="fas fa-calendar-alt fa-lg"></i></span></div>
+						    </div>
+						</div>
+					</div>
+					<!-- 
 					<div class="form-group col-md-3">
 						<label for=dateOfBirth>Date of Birth</label>
 						<div class="input-group">
@@ -67,6 +78,7 @@
 						    </div>
 						</div>
 					</div>
+					 -->
 					
 					<div class="form-group col-md-3">
 						<label for=ssn>SSN Number</label>

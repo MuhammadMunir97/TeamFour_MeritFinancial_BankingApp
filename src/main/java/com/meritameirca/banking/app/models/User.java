@@ -66,6 +66,7 @@ public class User {
 	
 	//@NotNull(message = "Birthday can not be empty")
 	//@DateTimeFormat(pattern="mm-dd-yyyy")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dateOfBirth;
 	
 	@Column(columnDefinition = "VARCHAR(11)")

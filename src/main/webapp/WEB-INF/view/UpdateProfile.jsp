@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isErrorPage="true"%>
 
 <!DOCTYPE html>
@@ -113,13 +114,25 @@
 								<div class="form-group col-md-3">
 									<label for=dateOfBirth>Date of Birth</label>
 									<div class="input-group">
-									    <form:input type="text" required="required" path="dateOfBirth" class="form-control" id="datepicker" placeholder="mm-dd-yyyy" data-date-today-Btn="linked" data-date-autoclose="true"></form:input>
+									    <form:input type="date" required="required" path="dateOfBirth" class="form-control" id="dateOfBirth" placeholder="mm-dd-yyyy"></form:input>
 									    <form:errors path="dateOfBirth" class="errors"/>
 									    <div class="input-group-append">
 									    	<div class="input-group-text"><span><i class="fas fa-calendar-alt fa-lg"></i></span></div>
 									    </div>
 									</div>
 								</div>
+								<!-- 
+								<div class="form-group col-md-3">
+									<label for=dateOfBirth>Date of Birth</label>
+									<div class="input-group">
+									    <form:input type="text" required="required" path="dateOfBirth" class="form-control" id="datepicker" placeholder="mm-dd-yyyy" data-format="MM-DD-YYYY" data-date-today-Btn="linked" data-date-autoclose="true"></form:input>
+									    <form:errors path="dateOfBirth" class="errors"/>
+									    <div class="input-group-append">
+									    	<div class="input-group-text"><span><i class="fas fa-calendar-alt fa-lg"></i></span></div>
+									    </div>
+									</div>
+								</div>
+								 -->
 								
 								<div class="form-group col-md-3">
 									<label for=ssn>SSN Number</label>
