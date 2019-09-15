@@ -80,5 +80,4 @@ public class TransactionController {
 			}
 		}
 	}
-	// problem deal with setting the id of transactiontype to long id
 }
