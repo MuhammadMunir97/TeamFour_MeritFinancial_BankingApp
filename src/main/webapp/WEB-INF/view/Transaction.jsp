@@ -70,6 +70,18 @@
     </div>
     <input type="submit" value="Submit"/>
 </form:form>
+
+<h1>User Settings</h1>
+<a href="/updateProfile">Settings</a>
+
+<h1>Dashboard</h1>
+<a href="/accounts">Dashboard</a>
+
+<h1>Logout</h1>
+<a href="/logout">Logout</a>
+
+
+
 <script>
 function hideTransactionField(){
 	$("#ifTransaction").hide();

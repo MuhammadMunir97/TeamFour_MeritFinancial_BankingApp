@@ -54,7 +54,8 @@ public class UserAddress {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
     
-    @OneToOne(mappedBy="userAddress", fetch = FetchType.LAZY)
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="user_id")
     private User user;
     
 	public UserAddress() {}
@@ -91,8 +92,8 @@ public class UserAddress {
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
 	
-	public User getUser() {	return user;	}
-	public void setUser(User user) {	this.user = user;	}
+	public User getUser() {return user;}
+	public void setUser(User user) {this.user = user;}
 
 	@PrePersist
     protected void onCreate(){

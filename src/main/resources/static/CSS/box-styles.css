@@ -26,3 +26,12 @@
  	align-items: center;
 }
 
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.card{
+	box-shadow: 6px 7px 5px -6px rgba(0,0,0,0.75);
+}
+

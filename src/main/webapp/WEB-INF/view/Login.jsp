@@ -63,9 +63,9 @@
 			, Merit Bank
 		</p>
 		<ul class="team-name">
-			<li><a href="#">Jose Caridad</a></li>
-			<li><a href="#">Robert Scott</a></li>
-			<li><a href="#">Muhammad Munir</a></li>
+			<li><a href="https://www.linkedin.com/in/joseacaridad/">Jose Caridad</a></li>
+			<li><a href="https://www.linkedin.com/in/robertscott600/">Robert Scott</a></li>
+			<li><a href="https://www.linkedin.com/in/muhammad-munir-5b20a9141/">Muhammad Munir</a></li>
 			<li><a href="https://www.linkedin.com/in/vitranm/">Vi Tran</a></li>
 		</ul>
 	</footer>
