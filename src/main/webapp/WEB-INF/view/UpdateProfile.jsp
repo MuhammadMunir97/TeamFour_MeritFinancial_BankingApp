@@ -296,11 +296,22 @@
 					    <h5 class="card-title">Close Bank Account</h5>
 					    <p class="card-text">To close a bank account you must first transfer all of your funds into your savings account.</p>
 
-						<p class="card-text">Select an account to close.</p>
+						
+					    <input class="btn btn-danger mr-2" type="submit" value="Close Account"/>
+					</div>
+				</div>
+				
+				<div class="card ml-3 mt-3">
+				  	<div class="card-header">
+				    	<h4 class="font-weight-light">Account Transfers</h4>
+				  	</div>
+					<div class="card-body">
+					    <h5 class="card-title">Perform Closing Transfers</h5>
+						<p class="card-text">Please select the account you wish to perform a closing transfer on.</p>
 						
 						<!-- Need to pull in owned accounts here via a drop-down list -->
 						
-					    <input class="btn btn-danger mr-2" type="submit" value="Close Account"/>
+					    <input class="btn btn-danger mr-2" type="submit" value="Transfer"/>
 					</div>
 				</div>
 				
