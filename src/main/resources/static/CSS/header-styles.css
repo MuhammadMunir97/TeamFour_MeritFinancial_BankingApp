@@ -1,6 +1,6 @@
 * {}
 
-/*Logo Box*/
+/*Logo Box
 .site-logo {
   margin: 0 auto 50px;
   margin-top: 50px;
@@ -15,6 +15,9 @@
   width: 150px;
   height: 150px;
 }
+*/
 
-.site-header {}
-
+.container-header {
+	height: 80px;
+	background-color: #356E90;
+}

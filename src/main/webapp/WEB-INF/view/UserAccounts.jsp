@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>All accounts</title>
+
 </head>
 <body>
 ${error}
@@ -39,6 +41,13 @@ ${error}
 	</form:select>
     <input type="submit" value="Submit"/>
 </form:form>
-<a href="/newBankAccount">Create New Account</a>
+<a href="/newBankAccount">Create New Account</a>   
+
+<h1>User Settings</h1>
+<a href="/updateProfile">Settings</a>
+
+<h1>Logout</h1>
+<a href="/logout">Logout</a>
+
 </body>
 </html>

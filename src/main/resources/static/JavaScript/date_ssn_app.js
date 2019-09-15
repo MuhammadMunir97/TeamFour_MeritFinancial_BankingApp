@@ -2,8 +2,14 @@
  * 
  */
 
-/** Bootstrap Date Picker function **/
-$('#datepicker').datepicker();
+/** Bootstrap Date Picker function 
+$('#datepicker').datepicker({
+	format: 'MM-DD-YYYY'
+});
+**/
+
+
+
 
 
 /** SSN formatting function **/

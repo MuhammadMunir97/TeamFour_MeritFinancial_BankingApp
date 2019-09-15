@@ -38,7 +38,7 @@ public class UserController {
 			session.setAttribute("userId", user.getId());
 			return "redirect:/accounts";
 		}else {
-			model.addAttribute("error", "Invalid credentials");
+			model.addAttribute("error", "Invalid username or password");
 			return "/view/Login.jsp";
 		}
 	}

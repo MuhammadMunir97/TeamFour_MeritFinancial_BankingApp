@@ -7,10 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel='stylesheet' href="CSS/transaction-style.css"/>
 </head>
-<body>
+<body onload="hideTransactionField()">
 <c:out value="${message}" />
-<table>
+<table class="accountInfo">
     <thead>
         <tr>
             <th><h3>AccountNumber</h3></th>
@@ -26,6 +28,7 @@
        </tr>
     </tbody>
 </table>
+<div class="transactions">
 <h1>Transactions</h1>
 <table>
     <thead>
@@ -39,12 +42,13 @@
 	    <c:forEach items="${account.transactionLogs}" var="transaction">
 			<tr>
 				<td><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
-				<td><c:out value="${transaction.amount}"/></td>
+				<td>$ <c:out value="${transaction.amount}"/></td>
 				<td><c:out value="${transaction.postDate}"/></td>
 			</tr>
 		</c:forEach>
     </tbody>
 </table>
+</div>
 <br><br><br><br>
 <form:form action="/accounts/${account.id}" method="POST" modelAttribute="tranasction">
 	<p>
@@ -52,19 +56,46 @@
         <form:errors path="amount"/>
         <form:input path="amount"/>
     </p>
-	<form:select  path="transactionType">
+	<form:select path="transactionType" onchange="transactionCheck(this)">
 		<c:forEach items="${transactionTypes}" var="type">
 			 <form:option value="${type.id}">
 			 	${type.transactionTypeName}
 			 </form:option>
     	</c:forEach>
 	</form:select>
-	<p>
-        <form:label path="AccountInternalTransferTo">AccountInternalTransferTo</form:label>
+	<div id="ifTransaction">
+        <form:label id="translabel" path="AccountInternalTransferTo">Transfer Amount</form:label>
         <form:errors path="AccountInternalTransferTo"/>
         <form:input path="AccountInternalTransferTo"/>
-    </p>
+    </div>
     <input type="submit" value="Submit"/>
 </form:form>
+
+<h1>User Settings</h1>
+<a href="/updateProfile">Settings</a>
+
+<h1>Dashboard</h1>
+<a href="/accounts">Dashboard</a>
+
+<h1>Logout</h1>
+<a href="/logout">Logout</a>
+
+
+
+<script>
+function hideTransactionField(){
+	$("#ifTransaction").hide();
+	$("#transLabel").hide();
+}
+function transactionCheck(that) {
+	if (that.value == "3") {
+        $("#ifTransaction").show("slow");
+        $("#transLabel").show("slow");
+    } else {
+    	$("#ifTransaction").hide("slow");
+    	$("#transLabel").hide("slow");
+    }
+}
+</script>
 </body>
 </html>
