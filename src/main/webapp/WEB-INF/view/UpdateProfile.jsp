@@ -136,7 +136,7 @@
 								
 								<div class="form-group col-md-3">
 									<label for=ssn>SSN Number</label>
-									<form:input path="ssn" type="text" class="form-control" id="ssn" placeholder="SSN Number"/>
+									<form:input path="ssn" type="text" maxlength="11" class="form-control" id="ssn" placeholder="SSN Number"/>
 									<form:errors path="ssn" class="errors"/>
 								</div>
 								
