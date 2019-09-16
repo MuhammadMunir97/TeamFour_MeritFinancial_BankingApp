@@ -109,7 +109,7 @@
     <tbody>
        <tr>
        	<td class="accountInfo"><c:out value="${account.accountNumber}"/></td>
-       	<td class="accountInfo"><c:out value="${account.presentBalance}"/></td>
+       	<td class="accountInfo">$ <c:out value="${account.presentBalance}"/></td>
        	<td class="accountInfo"><c:out value="${account.accountType.accTypeName}"/></td>
        </tr>
     </tbody>
