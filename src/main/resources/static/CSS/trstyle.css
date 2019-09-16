@@ -1,12 +1,31 @@
-body{
-	width: 100%;
-	height: 100%;
-	background-color: blue;
-	color: blue;
+.accountTableColor{
+	background-color: #356E90;
+	color: white;
+	text-align: center;
 }
 .accountInfo{
-	color: blue;
+	text-align: center;
 }
-.transactions{
-	float: right;
+.accountTableColor2{
+	background-color: #356E90;
+	color: white;
+}
+.center{
+	text-align: center;
+}
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
+.font{
+	font-family: arial;
+}
+.container{
+	background-color: #356E90;
+}
+body{
+	background-color: #D7E3EE;
+}
+.card{
+	box-shadow: 5px 5px 5px grey;
 }
