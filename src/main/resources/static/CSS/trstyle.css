@@ -1,5 +1,5 @@
 .accountTableColor{
-	background-color: #356E90;
+	background-color: #7AA6C9;
 	color: white;
 	text-align: center;
 }
@@ -7,7 +7,7 @@
 	text-align: center;
 }
 .accountTableColor2{
-	background-color: #356E90;
+	background-color: #7AA6C9;
 	color: white;
 }
 .center{
@@ -20,12 +20,34 @@
 .font{
 	font-family: arial;
 }
-.container{
-	background-color: #356E90;
-}
 body{
 	background-color: #D7E3EE;
 }
 .card{
 	box-shadow: 5px 5px 5px grey;
 }
+.errors{
+	color: red;
+}
+.formMargin{
+	margin-left: 5%;
+}
+.stickypositioning{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+.background{
+	background-color: #D7E3EE;
+}
+@media screen and (min-width: 768px){
+	.noShow{
+	display: none;
+	}
+}
+@media screen and(max-width: 767px){
+	.noShow{
+	display: block;
+	}
+}
+
