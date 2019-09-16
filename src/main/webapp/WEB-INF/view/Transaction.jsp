@@ -201,8 +201,8 @@
 </div>
 </div>
 </div>
-</div>
 <br>
+</div>
 <script>
 $( ".hide" ).hide();
 $( ".transactionButton" ).click(function( event ) {
