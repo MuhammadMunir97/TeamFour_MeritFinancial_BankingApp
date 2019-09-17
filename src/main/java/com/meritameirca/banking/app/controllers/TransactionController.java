@@ -1,6 +1,9 @@
 package com.meritameirca.banking.app.controllers;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -35,7 +38,9 @@ public class TransactionController {
 		if(userId == null) {
 			return "redirect:/login";
 		}else {
-			model.addAttribute("account" , accountService.findById(id));
+			AccountInternal account = accountService.findById(id);
+			Collections.reverse(account.getTransactionLogs());
+			model.addAttribute("account" , account);
 			model.addAttribute("transactionTypes", transactionService.findAllTransactionTypes());
 			if(session.getAttribute("isTransActionSuccessfull") != null) {
 				boolean isTransActionSuccessfull = (boolean) session.getAttribute("isTransActionSuccessfull");
