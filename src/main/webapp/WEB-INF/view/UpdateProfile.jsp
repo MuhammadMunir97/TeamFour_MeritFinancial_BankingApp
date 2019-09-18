@@ -140,19 +140,15 @@
 									<form:errors path="ssn" class="errors"/>
 								</div>
 								
-								<!--  
-								<div class="form-group col-md-3">
-									<label for=userName>Username</label>
-									<form:input path="userName" type="text" class="form-control" id="userName" placeholder="Username"/>
-									<form:errors path="userName" class="errors"/>
-								</div>
 								
-								<div class="form-group col-md-3">
-									<label for=password>Password</label>
-									<form:input path="password" type="password" class="form-control" id="password" placeholder="Password"/>
-									<form:errors path="password" class="errors"/>
-								</div>
-								-->
+						        <form:label path="userName"></form:label>
+						        <form:hidden path="userName"/>
+						    
+						        <form:label path="password"></form:label>
+						        <form:hidden path="password"/>
+   								
+   								<form:label path="userAddress.id"></form:label>
+						        <form:hidden path="userAddress.id"/>
 								
 								<div class="form-group col-md-3">
 									<label for=primaryPhone>Primary Phone</label>

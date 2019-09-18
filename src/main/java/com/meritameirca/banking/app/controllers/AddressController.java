@@ -7,11 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -38,17 +35,14 @@ public class AddressController {
 			return "redirect:/login";
 		}else {
 			User user = userService.findUserById(userId);
-			// Robert added this for the settings page
-			UserAddress userAddress = addressService.findById(userId);
-			model.addAttribute("user", user);
-			// Robert added this for the settings page
-			model.addAttribute("userAddress", userAddress);
-			/* Robert commented this out because it was generating errors on the Settings page
-			if(user.getUserAddress().getId() != null) {
-				session.setAttribute("addressId", user.getUserAddress().getId());
+			if(user.getUserAddress() == null) {
+				UserAddress address = new UserAddress();
+				user.setUserAddress(address);
+				session.setAttribute("newAddressCreated", true);
+			}else {
+				session.setAttribute("newAddressCreated", false);
 			}
-			*/
-			
+			model.addAttribute("user", user);
 			return "/view/UpdateProfile.jsp";
 		}
 	}
@@ -64,15 +58,15 @@ public class AddressController {
 				return "/view/UpdateProfile.jsp";
 			}else {
 				user.setId(userId);
-				Long addressId = (Long) session.getAttribute("addressId");
-				if(addressId == null) {
-					user.getUserAddress().setUser(user);
-					addressService.saveAddress(user.getUserAddress());
+				boolean createdNewAddress = (boolean) session.getAttribute("newAddressCreated");
+				if(createdNewAddress) {
+					UserAddress address = user.getUserAddress();
+					address.setUser(user);
+					addressService.saveAddress(address);
 				}else {
-					user.getUserAddress().setId(addressId);
-					addressService.saveAddress(user.getUserAddress());
+					user.getUserAddress().setUser(user);
+					userService.registerUser(user);
 				}
-				userService.registerUser(user);
 				return "redirect:/accounts";
 			}
 		}
