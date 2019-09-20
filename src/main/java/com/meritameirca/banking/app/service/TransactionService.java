@@ -92,6 +92,9 @@ public class TransactionService {
 			return false;
 		}
 		if(accountType.getId() == 2) {
+			if(accountFrom.getPresentBalance() < 1) {
+				return true;
+			}
 			TransactionLog transactionLog = new TransactionLog(null , accountFrom.getPresentBalance() , null);
 			Timestamp postDate = new Timestamp(System.currentTimeMillis());
 			Long typeId = (long) 3;
