@@ -92,10 +92,10 @@ public class User {
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private LocalDateTime updatedAt;
 	
-    @OneToOne(mappedBy="user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy="user", cascade=CascadeType.ALL, orphanRemoval=true, fetch = FetchType.LAZY)
     private UserAddress userAddress;
     
-    @OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="user", cascade = CascadeType.PERSIST, orphanRemoval=true, fetch = FetchType.LAZY)
     private List<AccountInternal> accountInternals;
     
     @ManyToOne(fetch = FetchType.LAZY)
