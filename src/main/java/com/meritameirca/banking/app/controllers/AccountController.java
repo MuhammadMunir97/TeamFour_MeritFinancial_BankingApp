@@ -1,6 +1,6 @@
 package com.meritameirca.banking.app.controllers;
 
-import java.util.List;
+
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -8,15 +8,11 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.meritameirca.banking.app.models.AccountInternal;
-import com.meritameirca.banking.app.models.AccountType;
 import com.meritameirca.banking.app.models.User;
 import com.meritameirca.banking.app.service.AccountService;
 import com.meritameirca.banking.app.service.AccountTypeService;
@@ -79,7 +75,7 @@ public class AccountController {
 				}else {
 					model.addAttribute("error", "Request rejected! account could not be created");
 					model.addAttribute("allAccounts", accountService.findAllUserAccount(user));
-					return "/view/UserAccounts.jsp";
+					return "redirect:/accounts";
 				}
 			}
 		}

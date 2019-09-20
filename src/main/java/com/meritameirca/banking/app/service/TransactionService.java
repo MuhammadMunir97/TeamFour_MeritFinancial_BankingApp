@@ -1,14 +1,15 @@
 package com.meritameirca.banking.app.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.meritameirca.banking.app.models.AccountInternal;
+import com.meritameirca.banking.app.models.AccountType;
 import com.meritameirca.banking.app.models.TransactionLog;
 import com.meritameirca.banking.app.models.TransactionType;
-import com.meritameirca.banking.app.repositories.AccountInternalRepository;
 import com.meritameirca.banking.app.repositories.TransactionLogRepository;
 import com.meritameirca.banking.app.repositories.TransactionTypeRepository;
 import com.meritameirca.banking.app.service.transactions.Deposit;
@@ -83,6 +84,24 @@ public class TransactionService {
 		}else {
 			return false;
 		}
+	}
+	
+	public boolean performClosingTransaction(AccountInternal accountFrom , AccountInternal accountTo) {
+		AccountType accountType = accountFrom.getAccountType();
+		if(accountType.getId() == 1) {
+			return false;
+		}
+		if(accountType.getId() == 2) {
+			TransactionLog transactionLog = new TransactionLog(null , accountFrom.getPresentBalance() , null);
+			Timestamp postDate = new Timestamp(System.currentTimeMillis());
+			Long typeId = (long) 3;
+			Optional<TransactionType> type = transactionTypeRepository.findById(typeId);
+			transactionLog.setTransactionType(type.get());
+			transactionLog.setPostDate(postDate);
+			transactionLog.setAccountInternal(accountFrom);
+			return saveTransaction(transactionLog ,accountTo);
+		}
+		return false;
 	}
 	
 	public List<TransactionLog> findByAccountId(Long id){

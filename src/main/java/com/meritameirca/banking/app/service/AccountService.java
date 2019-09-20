@@ -75,4 +75,26 @@ public class AccountService {
 			return null;
 		}
 	}
+	
+	public AccountInternal findByUserAndAccountTypeId(User user , Long id) {
+		return accountInternalRepository.findByUserAndAccountTypeId(user, id).get(0);
+	}
+	
+	public boolean deleteAccountById(Long id) {
+		AccountInternal account = findById(id);
+		if(account != null) {
+			AccountType accountType = account.getAccountType();
+			if(accountType.getId() != 1 && account.getPresentBalance() > 1) {
+				return false;
+			}
+			if(accountType.getId() == 1 && account.getUser().getAccountInternals().size() > 1) {
+				return false;
+			}else {
+				accountInternalRepository.deleteById(id);
+				return true;
+			}
+		}else {
+			return false;
+		}
+	}
 }

@@ -1,9 +1,7 @@
 package com.meritameirca.banking.app.controllers;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -62,7 +60,6 @@ public class TransactionController {
 			return "redirect:/login";
 		}else {
 			if(bindingResult.hasErrors()) {
-				System.out.println("error");
 				return "redirect:/accounts/{accountId}";
 			}else {
 				transactionLog.setAccountInternal(accountService.findById(accountId));
@@ -73,7 +70,6 @@ public class TransactionController {
 					AccountInternal accountTransferedTo = accountService.findByAccountNumber(transactionLog.getAccountInternalTransferTo());
 					if(accountTransferedTo == null) {
 						session.setAttribute("isTransActionSuccessfull", false);
-						System.out.println("im here");
 						return "redirect:/accounts/{accountId}";
 					}else {
 						isTransActionSuccessfull = transactionService.saveTransaction(transactionLog , accountTransferedTo);
@@ -88,7 +84,21 @@ public class TransactionController {
 	}
 	
 	@DeleteMapping("/accounts/{accountId}")
-	public String deleteAccount(@PathVariable("accountId") Long accountId , HttpSession session) {
-		return null;
+	public String closingTransaction(@PathVariable("accountId") Long accountId , HttpSession session) {
+		Long userId = (Long) session.getAttribute("userId");
+		if(userId == null) {
+			return "redirect:/login";
+		}else {
+			Long savingAccountId = (long) 1;
+			AccountInternal accountFrom = accountService.findById(accountId);
+			AccountInternal savingsAccount = accountService.findByUserAndAccountTypeId(accountFrom.getUser(), savingAccountId);
+			boolean isClosingSuccessful = transactionService.performClosingTransaction(accountFrom , savingsAccount);
+			System.out.println(isClosingSuccessful);
+			if(isClosingSuccessful) {
+				System.out.println(accountService.deleteAccountById(accountId));
+			}
+			return "redirect:/accounts";
+		}
 	}
+	
 }

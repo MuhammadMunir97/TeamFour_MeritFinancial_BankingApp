@@ -14,4 +14,5 @@ public interface AccountInternalRepository extends CrudRepository<AccountInterna
 	public List<AccountInternal> findByUserAndAccountType(User user, AccountType accountType);
 	public AccountInternal findTopByOrderByIdDesc();
 	public Optional<AccountInternal> findByAccountNumber(Long accountNumber);
+	public List<AccountInternal> findByUserAndAccountTypeId(User user, Long id);
 }

@@ -16,6 +16,7 @@ ${error}
             <th><h3>AccountNumber</h3></th>
             <th><h3>Present Balance</h3></th>
             <th><h3>Account Type</h3></th>
+            <th><h3>Action</h3></th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +25,12 @@ ${error}
         	<td> <a href="accounts/${account.id}"><c:out value="${account.accountNumber}"/></a></td>
         	<td><c:out value="${account.presentBalance}"/></td>
         	<td><c:out value="${account.accountType.accTypeName}"/></td>
+        	<td>
+            <form action="accounts/${account.id}" method="post">
+			    <input type="hidden" name="_method" value="delete">
+			    <input type="submit" value="Delete">
+			</form>
+			</td>
         </tr>
         </c:forEach>
     </tbody>
