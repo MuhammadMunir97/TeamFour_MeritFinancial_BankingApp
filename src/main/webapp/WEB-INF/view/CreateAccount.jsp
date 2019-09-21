@@ -15,13 +15,11 @@
 	
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<!-- Bootstrap DatePicker CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css"/>
 	<!-- Custom CSS -->
-	<link rel='stylesheet' href='CSS/main-styles.css' />
-	<link rel='stylesheet' href='CSS/header-styles.css'/>
-	<link rel='stylesheet' href='CSS/box-styles.css' />
-	<link rel='stylesheet' href='CSS/footer-styles.css' />
+	<link rel='stylesheet' href='/CSS/main-styles.css' />
+	<link rel='stylesheet' href='/CSS/header-styles.css'/>
+	<link rel='stylesheet' href='/CSS/box-styles.css' />
+	<link rel='stylesheet' href='/CSS/footer-styles.css' />
 
 </head>
 <body>
@@ -67,18 +65,6 @@
 						    </div>
 						</div>
 					</div>
-					<!-- 
-					<div class="form-group col-md-3">
-						<label for=dateOfBirth>Date of Birth</label>
-						<div class="input-group">
-						    <form:input type="text" required="required" path="dateOfBirth" class="form-control" id="datepicker" placeholder="mm-dd-yyyy" data-date-today-Btn="linked" data-date-autoclose="true"></form:input>
-						    <form:errors path="dateOfBirth" class="errors"/>
-						    <div class="input-group-append">
-						    	<div class="input-group-text"><span><i class="fas fa-calendar-alt fa-lg"></i></span></div>
-						    </div>
-						</div>
-					</div>
-					 -->
 					
 					<div class="form-group col-md-3">
 						<label for=ssn>SSN Number</label>
@@ -99,9 +85,14 @@
 					</div>
 					
 					<div class="form-group col-md-6">
-			    		<label for="email">Email Address</label>
-			    		<form:input path="email" type="text" class="form-control" id="email" placeholder="Email Address"/>
-			    		<form:errors path="email" class="errors"/>
+				    	<label for="email">Email Address</label>
+				    	<div class="input-group">
+				    		<form:input path="email" type="text" class="form-control" id="email" placeholder="Email Address"/>
+				    		<form:errors path="email" class="errors"/>
+				  			<div class="input-group-append">
+						    	<div class="input-group-text"><span><i class="fas fa-at"></i></span></div>
+							</div>
+						</div>
 			  		</div>
 	
 				</div>
@@ -141,10 +132,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<!-- Bootstrap DatePicker JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
 	<!-- Custom JS -->
-	<script type="text/javascript" src="JavaScript/date_ssn_app.js"></script>
+	<script type="text/javascript" src="/JavaScript/date_ssn_app.js"></script>
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/a6aa666e27.js"></script>
 	

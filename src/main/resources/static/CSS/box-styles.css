@@ -35,3 +35,511 @@ input[type=date]::-webkit-inner-spin-button {
 	box-shadow: 6px 7px 5px -6px rgba(0,0,0,0.75);
 }
 
+
+.navbar-nav > .active > a{
+	color: white;
+	background-color: #3794E0;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: white;
+    background-color: #3794E0;
+}
+
+/* Styling below is for the accounts summary dashboard */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,400|Roboto);
+
+
+*, *:before, *:after {
+	box-sizing: border-box;
+  }
+
+  .my-wallet {
+	background-color: #fff;
+	border-radius: 6px;
+	font-family: "Open Sans", sans-serif;
+	height: 90%;
+	width: 90%;
+	box-shadow: 6px 7px 5px -6px rgba(0,0,0,0.75);
+	
+	/*
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	box-shadow: 0 6px 20px #73c2be;
+	height: 400px;
+	width: 880px;
+	-webkit-transform: translate3d(-50%, -50%, 0);
+	-moz-transform: translate3d(-50%, -50%, 0);
+	-ms-transform: translate3d(-50%, -50%, 0);
+	-o-transform: translate3d(-50%, -50%, 0);
+	transform: translate3d(-50%, -50%, 0);
+	overflow: hidden;
+	*/
+	
+  }
+  .my-wallet-sidebar {
+	background-color: #f2f2f2;
+	color: #707584;
+	float: left;
+	height: 100%;
+
+	/* 
+	 
+	 */
+	 
+	padding: 50px;
+	width: 360px;
+  }
+  .my-wallet-title {
+	font-size: 24px;
+	font-weight: normal;
+	margin: 0 0 50px 0;
+  }
+  .my-wallet-title .add-account {
+	-webkit-transition: color 200ms;
+	-moz-transition: color 200ms;
+	transition: color 200ms;
+	color: #b2b2b2;
+	float: right;
+	font-size: 48px;
+	line-height: 20px;
+	position: relative;
+  }
+  .my-wallet-title .add-account:hover {
+	color: #707584;
+	cursor: pointer;
+  }
+  
+  .loading {
+	-webkit-animation: load 500ms ease forwards;
+	-moz-animation: load 500ms ease forwards;
+	animation: load 500ms ease forwards;
+	-webkit-animation-delay: 2s;
+	-moz-animation-delay: 2s;
+	animation-delay: 2s;
+	position: absolute;
+	background: #fff url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/ripple.svg") center no-repeat;
+	z-index: 999;
+	
+	/*
+	width: 100%;
+	height: 100%;
+	*/
+  }
+  
+  .accounts-container {
+	position: relative;
+	bottom: -40px;
+	margin-bottom: 15px;
+	/*
+	position: absolute;
+	bottom: 50px;
+	left: 50px;
+	height: 330px;
+	*/
+  }
+  
+  .active-account {
+	border: 4px solid #8393ca;
+	border-radius: 4px;
+	height: 70px;
+	position: relative;
+	width: 250px;
+	z-index: 1;
+  }
+  
+  .account, .my-wallet-sidebar .account, .add-account-modal .account {
+	background-color: #fff;
+	border: 2px solid #e1e1e1;
+	border-radius: 4px;
+	font-family: "Roboto", sans-serif;
+	height: 70px;
+	margin-bottom: 30px;
+	padding: 15px;
+	width: 250px;
+	
+	/*
+	
+	*/
+  }
+  
+  .my-wallet-sidebar .account {
+	-webkit-transition: top 500ms ease, -webkit-transform 200ms ease;
+	-moz-transition: top 500ms ease, -moz-transform 200ms ease;
+	transition: top 500ms ease, transform 200ms ease;
+	position: absolute;
+	top: 0;
+	will-change: transform, top;
+	
+	/*
+	
+	*/
+  }
+  .my-wallet-sidebar .is-selected.account {
+	top: -110px !important;
+  }
+  .my-wallet-sidebar .account:hover:not(.is-selected) {
+	-webkit-transform: translateY(-30px);
+	-moz-transform: translateY(-30px);
+	-ms-transform: translateY(-30px);
+	-o-transform: translateY(-30px);
+	transform: translateY(-30px);
+	cursor: pointer;
+  }
+  .my-wallet-sidebar .account:hover:not(.is-selected).is-stationary {
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-ms-transform: translateY(0);
+	-o-transform: translateY(0);
+	transform: translateY(0);
+  }
+  
+  .account-details-container {
+	font-family: "Open Sans", sans-serif;
+	height: 100%;
+	width: auto;
+	overflow: hidden;
+	padding: 50px;
+	position: relative;
+  }
+  
+  .account-details {
+	-webkit-transition: -webkit-transform 500ms ease, opacity 200ms ease;
+	-moz-transition: -moz-transform 500ms ease, opacity 200ms ease;
+	transition: transform 500ms ease, opacity 200ms ease;
+	-webkit-transform: translateX(110%);
+	-moz-transform: translateX(110%);
+	-ms-transform: translateX(110%);
+	-o-transform: translateX(110%);
+	transform: translateX(110%);
+	opacity: 0;
+	position: absolute;
+	top: 50px;
+	width: 90%;
+  }
+    
+  .account-details.is-selected {
+	-webkit-transition: -webkit-transform 500ms ease, opacity 200ms 200ms ease;
+	-moz-transition: -moz-transform 500ms ease, opacity 200ms 200ms ease;
+	transition: transform 500ms ease, opacity 200ms 200ms ease;
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform: translateX(0);
+	opacity: 1;
+  }
+  
+/*
+  .transaction-history-placeholder {
+	-webkit-transform: translate3d(-50%, -50%, 0);
+	-moz-transform: translate3d(-50%, -50%, 0);
+	-ms-transform: translate3d(-50%, -50%, 0);
+	-o-transform: translate3d(-50%, -50%, 0);
+	transform: translate3d(-50%, -50%, 0);
+	-webkit-transition: opacity 200ms ease;
+	-moz-transition: opacity 200ms ease;
+	transition: opacity 200ms ease;
+	color: #b2b2b2;
+	font-size: 24px;
+	font-style: italic;
+	font-weight: normal;
+	left: 50%;
+	opacity: 1;
+	position: absolute;
+	top: 50%;
+  }
+    
+  .transaction-history-placeholder.is-hidden {
+	opacity: 0;
+  }
+  
+ */
+  
+  .value-unit {
+	color: #444751;
+	font-size: 36px;
+	font-weight: bold;
+	position: relative;
+  }
+  
+  .more-details{
+  	font-size: 18px;
+  	margin-top: 10px;
+	position: relative;
+	text-align: right;
+  }
+  
+  .value-subunit {
+	font-size: 0.6em;
+	left: -0.5em;
+	position: relative;
+	top: 0.1em;
+  }
+  
+  .account-balance {
+	letter-spacing: 0.025em;
+	border-bottom: 1px solid #b2b2b2;
+	color: #707584;
+	font-size: 24px;
+	padding-bottom: 50px;
+  }
+  .account-balance .value-unit {
+	float: right;
+	right: -0.25em;
+	top: -0.2em;
+  }
+  
+
+
+/*
+  .transaction-history {
+	height: 100%;
+	overflow: hidden;
+	overflow-y: scroll;
+	padding-right: 30px;
+	width: auto;
+  }
+   
+  .transaction {
+	display: table;
+	padding: 5px 0 0 38px;
+	position: relative;
+	width: 100%;
+  }
+  
+  .transaction-details {
+	display: table-cell;
+	width: 80%;
+  }
+  .transaction-amount {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: right;
+  }
+  .transaction-amount .value-unit {
+	font-size: 18px;
+	font-weight: normal;
+  }
+  
+  .transaction-merchant {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 5px;
+  }
+  .transaction-date {
+	color: #b2b2b2;
+	font-size: 14px;
+  }
+ 
+  .transaction:before {
+	border-radius: 100%;
+	border: 2px solid #e1e1e1;
+	content: ' ';
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	left: 0;
+	line-height: 16px;
+	height: 20px;
+	position: absolute;
+	text-align: center;
+	top: 65px;
+	width: 20px;
+  }
+  */
+  
+  /*
+  
+  .transaction[data-transaction-type="debit"]:before {
+	content: '\2013';
+	line-height: 14px;
+  }
+  .transaction[data-transaction-type="debit"] .value-unit {
+	color: #8393ca;
+  }
+  .transaction[data-transaction-type="credit"]:before {
+	content: '\002B';
+  }
+  .transaction[data-transaction-type="credit"] .value-unit {
+	color: #66cc33;
+  }
+  
+  */
+  
+  .add-account-modal {
+	visibility: hidden;
+  }
+  .add-account-modal .overlay {
+	-webkit-transition: opacity 200ms ease;
+	-moz-transition: opacity 200ms ease;
+	transition: opacity 200ms ease;
+	background: #5b8ba1;
+	height: 100%;
+	opacity: 0;
+	position: absolute;
+	width: 100%;
+	
+	/*
+	
+	*/
+  }
+  .add-account-modal .account {
+	-webkit-transform: translate3d(-50%, -30%, 0);
+	-moz-transform: translate3d(-50%, -30%, 0);
+	-ms-transform: translate3d(-50%, -30%, 0);
+	-o-transform: translate3d(-50%, -30%, 0);
+	transform: translate3d(-50%, -30%, 0);
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	transition: all 300ms ease;
+	border-color: #83b3c9;
+	left: 50%;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	will-change: transform, opacity;
+	z-index: 9001;
+  }
+  .add-account-modal .account-card-type {
+	border-radius: 5px;
+	float: left;
+	margin-left: 12px;
+  }
+  .add-account-modal .account-card-type.is-visa {
+	margin-left: 0;
+  }
+  .add-account-modal .account-card-type:hover {
+	border: 3px solid #ffcc66;
+	cursor: pointer;
+  }
+  .add-account-modal .account-card-type.is-selected {
+	border: 3px solid #ffcc66;
+  }
+  .add-account-modal .account-number {
+	letter-spacing: 0.03em;
+  }
+  .add-account-modal .account-expiration {
+	color: #444751;
+  }
+  .add-account-modal .has-error.account {
+	-webkit-animation: error 300ms ease forwards;
+	-moz-animation: error 300ms ease forwards;
+	animation: error 300ms ease forwards;
+  }
+  .add-account-modal button {
+	background-color: #ffa61b;
+	border-radius: 4px;
+	border: 4px;
+	color: #fff;
+	float: right;
+	font-size: 10px;
+	padding: 3px 10px;
+	position: relative;
+	top: -20px;
+	right: -5px;
+  }
+  .add-account-modal button:hover {
+	background-color: #ffb31a;
+	cursor: pointer;
+  }
+  .add-account-modal button:focus {
+	outline: none;
+  }
+  .add-account-modal.is-visible {
+	visibility: visible;
+  }
+  .add-account-modal.is-visible .account {
+	-webkit-transform: translate3d(-50%, -50%, 0);
+	-moz-transform: translate3d(-50%, -50%, 0);
+	-ms-transform: translate3d(-50%, -50%, 0);
+	-o-transform: translate3d(-50%, -50%, 0);
+	transform: translate3d(-50%, -50%, 0);
+	opacity: 1;
+  }
+  .add-account-modal.is-visible .overlay {
+	opacity: 0.8;
+  }
+  
+  .temp-account {
+	color: #b2b2b2;
+	font-size: 24px;
+	font-style: italic;
+	padding: 50px 0;
+	text-align: center;
+  }
+  
+  @-webkit-keyframes load {
+	from {
+	  visibility: visible;
+	  opacity: 1;
+	}
+	to {
+	  visibility: hidden;
+	  opacity: 0;
+	}
+  }
+  @-moz-keyframes load {
+	from {
+	  visibility: visible;
+	  opacity: 1;
+	}
+	to {
+	  visibility: hidden;
+	  opacity: 0;
+	}
+  }
+  @keyframes load {
+	from {
+	  visibility: visible;
+	  opacity: 1;
+	}
+	to {
+	  visibility: hidden;
+	  opacity: 0;
+	}
+  }
+  @-webkit-keyframes error {
+	0% {
+	  margin-left: 0;
+	}
+	33% {
+	  margin-left: 30px;
+	}
+	66% {
+	  margin-left: -30px;
+	}
+	100% {
+	  margin-left: 0;
+	}
+  }
+  @-moz-keyframes error {
+	0% {
+	  margin-left: 0;
+	}
+	33% {
+	  margin-left: 30px;
+	}
+	66% {
+	  margin-left: -30px;
+	}
+	100% {
+	  margin-left: 0;
+	}
+  }
+  @keyframes error {
+	0% {
+	  margin-left: 0;
+	}
+	33% {
+	  margin-left: 30px;
+	}
+	66% {
+	  margin-left: -30px;
+	}
+	100% {
+	  margin-left: 0;
+	}
+  }
+

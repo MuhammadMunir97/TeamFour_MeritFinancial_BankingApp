@@ -74,14 +74,14 @@ public class User {
 	@NotBlank(message = "Please enter your SSN")
     private String ssn;
 	
-	@Column(columnDefinition = "VARCHAR(10)")
+	@Column(columnDefinition = "VARCHAR(12)")
 	// in case we want to validate phone numbers at a later time
-	// @Pattern(regexp="(^$|[0-9]{10})")   
+	// @Pattern(regexp="(^$|[0-9]{12})")   
     private String primaryPhone;
 	
-	@Column(columnDefinition = "VARCHAR(10)")
+	@Column(columnDefinition = "VARCHAR(12)")
 	// in case we want to validate phone numbers at a later time
-	// @Pattern(regexp="(^$|[0-9]{10})")   
+	// @Pattern(regexp="(^$|[0-9]{12})")   
     private String secondaryPhone;
 	
     // This will not allow the createdAt column to be updated after creation
