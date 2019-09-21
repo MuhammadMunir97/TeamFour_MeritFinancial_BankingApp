@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -56,6 +57,22 @@ public class UserController {
 		}else {
 			userService.registerUser(user);
 			return "redirect:/login";
+		}
+	}
+	
+	@DeleteMapping("/delete_account")
+	public String deleteAccount(HttpSession session) {
+		Long userId = (Long) session.getAttribute("userId");
+		if(userId == null) {
+			return "redirect:/login";
+		}else {
+			boolean isAccountDeletable = userService.isAccountDeletable(userId);
+			if(isAccountDeletable) {
+				userService.deleteUserById(userId);	
+				return "redirect:/login";
+			}else {
+				return "redirect:/accounts";	
+			}
 		}
 	}
 	

@@ -91,11 +91,17 @@ public class TransactionController {
 		}else {
 			Long savingAccountId = (long) 1;
 			AccountInternal accountFrom = accountService.findById(accountId);
-			AccountInternal savingsAccount = accountService.findByUserAndAccountTypeId(accountFrom.getUser(), savingAccountId);
-			boolean isClosingSuccessful = transactionService.performClosingTransaction(accountFrom , savingsAccount);
-			System.out.println(isClosingSuccessful);
-			if(isClosingSuccessful) {
-				System.out.println(accountService.deleteAccountById(accountId));
+			if(accountFrom.getAccountType().getId() == 1) {
+				boolean isAccountClosable = accountService.isAccountClosable(accountFrom);
+				if(isAccountClosable) {
+					accountService.deleteAccount(accountFrom);
+				}
+			}else {
+				AccountInternal savingsAccount = accountService.findByUserAndAccountTypeId(accountFrom.getUser(), savingAccountId);
+				boolean isClosingSuccessful = transactionService.performClosingTransaction(accountFrom , savingsAccount);
+				if(isClosingSuccessful) {
+					accountService.deleteAccount(accountFrom);
+				}	
 			}
 			return "redirect:/accounts";
 		}

@@ -268,9 +268,15 @@
 					<div class="card-body">
 					    <h5 class="card-title">Close User Account</h5>
 					    <p class="card-text">To close a user account you must first transfer all funds to savings and then withdraw all to cash.</p>
-
-												
+											
 					    <input class="btn btn-danger mr-2" type="submit" value="Close Account"/>
+
+						<!-- Should we provide a single function to transfer all funds to a savings and then close out accounts -->
+						<form action="delete_account" method="post">
+						    <input type="hidden" name="_method" value="delete">
+						    <input class="btn btn-danger mr-2" type="submit" value="Close Account"/>
+						</form>
+
 					</div>
 				</div>
 				

@@ -80,21 +80,23 @@ public class AccountService {
 		return accountInternalRepository.findByUserAndAccountTypeId(user, id).get(0);
 	}
 	
-	public boolean deleteAccountById(Long id) {
-		AccountInternal account = findById(id);
-		if(account != null) {
-			AccountType accountType = account.getAccountType();
-			if(accountType.getId() != 1 && account.getPresentBalance() > 1) {
-				return false;
-			}
-			if(accountType.getId() == 1 && account.getUser().getAccountInternals().size() > 1) {
-				return false;
-			}else {
-				accountInternalRepository.deleteById(id);
-				return true;
-			}
-		}else {
-			return false;
+	public boolean isAccountClosable(AccountInternal account) {
+		int accountType = account.getAccountType().getId().intValue();
+		if(accountType == 1) {
+			return isSavingsClosable(account);
 		}
+		return false;
+	}
+	
+	public boolean isSavingsClosable(AccountInternal account) {
+		if(account.getUser().getAccountInternals().size() > 1) {
+			return false;
+		}else {
+			return true;	
+		}
+	}
+	
+	public void deleteAccount(AccountInternal account) {
+		accountInternalRepository.delete(account);
 	}
 }
