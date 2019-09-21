@@ -91,10 +91,26 @@ public class TransactionService {
 		if(accountType.getId() == 1) {
 			return false;
 		}
-		if(accountType.getId() == 2) {
+		if(accountType.getId() == 2 || accountType.getId() == 3) {
 			if(accountFrom.getPresentBalance() < 1) {
 				return true;
 			}
+			TransactionLog transactionLog = new TransactionLog(null , accountFrom.getPresentBalance() , null);
+			Timestamp postDate = new Timestamp(System.currentTimeMillis());
+			Long typeId = (long) 3;
+			Optional<TransactionType> type = transactionTypeRepository.findById(typeId);
+			transactionLog.setTransactionType(type.get());
+			transactionLog.setPostDate(postDate);
+			transactionLog.setAccountInternal(accountFrom);
+			return saveTransaction(transactionLog ,accountTo);
+		}
+		if(accountType.getId() == 5 || accountType.getId() == 6 || accountType.getId() == 7) {
+			if(accountFrom.getPresentBalance() < 1) {
+				return true;
+			}
+			Transaction withdraw = new Withdraw();
+			Double money = accountFrom.getPresentBalance() * 0.2;
+			accountFrom.transaction(money, withdraw);
 			TransactionLog transactionLog = new TransactionLog(null , accountFrom.getPresentBalance() , null);
 			Timestamp postDate = new Timestamp(System.currentTimeMillis());
 			Long typeId = (long) 3;

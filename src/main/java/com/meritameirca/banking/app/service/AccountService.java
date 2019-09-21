@@ -80,23 +80,22 @@ public class AccountService {
 		return accountInternalRepository.findByUserAndAccountTypeId(user, id).get(0);
 	}
 	
-	public boolean deleteAccountById(Long id) {
-		AccountInternal account = findById(id);
-		if(account != null) {
-			AccountType accountType = account.getAccountType();
-			if(accountType.getId() != 1 && account.getPresentBalance() > 1) {
-				return false;
-			}
-			if(accountType.getId() == 1 && account.getUser().getAccountInternals().size() > 1) {
-				return false;
-			}else {
-				accountInternalRepository.deleteById(id);
-				return true;
-			}
-		}else {
+	public boolean isAccountClosable(AccountInternal account) {
+		int accountType = account.getAccountType().getId().intValue();
+		if(accountType == 1) {
+			return isSavingsClosable(account);
+		}
+		return false;
+	}
+	
+	public boolean isSavingsClosable(AccountInternal account) {
+		if(account.getUser().getAccountInternals().size() > 1) {
 			return false;
+		}else {
+			return true;	
 		}
 	}
+<<<<<<< HEAD
 	public double optimalCd(double deposit, int months, double rate) {
         double percentage = (double) (rate / 100);
         double result = deposit;
@@ -111,4 +110,10 @@ public class AccountService {
         double trim = Math.pow(10, 2);
         return Math.round(Math.abs(result - deposit) * trim) / trim;
     }
+=======
+	
+	public void deleteAccount(AccountInternal account) {
+		accountInternalRepository.delete(account);
+	}
+>>>>>>> 9bb1f4807d126d58c1b1bc025a06590c97d7439c
 }

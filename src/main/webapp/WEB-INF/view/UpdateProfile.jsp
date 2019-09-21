@@ -16,13 +16,11 @@
 	
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<!-- Bootstrap DatePicker CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css"/>
 	<!-- Custom CSS -->
-	<link rel='stylesheet' href='CSS/main-styles.css' />
-	<link rel='stylesheet' href='CSS/header-styles.css'/>
-	<link rel='stylesheet' href='CSS/box-styles.css' />
-	<link rel='stylesheet' href='CSS/footer-styles.css' />
+	<link rel='stylesheet' href='/CSS/main-styles.css' />
+	<link rel='stylesheet' href='/CSS/header-styles.css'/>
+	<link rel='stylesheet' href='/CSS/box-styles.css' />
+	<link rel='stylesheet' href='/CSS/footer-styles.css' />
 
 </head>
 <body>
@@ -49,7 +47,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto nav-pills">
                     <li class="nav-item">
                         <a class="nav-link" href="/accounts">Dashboard</a>
                     </li>
@@ -58,15 +56,6 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-sub pull-right">
-                	<!-- 
-                	<form:form  action="/search" method="post">
-                	<input type="hidden" name="_method" value="post">
-                		<li class="nav-item form-inline my-2 my-lg-0">
-                        	<input class="form-control mr-sm-2" type="search" name="searchBy" placeholder="Search" aria-label="Search">
-      						<button class="btn btn-outline-primary my-2 my-sm-0 mr-4" type="submit">Search</button>
-                   		</li>
-                    </form:form>
-                     -->
                     <li class="nav-item">
                     	<a class="nav my-2" href="/logout">Logout</a>
                     </li>                    
@@ -83,10 +72,10 @@
 		    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 		      <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">User Profile</a>
 		      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">User Settings</a>
-		      <a class="nav-link" id="v-pills-account-tab" data-toggle="pill" href="#v-pills-account" role="tab" aria-controls="v-pills-account" aria-selected="false">Account Settings</a>
+		      <!-- <a class="nav-link" id="v-pills-account-tab" data-toggle="pill" href="#v-pills-account" role="tab" aria-controls="v-pills-account" aria-selected="false">Account Settings</a>  -->
 		    </div>
 		  </div>
-		  <div class="col-9">
+		  <div class="col-10">
 		    <div class="tab-content" id="v-pills-tabContent">
 		      <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 				
@@ -121,18 +110,6 @@
 									    </div>
 									</div>
 								</div>
-								<!-- 
-								<div class="form-group col-md-3">
-									<label for=dateOfBirth>Date of Birth</label>
-									<div class="input-group">
-									    <form:input type="text" required="required" path="dateOfBirth" class="form-control" id="datepicker" placeholder="mm-dd-yyyy" data-format="MM-DD-YYYY" data-date-today-Btn="linked" data-date-autoclose="true"></form:input>
-									    <form:errors path="dateOfBirth" class="errors"/>
-									    <div class="input-group-append">
-									    	<div class="input-group-text"><span><i class="fas fa-calendar-alt fa-lg"></i></span></div>
-									    </div>
-									</div>
-								</div>
-								 -->
 								
 								<div class="form-group col-md-3">
 									<label for=ssn>SSN Number</label>
@@ -150,23 +127,41 @@
    								<form:label path="userAddress.id"></form:label>
 						        <form:hidden path="userAddress.id"/>
 								
+								
 								<div class="form-group col-md-3">
 									<label for=primaryPhone>Primary Phone</label>
-									<form:input path="primaryPhone" type="text" class="form-control" id="primaryPhone" placeholder="Primary Phone"/>
-									<form:errors path="primaryPhone" class="errors"/>
+									<div class="input-group">
+										<form:input path="primaryPhone" type="text" maxlength="12" class="form-control" id="phone" placeholder="Primary Phone"/>
+										<form:errors path="primaryPhone" class="errors"/>
+										<div class="input-group-append">
+									    	<div class="input-group-text"><span><i class="fas fa-mobile-alt"></i></span></div>
+										</div>
+									</div>
 								</div>
 							  		
 						  		<div class="form-group col-md-3">
 									<label for=secondaryPhone>Secondary Phone</label>
-									<form:input path="secondaryPhone" type="text" class="form-control" id="secondaryPhone" placeholder="Secondary Phone"/>
-									<form:errors path="secondaryPhone" class="errors"/>
+									<div class="input-group">
+										<form:input path="secondaryPhone" type="text" maxlength="12" class="form-control" id="phone" placeholder="Secondary Phone"/>
+										<form:errors path="secondaryPhone" class="errors"/>
+										<div class="input-group-append">
+									    	<div class="input-group-text"><span><i class="fas fa-phone"></i></span></div>
+										</div>
+									</div>
 								</div>
 								
+								
 								<div class="form-group col-md-6">
-						    		<label for="email">Email Address</label>
-						    		<form:input path="email" type="text" class="form-control" id="email" placeholder="Email Address"/>
-						    		<form:errors path="email" class="errors"/>
+							    	<label for="email">Email Address</label>
+							    	<div class="input-group">
+							    		<form:input path="email" type="text" class="form-control" id="email" placeholder="Email Address"/>
+							    		<form:errors path="email" class="errors"/>
+							  			<div class="input-group-append">
+									    	<div class="input-group-text"><span><i class="fas fa-at"></i></span></div>
+										</div>
+									</div>
 						  		</div>
+						  		
 							</div>
 			
 						  	<div class="form-group col-md-6">
@@ -273,15 +268,21 @@
 					<div class="card-body">
 					    <h5 class="card-title">Close User Account</h5>
 					    <p class="card-text">To close a user account you must first transfer all funds to savings and then withdraw all to cash.</p>
+											
+					    <input class="btn btn-danger mr-2" type="submit" value="Close Account"/>
 
 						<!-- Should we provide a single function to transfer all funds to a savings and then close out accounts -->
-						
-					    <input class="btn btn-danger mr-2" type="submit" value="Close Account"/>
+						<form action="delete_account" method="post">
+						    <input type="hidden" name="_method" value="delete">
+						    <input class="btn btn-danger mr-2" type="submit" value="Close Account"/>
+						</form>
+
 					</div>
 				</div>
 				
 		      </div>
 		      
+		      <!--  
 		      <div class="tab-pane fade" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">
 		      	
 		      	<div class="card ml-3">
@@ -305,13 +306,13 @@
 					    <h5 class="card-title">Perform Closing Transfers</h5>
 						<p class="card-text">Please select the account you wish to perform a closing transfer on.</p>
 						
-						<!-- Need to pull in owned accounts here via a drop-down list -->
 						
 					    <input class="btn btn-danger mr-2" type="submit" value="Transfer"/>
 					</div>
 				</div>
 				
 		      </div>
+		      -->
 		      
 		    </div>
 		  </div>
@@ -319,134 +320,13 @@
  
     </section>
 	  
-
-	<!-- 3 Block Section -->
-	<section class="section-name">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<!-- component here -->
-				</div>
-				<div class="col-md-4">
-					<!-- component here -->
-				</div>
-				<div class="col-md-4">
-					<!-- component here -->
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- 4 Block Section -->
-	<section class="section-name">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<!-- component here -->
-				</div>
-				<div class="col-md-3">
-					<!-- component here -->
-				</div>
-				<div class="col-md-3">
-					<!-- component here -->
-				</div>
-				<div class="col-md-3">
-					<!-- component here -->
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-<!--  
-<h1>Update Profile and add address</h1>
-<form:form action="/updateProfile" method="POST" modelAttribute="user">
-	<input type="hidden" name="_method" value="put">
-	<p>
-        <form:label path="firstName">First Name</form:label>
-        <form:errors path="firstName"/>
-        <form:input path="firstName"/>
-    </p>
-    <p>
-        <form:label path="lastName">Last Name</form:label>
-        <form:errors path="lastName"/>
-        <form:input path="lastName"/>
-    </p>
-    <p>
-        <form:label path="email">Email</form:label>
-        <form:errors path="email"/>
-        <form:input path="email"/>
-    </p>
-    <p>
-        <form:label path="userName">User Name</form:label>
-        <form:errors path="userName"/>
-        <form:input path="userName"/>
-    </p>
-    <p>
-        <form:label path="password">Password</form:label>
-        <form:errors path="password"/>
-        <form:password path="password"/>
-    </p>
-    <p>
-        <form:label path="dateOfBirth">dateOfBirth</form:label>
-        <form:errors path="dateOfBirth"/>
-        <form:input path="dateOfBirth"/>
-    </p>
-    <p>
-        <form:label path="ssn">Social Security Number</form:label>
-        <form:errors path="ssn"/>
-        <form:input path="ssn"/>
-    </p>
-    <p>
-        <form:label path="primaryPhone">Primary Phone</form:label>
-        <form:errors path="primaryPhone"/>
-        <form:input path="primaryPhone"/>
-    </p>
-    <p>
-        <form:label path="secondaryPhone">Secondary Phone</form:label>
-        <form:errors path="secondaryPhone"/>
-        <form:input path="secondaryPhone"/>
-    </p>
-    <p>
-        <form:label path="userAddress.street">street</form:label>
-        <form:errors path="userAddress.street"/>
-        <form:input path="userAddress.street"/>
-    </p>
-    <p>
-        <form:label path="userAddress.street2">street2</form:label>
-        <form:errors path="userAddress.street2"/>
-        <form:input path="userAddress.street2"/>
-    </p>
-    <p>
-        <form:label path="userAddress.city">city</form:label>
-        <form:errors path="userAddress.city"/>
-        <form:input path="userAddress.city"/>
-    </p>
-    <p>
-        <form:label path="userAddress.state">state</form:label>
-        <form:errors path="userAddress.state"/>
-        <form:input path="userAddress.state"/>
-    </p>
-    <p>
-        <form:label path="userAddress.zipcode">zipcode</form:label>
-        <form:errors path="userAddress.zipcode"/>
-        <form:input path="userAddress.zipcode"/>
-    </p>
-    
-    <input type="submit" value="Submit"/>
-    
- </form:form>
- -->
- 
  
  	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<!-- Bootstrap DatePicker JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
 	<!-- Custom JS -->
-	<script type="text/javascript" src="JavaScript/date_ssn_app.js"></script>
+	<script type="text/javascript" src="/JavaScript/date_ssn_app.js"></script>
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/a6aa666e27.js"></script>
  

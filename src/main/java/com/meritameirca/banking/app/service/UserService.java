@@ -58,6 +58,15 @@ public class UserService {
         }
     }
 	
+	public boolean isAccountDeletable(Long id) {
+		User user = findUserById(id);
+		if(user != null && user.getAccountInternals().size() == 1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public void deleteUserById(Long id) {
 		userRepository.deleteById(id);
 	}
