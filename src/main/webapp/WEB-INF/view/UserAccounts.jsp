@@ -7,8 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>All accounts</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<body>
+<body onload = "hidePasswordField()">
 ${error}
 <table>
     <thead>
@@ -29,6 +30,8 @@ ${error}
             <form action="accounts/${account.id}" method="post">
 			    <input type="hidden" name="_method" value="delete">
 			    <input type="submit" value="Delete">
+			    <button class = "deleteConfirm"></button>
+			    <input class = "show" type="password"/>
 			</form>
 			</td>
         </tr>
@@ -54,5 +57,14 @@ ${error}
 <h1>Logout</h1>
 <a href="/logout">Logout</a>
 
+<script>
+$( ".deleteConfirm" ).click(function( event ) {
+	  event.preventDefault();
+	  $( ".show" ).show("slow");
+	});
+function hidePasswordField(){
+	$(".show").hide();
+}
+</script>
 </body>
 </html>

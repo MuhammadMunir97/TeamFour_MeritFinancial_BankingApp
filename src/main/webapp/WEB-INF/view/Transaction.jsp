@@ -13,9 +13,8 @@
 <link rel='stylesheet' href='/CSS/header-styles.css'/>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body onload="hideTransactionField()">
+<body class="background" onload="hideTransactionField()">
 <c:out value="${message}" />
-<div class="background">
 <section class="container-fluid container-header">
 		<div class="site-header">
 			<div class="row justify-content-md-center">
@@ -117,24 +116,6 @@
 </div>
 					</div>
 				</div>
-<!-- <div class="table-responsive">
-<table class="table table-sm">
-    <thead>
-        <tr>
-            <th class="accountTableColor"><h3>Account Number</h3></th>
-            <th class="accountTableColor"><h3>Present Balance</h3></th>
-            <th class="accountTableColor"><h3>Account Type</h3></th>
-        </tr>
-    </thead>
-    <tbody>
-       <tr>
-       	<td class="accountInfo"><c:out value="${account.accountNumber}"/></td>
-       	<td class="accountInfo"><c:out value="${account.presentBalance}"/></td>
-       	<td class="accountInfo"><c:out value="${account.accountType.accTypeName}"/></td>
-       </tr>
-    </tbody>
-</table>
-</div> -->
 <br>
 <div class="card ml-3">
 				  	<div class="card-header">
@@ -202,7 +183,6 @@
 </div>
 </div>
 <br>
-</div>
 <script>
 $( ".hide" ).hide();
 $( ".transactionButton" ).click(function( event ) {

@@ -64,4 +64,12 @@ public class UserController {
         session.invalidate();
         return "redirect:/login";
     }
+	@RequestMapping("/cdRate")
+	public String cdRate(HttpSession session) {
+		Long userId = (Long) session.getAttribute("userId");
+		if(userId == null) {
+			return "redirect:/login";
+		}
+		return "/view/OptimalCD.jsp";
+	}
 }
