@@ -95,7 +95,6 @@ public class AccountService {
 			return true;	
 		}
 	}
-<<<<<<< HEAD
 	public double optimalCd(double deposit, int months, double rate) {
         double percentage = (double) (rate / 100);
         double result = deposit;
@@ -110,10 +109,8 @@ public class AccountService {
         double trim = Math.pow(10, 2);
         return Math.round(Math.abs(result - deposit) * trim) / trim;
     }
-=======
 	
 	public void deleteAccount(AccountInternal account) {
 		accountInternalRepository.delete(account);
 	}
->>>>>>> 9bb1f4807d126d58c1b1bc025a06590c97d7439c
 }

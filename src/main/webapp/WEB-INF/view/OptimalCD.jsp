@@ -14,7 +14,7 @@
 <link rel='stylesheet' href='/CSS/cdstyle.css'/>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body class="background">
 <section class="container-fluid container-header">
 		<div class="site-header">
 			<div class="row justify-content-md-center">
@@ -49,12 +49,10 @@
             </div>
         </nav>
     </section>
-<div class="row mt-3">
+<div class="row mt-3 background">
  <nav class="col-md-2 d-none d-md-block sidebar tr">
 <div class="sidebar-sticky stickypositioning">
 <div class="center">
-<br>
-<button type="button" class="btn btn-primary btn-lg transactionButton formMargin" onclick="transactionShow()">Calculate your earnings</button>
 </div>
 <div class="center">
 <div class="hide">
@@ -85,38 +83,22 @@
     </div>
     </div>
     </fieldset>
-</form>
+    </form>
 <br>
 </div>
 </div>
 </div>
 </nav>  
 		  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-<div class="card ml-3">
-				  	<div class="card-header">
-				    	<h4 class="font-weight-light">Transactions</h4>
-				  	</div>
-					<div class="card-body">
-					    <div class="table-responsive">
-<table class="table table-sm">
-    <thead>
-        <tr>
-            <th class="accountTableColor"><h3>Account Number</h3></th>
-            <th class="accountTableColor"><h3>Opening Deposit</h3></th>
-            <th class="accountTableColor"><h3>Term Length</h3></th>
-            <th class="accountTableColor"><h3>Interest Rate</h3></th>
-            <th class="accountTableColor"><h3>Estimated Earnings</h3></th>
-        </tr>
-    </thead>
-    <tbody>
-       <tr>
-       	<td class="accountInfo"><c:out value="${account.accountNumber}"/></td>
-       	<td class="accountInfo">$ <c:out value="${account.presentBalance}"/></td>
-       	<td class="accountInfo"></td>
-       </tr>
-    </tbody>
-</table>
-</div>
+<div class="card text-center">
+  <div class="card-header">
+    Earnings
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Here are your earnings with the options you selected!</h5>
+    <p id="earnings">.</p>
+    <a href="#" class="btn btn-primary">Create Account</a>
+    <br>
 </div>
 </div>
 </main>
@@ -137,10 +119,37 @@ $('#months').change(function(){
 	var deposit = document.getElementById("amount");
 	var months = document.getElementById("months");
 	var showInterest = document.getElementById("disabled");
-	var interest = 1;
 	showInterest.value = (this.value * deposit.value / 1000) / 1000;
-	showInterest.toFixed(2);
+	var x = showInterest.toFixed(2);
+	showInterest.value = x;
+	var inr=deposit*months*showInterest;
+	var inrst = inr/100;
 });
+function optimalCd2(deposit, months, rate){
+	var percentage = (rate/100);
+	var result = deposit;
+	for(var i = 0; i < months / 12; i++){
+		if(result == deposit){
+			result += deposit * percentage;
+		}
+		else if(result != deposit){
+			result += result * percentage;
+		}
+	}
+	var trim = result - deposit;
+	var x = trim.toFixed(2);
+	return trim;
+}
+function optimalCd() {
+	var deposit = document.getElementById("amount");
+	var months = document.getElementById("months");
+	var showInterest = document.getElementById("disabled");
+	var inr=optimalCd2(deposit.value, months.value, showInterest.value);
+	var x = inr.toFixed(2)
+		var inrst = x/100;
+		document.getElementById("earnings").innerHTML= inrst;
+}
+window.onchange = optimalCd;
 </script>
 </body>
 </html>
