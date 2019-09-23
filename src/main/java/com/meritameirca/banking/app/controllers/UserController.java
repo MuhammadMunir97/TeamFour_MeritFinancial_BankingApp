@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.meritameirca.banking.app.models.User;
+import com.meritameirca.banking.app.models.pseudo.CalculateEarnings;
 import com.meritameirca.banking.app.service.UserService;
 
 @Controller
@@ -81,12 +82,5 @@ public class UserController {
         session.invalidate();
         return "redirect:/login";
     }
-	@RequestMapping("/cdRate")
-	public String cdRate(HttpSession session) {
-		Long userId = (Long) session.getAttribute("userId");
-		if(userId == null) {
-			return "redirect:/login";
-		}
-		return "/view/OptimalCD.jsp";
-	}
+	
 }

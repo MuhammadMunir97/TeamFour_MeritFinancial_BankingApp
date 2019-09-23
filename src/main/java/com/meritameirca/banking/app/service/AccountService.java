@@ -95,19 +95,17 @@ public class AccountService {
 			return true;	
 		}
 	}
+	public double calculateInterestRate(double deposit, int months) {
+		double depositFactor =  Math.log10(deposit) / 7;
+		double monthFactor = months / 100;
+		return depositFactor + monthFactor;
+	}
+	
 	public double optimalCd(double deposit, int months, double rate) {
-        double percentage = (double) (rate / 100);
+        double percentage = (double) ((rate + 100) / 100);
         double result = deposit;
-        for(int i = 0; i < months/12; i++) {
-            if(result == deposit) {
-                result += deposit * percentage;
-            }
-            else if(result != deposit) {
-                result += result * percentage;
-            }
-        }
-        double trim = Math.pow(10, 2);
-        return Math.round(Math.abs(result - deposit) * trim) / trim;
+        result /= Math.pow(percentage, months);
+        return deposit - result;
     }
 	
 	public void deleteAccount(AccountInternal account) {

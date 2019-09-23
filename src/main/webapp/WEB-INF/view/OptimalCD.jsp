@@ -33,12 +33,15 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto nav-pills">
                     <li class="nav-item">
                         <a class="nav-link" href="/accounts">Dashboard</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="/updateProfile">Settings</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/cdRate">Predict CD Earnings</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-sub pull-right">
@@ -57,33 +60,25 @@
 <div class="center">
 <div class="hide">
 <br>
-<form class = "formMargin">
+<form:form class = "formMargin" action="/calculate_earnings" method="post" modelAttribute="CalculateEarnings">
 <label>Opening Deposit</label>
   <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text">$</span>
   </div>
-  <input id="amount" type="number" class="form-control" step="0.01" aria-label="Amount (to the nearest dollar)">
+  	<form:input path="amount" type="number"  class="form-control"  placeholder="Opening Deposit" aria-label="Amount (to the nearest dollar)"/>
+	<form:errors path="amount" />
   <div class="input-group-append">
   </div>
 </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Months</label>
-    <select id="months" class="form-control">
-</select>
+    <form:select path="month" id="months" class="form-control">
+</form:select>
   </div>
-  <fieldset disabled>
-    <div class="form-group">
-      <label>Interest Rate</label>
-      <div class="input-group mb-3">
-       <div class="input-group-prepend">
-    <span class="input-group-text">%</span>
-  </div>
-      <input type="text" id="disabled" class="form-control" readonly="readonly">
-    </div>
-    </div>
-    </fieldset>
-    </form>
+  
+    <button class="btn btn-primary mr-2">Calculate Earnings</button>
+    </form:form>
 <br>
 </div>
 </div>
@@ -96,8 +91,8 @@
   </div>
   <div class="card-body">
     <h5 class="card-title">Here are your earnings with the options you selected!</h5>
-    <p id="earnings">.</p>
-    <a href="#" class="btn btn-primary">Create Account</a>
+    <p id="earnings">${earnings} USD at Rate : ${interestRate} % for ${CalculateEarnings.month} months</p>
+    <a href="/accounts" class="btn btn-primary">Create Account</a>
     <br>
 </div>
 </div>
@@ -115,41 +110,6 @@ for(var i=2; i<=120; i+=2){
     	i+=10;
     }
 }
-$('#months').change(function(){
-	var deposit = document.getElementById("amount");
-	var months = document.getElementById("months");
-	var showInterest = document.getElementById("disabled");
-	showInterest.value = (this.value * deposit.value / 1000) / 1000;
-	var x = showInterest.toFixed(2);
-	showInterest.value = x;
-	var inr=deposit*months*showInterest;
-	var inrst = inr/100;
-});
-function optimalCd2(deposit, months, rate){
-	var percentage = (rate/100);
-	var result = deposit;
-	for(var i = 0; i < months / 12; i++){
-		if(result == deposit){
-			result += deposit * percentage;
-		}
-		else if(result != deposit){
-			result += result * percentage;
-		}
-	}
-	var trim = result - deposit;
-	var x = trim.toFixed(2);
-	return trim;
-}
-function optimalCd() {
-	var deposit = document.getElementById("amount");
-	var months = document.getElementById("months");
-	var showInterest = document.getElementById("disabled");
-	var inr=optimalCd2(deposit.value, months.value, showInterest.value);
-	var x = inr.toFixed(2)
-		var inrst = x/100;
-		document.getElementById("earnings").innerHTML= inrst;
-}
-window.onchange = optimalCd;
 </script>
 </body>
 </html>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.meritameirca.banking.app.models.AccountInternal;
 import com.meritameirca.banking.app.models.User;
+import com.meritameirca.banking.app.models.pseudo.CalculateEarnings;
 import com.meritameirca.banking.app.service.AccountService;
 import com.meritameirca.banking.app.service.AccountTypeService;
 import com.meritameirca.banking.app.service.UserService;
@@ -77,6 +78,37 @@ public class AccountController {
 					model.addAttribute("allAccounts", accountService.findAllUserAccount(user));
 					return "redirect:/accounts";
 				}
+			}
+		}
+	}
+	
+	
+	@RequestMapping("/cdRate")
+	public String cdRate(HttpSession session , @ModelAttribute("CalculateEarnings") CalculateEarnings earnings) {
+		Long userId = (Long) session.getAttribute("userId");
+		if(userId == null) {
+			return "redirect:/login";
+		}else {
+			return "/view/OptimalCD.jsp";
+		}
+	}
+	@PostMapping("/calculate_earnings")
+	public String calculateEarnings(HttpSession session , @Valid @ModelAttribute("CalculateEarnings") CalculateEarnings earnings , BindingResult bindingResult , Model model) {
+		Long userId = (Long) session.getAttribute("userId");
+		if(userId == null) {
+			return "redirect:/login";
+		}else {
+			if(bindingResult.hasErrors()) {
+				return "redirect:/cdRate";
+			}else {
+				double interestRate = accountService.calculateInterestRate(earnings.getAmount(), earnings.getMonth());
+				double calculatedEarnings = accountService.optimalCd(earnings.getAmount(), earnings.getMonth(),  interestRate);
+				double trim = Math.pow(10, 2);
+				interestRate = Math.round(Math.abs(interestRate) * trim) / trim;
+				calculatedEarnings = Math.round(Math.abs(calculatedEarnings) * trim) / trim;
+				model.addAttribute("interestRate", interestRate);
+				model.addAttribute("earnings", calculatedEarnings);
+				return "/view/OptimalCD.jsp";	
 			}
 		}
 	}

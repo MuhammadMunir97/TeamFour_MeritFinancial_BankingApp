@@ -54,6 +54,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/updateProfile">Settings</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/cdRate">Predict CD Earnings</a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-sub pull-right">
                     <li class="nav-item">
@@ -269,7 +272,6 @@
 					    <h5 class="card-title">Close User Account</h5>
 					    <p class="card-text">To close a user account you must first transfer all funds to savings and then withdraw all to cash.</p>
 											
-					    <input class="btn btn-danger mr-2" type="submit" value="Close Account"/>
 
 						<!-- Should we provide a single function to transfer all funds to a savings and then close out accounts -->
 						<form action="delete_account" method="post">

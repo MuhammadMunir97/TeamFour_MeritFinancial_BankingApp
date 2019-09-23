@@ -7,13 +7,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 <meta charset="UTF-8">
 <title>All accounts</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body onload = "hidePasswordField()">
-${error}
+<!--  ${error}
 <table>
     <thead>
         <tr>
@@ -59,7 +58,7 @@ ${error}
 
 <h1>Logout</h1>
 <a href="/logout">Logout</a>
-=======
+-->
 
 	<title>Merit Bank | Dashboard</title>
 	
@@ -107,6 +106,9 @@ ${error}
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/updateProfile">Settings</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/cdRate">Predict CD Earnings</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-sub pull-right">
@@ -226,7 +228,7 @@ ${error}
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/a6aa666e27.js"></script>
 
->>>>>>> 9bb1f4807d126d58c1b1bc025a06590c97d7439c
+
 
 <script>
 $( ".deleteConfirm" ).click(function( event ) {

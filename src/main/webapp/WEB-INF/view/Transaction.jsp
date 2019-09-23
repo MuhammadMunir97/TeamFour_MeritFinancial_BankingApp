@@ -33,12 +33,15 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto nav-pills">
                     <li class="nav-item">
                         <a class="nav-link" href="/accounts">Dashboard</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="/updateProfile">Settings</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/cdRate">Predict CD Earnings</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-sub pull-right">
