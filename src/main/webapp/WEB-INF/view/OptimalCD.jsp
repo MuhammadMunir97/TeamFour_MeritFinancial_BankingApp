@@ -115,41 +115,6 @@ for(var i=2; i<=120; i+=2){
     	i+=10;
     }
 }
-$('#months').change(function(){
-	var deposit = document.getElementById("amount");
-	var months = document.getElementById("months");
-	var showInterest = document.getElementById("disabled");
-	showInterest.value = (this.value * deposit.value / 1000) / 1000;
-	var x = showInterest.toFixed(2);
-	showInterest.value = x;
-	var inr=deposit*months*showInterest;
-	var inrst = inr/100;
-});
-function optimalCd2(deposit, months, rate){
-	var percentage = (rate/100);
-	var result = deposit;
-	for(var i = 0; i < months / 12; i++){
-		if(result == deposit){
-			result += deposit * percentage;
-		}
-		else if(result != deposit){
-			result += result * percentage;
-		}
-	}
-	var trim = result - deposit;
-	var x = trim.toFixed(2);
-	return trim;
-}
-function optimalCd() {
-	var deposit = document.getElementById("amount");
-	var months = document.getElementById("months");
-	var showInterest = document.getElementById("disabled");
-	var inr=optimalCd2(deposit.value, months.value, showInterest.value);
-	var x = inr.toFixed(2)
-		var inrst = x/100;
-		document.getElementById("earnings").innerHTML= inrst;
-}
-window.onchange = optimalCd;
 </script>
 </body>
 </html>
