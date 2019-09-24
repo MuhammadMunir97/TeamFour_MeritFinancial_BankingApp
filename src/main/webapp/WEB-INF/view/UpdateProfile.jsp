@@ -134,7 +134,7 @@
 								<div class="form-group col-md-3">
 									<label for=primaryPhone>Primary Phone</label>
 									<div class="input-group">
-										<form:input path="primaryPhone" type="text" maxlength="12" class="form-control" id="phone" placeholder="Primary Phone"/>
+										<form:input path="primaryPhone" type="text" maxlength="12" class="form-control" id="primaryPhone" placeholder="Primary Phone"/>
 										<form:errors path="primaryPhone" class="errors"/>
 										<div class="input-group-append">
 									    	<div class="input-group-text"><span><i class="fas fa-mobile-alt"></i></span></div>
@@ -145,7 +145,7 @@
 						  		<div class="form-group col-md-3">
 									<label for=secondaryPhone>Secondary Phone</label>
 									<div class="input-group">
-										<form:input path="secondaryPhone" type="text" maxlength="12" class="form-control" id="phone" placeholder="Secondary Phone"/>
+										<form:input path="secondaryPhone" type="text" maxlength="12" class="form-control" id="secondaryPhone" placeholder="Secondary Phone"/>
 										<form:errors path="secondaryPhone" class="errors"/>
 										<div class="input-group-append">
 									    	<div class="input-group-text"><span><i class="fas fa-phone"></i></span></div>

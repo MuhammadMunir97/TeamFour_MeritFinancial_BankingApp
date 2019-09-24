@@ -8,9 +8,6 @@
 (function($) {
 	$(document).ready(function() {
 		
-		
-	
-	
 
 		// Card Shuffle 
 		function sortCards() {
@@ -54,9 +51,10 @@
 		$.mask.definitions['a']='';
 		$('.account-expiration').mask('Valid Thru: 99/99');
 		
-		// Modal
-		$('.add-account').on('click', function() {
-			$('.add-account-modal').addClass('is-visible');
+		
+		// New Bootstrap Modal popup
+		$('#myModal').on('shown.bs.modal', function () {
+			$('#myInput').trigger('focus')
 		});
 		
 		function addAccount() {

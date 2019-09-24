@@ -122,14 +122,22 @@
 
 
 	<!-- Accounts Summary Section -->
-	<div class="container-fluid mt-3 my-wallet">
+	<div class="container-fluid p-0 mt-3 my-wallet">
 		<div class="loading"></div>
 
-		<div class="add-account-modal">
-			<div class="overlay"></div>
-
-			<div class="account new-account">
-				<form:form action="/newBankAccount" method="POST" modelAttribute="accountInternal">
+		
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLongTitle">Create a New Account</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <form:form action="/newBankAccount" method="POST" modelAttribute="accountInternal">
 					<form:select  path="accountType">
 						<c:forEach items="${account_types}" var="type">
 							 <form:option value="${type.id}">
@@ -139,21 +147,30 @@
 					</form:select>
 				    <input type="submit" value="Submit"/>
 				</form:form>
-			</div>
-
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
 		</div>
+		
 
 		<div class="container my-wallet-sidebar">
-			<h1 class="my-wallet-title">My Accounts<div class="add-account">&#43;</div></h1>
-
-			<div class="active-account"></div>
-			<div class="accounts-container">
-				<c:forEach items="${allAccounts}" var="account">
-					<div class="account" data-account="${account.id}">
-						${account.accountType.accTypeName}
-						<p>${account.accountNumber}</p>
+			<div class="row">
+				<div class="col-md-10">
+					<h1 class="my-wallet-title">My Accounts<div class="add-account" data-toggle="modal" data-target="#exampleModalCenter">&#43;</div></h1>
+		
+					<div class="active-account"></div>
+					<div class="accounts-container">
+						<c:forEach items="${allAccounts}" var="account">
+							<div class="account" data-account="${account.id}">
+								${account.accountType.accTypeName}
+								<p>${account.accountNumber}</p>
+							</div>
+						</c:forEach>
 					</div>
-				</c:forEach>
+				</div>
 			</div>
 		</div>
 

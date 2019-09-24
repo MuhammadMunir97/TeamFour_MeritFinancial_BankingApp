@@ -55,18 +55,22 @@ input[type=date]::-webkit-inner-spin-button {
   }
 
   .my-wallet {
-	background-color: #fff;
+	
 	border-radius: 6px;
 	font-family: "Open Sans", sans-serif;
-	height: 90%;
+	min-height: 500px;
 	width: 90%;
+	background-color: #fff;
 	box-shadow: 6px 7px 5px -6px rgba(0,0,0,0.75);
+	overflow: hidden;
+	
 	
 	/*
+	background-color: pink;
+	
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	box-shadow: 0 6px 20px #73c2be;
 	height: 400px;
 	width: 880px;
 	-webkit-transform: translate3d(-50%, -50%, 0);
@@ -74,22 +78,24 @@ input[type=date]::-webkit-inner-spin-button {
 	-ms-transform: translate3d(-50%, -50%, 0);
 	-o-transform: translate3d(-50%, -50%, 0);
 	transform: translate3d(-50%, -50%, 0);
-	overflow: hidden;
 	*/
-	
   }
   .my-wallet-sidebar {
 	background-color: #f2f2f2;
 	color: #707584;
 	float: left;
-	height: 100%;
-
-	/* 
-	 
-	 */
-	 
+	min-height: 500px;
+	border-radius: 6px 0px 0px 6px;
 	padding: 50px;
 	width: 360px;
+
+	
+	
+	/* 
+	background-color: orange;
+	box-shadow: 6px 7px 5px -6px rgba(0,0,0,0.75);
+	 */
+	
   }
   .my-wallet-title {
 	font-size: 24px;
@@ -132,6 +138,7 @@ input[type=date]::-webkit-inner-spin-button {
 	position: relative;
 	bottom: -40px;
 	margin-bottom: 15px;
+	
 	/*
 	position: absolute;
 	bottom: 50px;
@@ -156,7 +163,7 @@ input[type=date]::-webkit-inner-spin-button {
 	font-family: "Roboto", sans-serif;
 	height: 70px;
 	margin-bottom: 30px;
-	padding: 15px;
+	padding: 8px;
 	width: 250px;
 	
 	/*
@@ -197,11 +204,18 @@ input[type=date]::-webkit-inner-spin-button {
   
   .account-details-container {
 	font-family: "Open Sans", sans-serif;
-	height: 100%;
+	min-height: 500px;
 	width: auto;
 	overflow: hidden;
 	padding: 50px;
 	position: relative;
+	border-radius: 0px 6px 6px 0px;
+	
+	
+	/*
+	box-shadow: 6px 7px 5px -6px rgba(0,0,0,0.75);
+	background-color: #fff;
+	*/
   }
   
   .account-details {
@@ -292,7 +306,6 @@ input[type=date]::-webkit-inner-spin-button {
   }
   
 
-
 /*
   .transaction-history {
 	height: 100%;
@@ -351,7 +364,6 @@ input[type=date]::-webkit-inner-spin-button {
   */
   
   /*
-  
   .transaction[data-transaction-type="debit"]:before {
 	content: '\2013';
 	line-height: 14px;
@@ -376,13 +388,13 @@ input[type=date]::-webkit-inner-spin-button {
 	-moz-transition: opacity 200ms ease;
 	transition: opacity 200ms ease;
 	background: #5b8ba1;
-	height: 100%;
 	opacity: 0;
-	position: absolute;
+	height: 100%;
 	width: 100%;
 	
 	/*
 	
+	position: absolute;
 	*/
   }
   .add-account-modal .account {
@@ -394,13 +406,19 @@ input[type=date]::-webkit-inner-spin-button {
 	-webkit-transition: all 300ms ease;
 	-moz-transition: all 300ms ease;
 	transition: all 300ms ease;
+	
 	border-color: #83b3c9;
 	left: 50%;
+	top: 50%;
 	opacity: 0;
 	position: absolute;
-	top: 50%;
-	will-change: transform, opacity;
 	z-index: 9001;
+	will-change: transform, opacity;
+	
+	
+	/*
+	
+	*/
   }
   .add-account-modal .account-card-type {
 	border-radius: 5px;
