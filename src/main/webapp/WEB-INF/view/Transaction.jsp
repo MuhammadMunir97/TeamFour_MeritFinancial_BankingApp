@@ -68,181 +68,176 @@
     </section>
     
     
-    
-    <div class="row">
-    
-    
-    	<nav class="col-md-2 d-none d-md-block sidebar tr">
-			<div class="sidebar-sticky stickypositioning">
-			<div class="center">
-			<br>
-			<button type="button" class="btn btn-primary btn-lg transactionButton formMargin" onclick="transactionShow()">Make a Transaction</button>
-			</div>
-			<div class="center">
-			<div class="hide">
-			<br>
-			<form:form class="formMargin" action="/accounts/${account.id}" method="POST" modelAttribute="tranasction">
-			<span class="errors"><c:out value="${error}"/></span>
-			<div class="form-group">
-			        <form:label path="amount">Amount</form:label>
-			        <form:errors class="errors" path="amount"/>
-			        <form:input class="form-control input-lg" placeholder="Enter Amount" path="amount"/>
-			        </div>
-			        <div class="form-group dropdown">
-				<form:select class="form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" path="transactionType" onchange="transactionCheck(this)">
-					<c:forEach items="${transactionTypes}" var="type">
-						 <form:option value="${type.id}">
-						 	${type.transactionTypeName}
-						 </form:option>
-			    	</c:forEach>
-				</form:select>
+    <section class="container-fluid mb-4">
+	    <div class="row">
+	    
+	    
+	    	<nav class="col-md-2 d-none d-md-block sidebar tr">
+				<div class="sidebar-sticky stickypositioning">
+				<div class="center">
+				<br>
+				<button type="button" class="btn btn-primary btn-lg transactionButton formMargin" onclick="transactionShow()">Make a Transaction</button>
 				</div>
+				<div class="center">
+				<div class="hide">
+				<br>
+				<form:form class="formMargin" action="/accounts/${account.id}" method="POST" modelAttribute="tranasction">
+				<span class="errors"><c:out value="${error}"/></span>
 				<div class="form-group">
-				<div class="ifTransaction">
-				
-				
-			        <form:label class="translabel" path="AccountInternalTransferTo">Account Number</form:label>
-			        <form:errors class="errors" path="AccountInternalTransferTo"/>
-			        <form:input class="form-control input-lg" placeholder="Enter Account Number" path="AccountInternalTransferTo"/>
-			    
-			    
-			    </div>
-			    </div>
-			    <input class="btn btn-primary btn-lg" type="submit" value="Done"/>
-			</form:form>
-			<br>
-			</div>
-			</div>
-			</div>
-		 
-
-			<br>
-			<div class="noShow center container">
-			<br>
-			<button type="button" class="btn btn-primary btn-lg transactionButton" onclick="transactionShow()">Make a Transaction</button>
-			<div class="center">
-			<div class="hide">
-			<br>
-			<form:form class="formMargin" action="/accounts/${account.id}" method="POST" modelAttribute="tranasction">
-			<span class="errors"><c:out value="${error}"/></span>
-			<div class="form-group">
-			        <form:label path="amount">Amount</form:label>
-			        <form:errors class="errors" path="amount"/>
-			        <form:input class="form-control input-lg" placeholder="Enter Amount" path="amount"/>
-			        </div>
-			        <div class="form-group dropdown">
-				<form:select class="form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" path="transactionType" onchange="transactionCheck(this)">
-					<c:forEach items="${transactionTypes}" var="type">
-						 <form:option value="${type.id}">
-						 	${type.transactionTypeName}
-						 </form:option>
-			    	</c:forEach>
-				</form:select>
-				</div>
-				<div class="form-group">
+				        <form:label path="amount">Amount</form:label>
+				        <form:errors class="errors" path="amount"/>
+				        <form:input class="form-control input-lg" placeholder="Enter Amount" path="amount"/>
+				        </div>
+				        <div class="form-group dropdown">
+					<form:select class="form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" path="transactionType" onchange="transactionCheck(this)">
+						<c:forEach items="${transactionTypes}" var="type">
+							 <form:option value="${type.id}">
+							 	${type.transactionTypeName}
+							 </form:option>
+				    	</c:forEach>
+					</form:select>
+					</div>
+					<div class="form-group">
 					<div class="ifTransaction">
 					
-						<form:label class="translabel" path="AccountInternalTransferTo">Account Number</form:label>
-			        	<form:errors class="errors" path="AccountInternalTransferTo"/>
-			        	<form:input class="form-control input-lg" placeholder="Enter Account Number" path="AccountInternalTransferTo"/>
-			       		
-			    	    		
+					
+				        <form:label class="translabel" path="AccountInternalTransferTo">Account Number</form:label>
+				        <form:errors class="errors" path="AccountInternalTransferTo"/>
+				        <form:input class="form-control input-lg" placeholder="Enter Account Number" path="AccountInternalTransferTo"/>
+				    
+				    
+				    </div>
+				    </div>
+				    <input class="btn btn-primary btn-lg" type="submit" value="Done"/>
+				</form:form>
+				<br>
+				</div>
+				</div>
+				</div>
+			 
+	
+				<br>
+				<div class="noShow center container">
+				<br>
+				<button type="button" class="btn btn-primary btn-lg transactionButton" onclick="transactionShow()">Make a Transaction</button>
+				<div class="center">
+				<div class="hide">
+				<br>
+				<form:form class="formMargin" action="/accounts/${account.id}" method="POST" modelAttribute="tranasction">
+				<span class="errors"><c:out value="${error}"/></span>
+				<div class="form-group">
+				        <form:label path="amount">Amount</form:label>
+				        <form:errors class="errors" path="amount"/>
+				        <form:input class="form-control input-lg" placeholder="Enter Amount" path="amount"/>
+				        </div>
+				        <div class="form-group dropdown">
+					<form:select class="form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" path="transactionType" onchange="transactionCheck(this)">
+						<c:forEach items="${transactionTypes}" var="type">
+							 <form:option value="${type.id}">
+							 	${type.transactionTypeName}
+							 </form:option>
+				    	</c:forEach>
+					</form:select>
+					</div>
+					<div class="form-group">
+						<div class="ifTransaction">
 						
-				
-			    
-			    
-			    	</div>
-			    </div>
-			    <input class="btn btn-primary btn-lg" type="submit" value="Done"/>
-			</form:form>
-			<br>
-			</div>
-			</div>
-			</div>
-		</nav>  
-
-    	<section role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">	
-    		<br>
-	      	<div class="card ml-3">
-			  	<div class="card-header">
-			    	<h4 class="font-weight-light"><c:out value="${account.accountType.accTypeName}"/> <c:out value="...(${account.accountNumber})"/></h4>
-			  	</div>
-				<div class="card-body">
-				    <div class="table-responsive">
-						<table class="table table-sm">
-						    <thead>
-						        <tr>
-						        	<th class="accountTableColor">Total Deposits</th>
-						            <th class="accountTableColor">Total Withdraws</th>
-						            <th class="accountTableColor">Present Balance</th>						            
-						        </tr>
-						    </thead>
-						    <tbody>
-						       <tr>
-						       	<td class="accountInfo">					   
-									<c:set var="total" value="${0}"/>
-									<c:forEach var="transaction" items="${account.transactionLogs}">										
-										<c:if test="${transaction.amount > 0}">
-									    	<c:set var="total" value="${total + transaction.amount}" />
-									    </c:if>									    
-									</c:forEach>
-									+ <fmt:formatNumber type="currency" maxIntegerDigits="8" value="${total}" />
-						       	</td>
-						       	<td class="accountInfo">
-						       		<c:set var="total" value="${0}"/>
-									<c:forEach var="transaction" items="${account.transactionLogs}">
-											<c:if test="${transaction.amount < 0}">
-									    	<c:set var="total" value="${total + transaction.amount}" />
-									    </c:if>									    
-									</c:forEach>
-									<fmt:formatNumber type="currency" maxIntegerDigits="8" value="${total}" />
-						       	</td>
-						       	<td class="accountInfo"><fmt:formatNumber type="currency" maxIntegerDigits="8" value="${account.presentBalance}" /></td>						  
-						       </tr>
-						    </tbody>
-						</table>
+							<form:label class="translabel" path="AccountInternalTransferTo">Account Number</form:label>
+				        	<form:errors class="errors" path="AccountInternalTransferTo"/>
+				        	<form:input class="form-control input-lg" placeholder="Enter Account Number" path="AccountInternalTransferTo"/>
+				    
+				    	</div>
+				    </div>
+				    <input class="btn btn-primary btn-lg" type="submit" value="Done"/>
+				</form:form>
+				<br>
+				</div>
+				</div>
+				</div>
+			</nav>  
+	
+	    	<section role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">	
+	    		
+		      	<div class="card ml-3 mt-4">
+				  	<div class="card-header">
+				    	<h4 class="font-weight-light"><c:out value="${account.accountType.accTypeName}"/> <c:out value="...(${account.accountNumber})"/></h4>
+				  	</div>
+					<div class="card-body">
+					    <div class="table-responsive">
+							<table class="table table-sm">
+							    <thead>
+							        <tr>
+							        	<th class="accountTableColor">Total Deposits</th>
+							            <th class="accountTableColor">Total Withdraws</th>
+							            <th class="accountTableColor">Present Balance</th>						            
+							        </tr>
+							    </thead>
+							    <tbody>
+							       <tr>
+							       	<td class="accountInfo">					   
+										<c:set var="total" value="${0}"/>
+										<c:forEach var="transaction" items="${account.transactionLogs}">										
+											<c:if test="${transaction.amount > 0}">
+										    	<c:set var="total" value="${total + transaction.amount}" />
+										    </c:if>									    
+										</c:forEach>
+										+ <fmt:formatNumber type="currency" maxIntegerDigits="10" value="${total}" />
+							       	</td>
+							       	<td class="accountInfo">
+							       		<c:set var="total" value="${0}"/>
+										<c:forEach var="transaction" items="${account.transactionLogs}">
+												<c:if test="${transaction.amount < 0}">
+										    	<c:set var="total" value="${total + transaction.amount}" />
+										    </c:if>									    
+										</c:forEach>
+										<fmt:formatNumber type="currency" maxIntegerDigits="8" value="${total}" />
+							       	</td>
+							       	<td class="accountInfo"><fmt:formatNumber type="currency" maxIntegerDigits="10" value="${account.presentBalance}" /></td>						  
+							       </tr>
+							    </tbody>
+							</table>
+						</div>
 					</div>
 				</div>
-			</div>
-			<br>
 				
-			<div class="card ml-3 mt-3">
-			  	<div class="card-header">
-			    	<h4 class="font-weight-light">Transaction Detail</h4>
-			  	</div>
-				<div class="card-body">
-				    <div class="table-responsive">
-						<table class="table table-sm table-hover">
-						    <thead class="thead-dark">
-						        <tr>
-						            <th scope="col">Transaction Type</th>
-						            <th scope="col">Amount</th>
-						            <th scope="col">Date</th>
-						        </tr>
-						    </thead>
-						    <tbody>
-							    <c:forEach items="${account.transactionLogs}" var="transaction">
-									<tr>
-										<td scope="row"><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
-										<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="8" value="${transaction.amount}" /></td>
-										<td scope="row"><fmt:formatDate pattern="MM-dd-yyyy hh:mm a" value="${transaction.postDate}"/></td>
-									</tr>
-								</c:forEach>
-						    </tbody>
-						</table>
+					
+				<div class="card ml-3 mt-4">
+				  	<div class="card-header">
+				    	<h4 class="font-weight-light">Transaction Detail</h4>
+				  	</div>
+					<div class="card-body">
+					    <div class="table-responsive">
+							<table class="table table-sm table-hover">
+							    <thead class="thead-dark">
+							        <tr>
+							            <th scope="col">Transaction Type</th>
+							            <th scope="col">Amount</th>
+							            <th scope="col">Date</th>
+							        </tr>
+							    </thead>
+							    <tbody>
+								    <c:forEach items="${account.transactionLogs}" var="transaction">
+										<tr>
+											<td scope="row"><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
+											<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="10" value="${transaction.amount}" /></td>
+											<td scope="row"><fmt:formatDate pattern="MM-dd-yyyy hh:mm a" value="${transaction.postDate}"/></td>
+										</tr>
+									</c:forEach>
+							    </tbody>
+							</table>
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-			
-			
-	</div>	
+			</section>
+				
+				
+		</div>	
+	</section>
 
 
-
-<br>
 
 <script>
+
 $( ".hide" ).hide();
 $( ".transactionButton" ).click(function( event ) {
   event.preventDefault();
@@ -262,6 +257,9 @@ function transactionCheck(that) {
     	$(".transLabel").hide("slow");
     }
 }
+
+
+
 </script>
 
 

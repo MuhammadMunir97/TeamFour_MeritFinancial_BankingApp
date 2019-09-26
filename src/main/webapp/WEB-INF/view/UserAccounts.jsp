@@ -183,7 +183,7 @@
 					<div class="account-balance">
 						Current Balance
 						<div class="value-unit">
-							<fmt:formatNumber type="currency" maxIntegerDigits="8" value="${account.presentBalance}" />
+							<fmt:formatNumber type="currency" maxIntegerDigits="10" value="${account.presentBalance}" />
 						</div>
 						
 						<div class="more-details">
@@ -209,7 +209,7 @@
 											<tr>
 												<c:if test="${status.count <= 7}">
 													<td scope="row"><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
-													<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="8" value="${transaction.amount}" /></td>
+													<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="10" value="${transaction.amount}" /></td>
 													<td scope="row"><fmt:formatDate pattern="MM-dd-yyyy hh:mm a" value="${transaction.postDate}"/></td>
 												</c:if>
 											</tr>
@@ -314,7 +314,7 @@
 								<div class="account-balance">
 									Current Balance
 									<div class="value-unit">
-										<fmt:formatNumber type="currency" maxIntegerDigits="8" value="${account.presentBalance}" />
+										<fmt:formatNumber type="currency" maxIntegerDigits="10" value="${account.presentBalance}" />
 									</div>
 									
 									<div class="more-details">
@@ -340,7 +340,7 @@
 														<tr>
 															<c:if test="${status.count <= 7}">
 																<td scope="row"><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
-																<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="8" value="${transaction.amount}" /></td>
+																<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="10" value="${transaction.amount}" /></td>
 																<td scope="row"><fmt:formatDate pattern="MM-dd-yyyy hh:mm a" value="${transaction.postDate}"/></td>
 															</c:if>
 														</tr>
@@ -432,7 +432,7 @@
 									<div class="account-balance-investments">
 										Current Balance
 										<div class="value-unit">
-											<fmt:formatNumber type="currency" maxIntegerDigits="8" value="${account.presentBalance}" />
+											<fmt:formatNumber type="currency" maxIntegerDigits="10" value="${account.presentBalance}" />
 										</div>
 										
 										<div class="more-details-investments">
@@ -458,7 +458,7 @@
 															<tr>
 																<c:if test="${status.count <= 7}">
 																	<td scope="row"><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
-																	<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="8" value="${transaction.amount}" /></td>
+																	<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="10" value="${transaction.amount}" /></td>
 																	<td scope="row"><fmt:formatDate pattern="MM-dd-yyyy hh:mm a" value="${transaction.postDate}"/></td>
 																</c:if>
 															</tr>
