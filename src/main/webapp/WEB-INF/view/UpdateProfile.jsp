@@ -20,7 +20,6 @@
 	<link rel='stylesheet' href='/CSS/main-styles.css' />
 	<link rel='stylesheet' href='/CSS/header-styles.css'/>
 	<link rel='stylesheet' href='/CSS/box-styles.css' />
-	<link rel='stylesheet' href='/CSS/footer-styles.css' />
 
 </head>
 <body>

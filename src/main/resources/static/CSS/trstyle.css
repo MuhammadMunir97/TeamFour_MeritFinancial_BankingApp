@@ -5,6 +5,9 @@
 }
 .accountInfo{
 	text-align: center;
+	color: #444751;
+	font-size: 24px;
+	font-weight: bold;
 }
 .accountTableColor2{
 	background-color: #7AA6C9;

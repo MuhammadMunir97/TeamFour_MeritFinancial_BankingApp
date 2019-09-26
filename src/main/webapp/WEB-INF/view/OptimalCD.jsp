@@ -7,7 +7,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
-<title>CD Rate</title>
+<title>Merit Bank | CD Rates</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel='stylesheet' href='/CSS/trstyle.css' />
 <link rel='stylesheet' href='/CSS/header-styles.css'/>

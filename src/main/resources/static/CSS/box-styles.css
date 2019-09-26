@@ -41,10 +41,12 @@ input[type=date]::-webkit-inner-spin-button {
 	background-color: #3794E0;
 }
 
+/* */
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: white;
     background-color: #3794E0;
 }
+
 
 /* Styling below is for the accounts summary dashboard */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,400|Roboto);
@@ -80,6 +82,15 @@ input[type=date]::-webkit-inner-spin-button {
 	transform: translate3d(-50%, -50%, 0);
 	*/
   }
+   .my-wallet-investments {
+	border-radius: 6px;
+	font-family: "Open Sans", sans-serif;
+	min-height: 500px;
+	width: 90%;
+	background-color: #fff;
+	box-shadow: 6px 7px 5px -6px rgba(0,0,0,0.75);
+	overflow: hidden;
+  }
   .my-wallet-sidebar {
 	background-color: #f2f2f2;
 	color: #707584;
@@ -88,8 +99,6 @@ input[type=date]::-webkit-inner-spin-button {
 	border-radius: 6px 0px 0px 6px;
 	padding: 50px;
 	width: 360px;
-
-	
 	
 	/* 
 	background-color: orange;
@@ -97,7 +106,21 @@ input[type=date]::-webkit-inner-spin-button {
 	 */
 	
   }
+    .my-wallet-sidebar-investments {
+	background-color: #f2f2f2;
+	color: #707584;
+	float: left;
+	min-height: 500px;
+	border-radius: 6px 0px 0px 6px;
+	padding: 50px;
+	width: 360px;
+  }
   .my-wallet-title {
+	font-size: 24px;
+	font-weight: normal;
+	margin: 0 0 50px 0;
+  }
+    .my-wallet-title-investments {
 	font-size: 24px;
 	font-weight: normal;
 	margin: 0 0 50px 0;
@@ -112,12 +135,41 @@ input[type=date]::-webkit-inner-spin-button {
 	line-height: 20px;
 	position: relative;
   }
+    .my-wallet-title-investments .add-account-investments {
+	-webkit-transition: color 200ms;
+	-moz-transition: color 200ms;
+	transition: color 200ms;
+	color: #b2b2b2;
+	float: right;
+	font-size: 48px;
+	line-height: 20px;
+	position: relative;
+  }
   .my-wallet-title .add-account:hover {
 	color: #707584;
 	cursor: pointer;
   }
-  
+    .my-wallet-title-investments .add-account-investments:hover {
+	color: #707584;
+	cursor: pointer;
+  }
   .loading {
+	-webkit-animation: load 500ms ease forwards;
+	-moz-animation: load 500ms ease forwards;
+	animation: load 500ms ease forwards;
+	-webkit-animation-delay: 2s;
+	-moz-animation-delay: 2s;
+	animation-delay: 2s;
+	position: absolute;
+	background: #fff url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/ripple.svg") center no-repeat;
+	z-index: 999;
+	
+	/*
+	width: 100%;
+	height: 100%;
+	*/
+  }
+    .loading-investments {
 	-webkit-animation: load 500ms ease forwards;
 	-moz-animation: load 500ms ease forwards;
 	animation: load 500ms ease forwards;
@@ -146,8 +198,28 @@ input[type=date]::-webkit-inner-spin-button {
 	height: 330px;
 	*/
   }
+    .accounts-container-investments {
+	position: relative;
+	bottom: -40px;
+	margin-bottom: 15px;
+	
+	/*
+	position: absolute;
+	bottom: 50px;
+	left: 50px;
+	height: 330px;
+	*/
+  }
   
   .active-account {
+	border: 4px solid #8393ca;
+	border-radius: 4px;
+	height: 70px;
+	position: relative;
+	width: 250px;
+	z-index: 1;
+  }
+    .active-account-investments {
 	border: 4px solid #8393ca;
 	border-radius: 4px;
 	height: 70px;
@@ -170,6 +242,16 @@ input[type=date]::-webkit-inner-spin-button {
 	
 	*/
   }
+    .account-investments, .my-wallet-sidebar-investments .account-investments, .add-account-modal-investments .account-investments {
+	background-color: #fff;
+	border: 2px solid #e1e1e1;
+	border-radius: 4px;
+	font-family: "Roboto", sans-serif;
+	height: 70px;
+	margin-bottom: 30px;
+	padding: 8px;
+	width: 250px;
+  }
   
   .my-wallet-sidebar .account {
 	-webkit-transition: top 500ms ease, -webkit-transform 200ms ease;
@@ -183,10 +265,29 @@ input[type=date]::-webkit-inner-spin-button {
 	
 	*/
   }
+    .my-wallet-sidebar-investments .account-investments {
+	-webkit-transition: top 500ms ease, -webkit-transform 200ms ease;
+	-moz-transition: top 500ms ease, -moz-transform 200ms ease;
+	transition: top 500ms ease, transform 200ms ease;
+	position: absolute;
+	top: 0;
+	will-change: transform, top;
+  }
   .my-wallet-sidebar .is-selected.account {
 	top: -110px !important;
   }
+    .my-wallet-sidebar-investments .is-selected.account-investments {
+	top: -110px !important;
+  }
   .my-wallet-sidebar .account:hover:not(.is-selected) {
+	-webkit-transform: translateY(-30px);
+	-moz-transform: translateY(-30px);
+	-ms-transform: translateY(-30px);
+	-o-transform: translateY(-30px);
+	transform: translateY(-30px);
+	cursor: pointer;
+  }
+    .my-wallet-sidebar-investments .account-investments:hover:not(.is-selected) {
 	-webkit-transform: translateY(-30px);
 	-moz-transform: translateY(-30px);
 	-ms-transform: translateY(-30px);
@@ -201,7 +302,13 @@ input[type=date]::-webkit-inner-spin-button {
 	-o-transform: translateY(0);
 	transform: translateY(0);
   }
-  
+    .my-wallet-sidebar-investments .account-investments:hover:not(.is-selected).is-stationary {
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-ms-transform: translateY(0);
+	-o-transform: translateY(0);
+	transform: translateY(0);
+  }
   .account-details-container {
 	font-family: "Open Sans", sans-serif;
 	min-height: 500px;
@@ -210,15 +317,32 @@ input[type=date]::-webkit-inner-spin-button {
 	padding: 50px;
 	position: relative;
 	border-radius: 0px 6px 6px 0px;
-	
-	
-	/*
-	box-shadow: 6px 7px 5px -6px rgba(0,0,0,0.75);
-	background-color: #fff;
-	*/
+  }
+    .account-details-container-investments {
+	font-family: "Open Sans", sans-serif;
+	min-height: 500px;
+	width: auto;
+	overflow: hidden;
+	padding: 50px;
+	position: relative;
+	border-radius: 0px 6px 6px 0px;
   }
   
   .account-details {
+	-webkit-transition: -webkit-transform 500ms ease, opacity 200ms ease;
+	-moz-transition: -moz-transform 500ms ease, opacity 200ms ease;
+	transition: transform 500ms ease, opacity 200ms ease;
+	-webkit-transform: translateX(110%);
+	-moz-transform: translateX(110%);
+	-ms-transform: translateX(110%);
+	-o-transform: translateX(110%);
+	transform: translateX(110%);
+	opacity: 0;
+	position: absolute;
+	top: 50px;
+	width: 90%;
+  }
+    .account-details-investments {
 	-webkit-transition: -webkit-transform 500ms ease, opacity 200ms ease;
 	-moz-transition: -moz-transform 500ms ease, opacity 200ms ease;
 	transition: transform 500ms ease, opacity 200ms ease;
@@ -244,8 +368,19 @@ input[type=date]::-webkit-inner-spin-button {
 	transform: translateX(0);
 	opacity: 1;
   }
+    .account-details-investments.is-selected {
+	-webkit-transition: -webkit-transform 500ms ease, opacity 200ms 200ms ease;
+	-moz-transition: -moz-transform 500ms ease, opacity 200ms 200ms ease;
+	transition: transform 500ms ease, opacity 200ms 200ms ease;
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform: translateX(0);
+	opacity: 1;
+  }
   
-/*
+  /*
   .transaction-history-placeholder {
 	-webkit-transform: translate3d(-50%, -50%, 0);
 	-moz-transform: translate3d(-50%, -50%, 0);
@@ -265,11 +400,12 @@ input[type=date]::-webkit-inner-spin-button {
 	top: 50%;
   }
     
+ 
   .transaction-history-placeholder.is-hidden {
 	opacity: 0;
   }
   
- */
+  */
   
   .value-unit {
 	color: #444751;
@@ -279,6 +415,13 @@ input[type=date]::-webkit-inner-spin-button {
   }
   
   .more-details{
+  	font-size: 18px;
+  	margin-top: 10px;
+	position: relative;
+	text-align: right;
+  }
+  
+    .more-details-investments{
   	font-size: 18px;
   	margin-top: 10px;
 	position: relative;
@@ -299,12 +442,27 @@ input[type=date]::-webkit-inner-spin-button {
 	font-size: 24px;
 	padding-bottom: 50px;
   }
+    .account-balance-investments {
+	letter-spacing: 0.025em;
+	border-bottom: 1px solid #b2b2b2;
+	color: #707584;
+	font-size: 24px;
+	padding-bottom: 50px;
+  }
   .account-balance .value-unit {
 	float: right;
 	right: -0.25em;
 	top: -0.2em;
   }
+    .account-balance-investments .value-unit {
+	float: right;
+	right: -0.25em;
+	top: -0.2em;
+  }
   
+
+
+
 
 /*
   .transaction-history {
@@ -380,7 +538,11 @@ input[type=date]::-webkit-inner-spin-button {
   
   */
   
+  /*
   .add-account-modal {
+	visibility: hidden;
+  }
+    .add-account-modal-investments {
 	visibility: hidden;
   }
   .add-account-modal .overlay {
@@ -391,11 +553,15 @@ input[type=date]::-webkit-inner-spin-button {
 	opacity: 0;
 	height: 100%;
 	width: 100%;
-	
-	/*
-	
-	position: absolute;
-	*/
+  }
+    .add-account-modal-investments .overlay {
+	-webkit-transition: opacity 200ms ease;
+	-moz-transition: opacity 200ms ease;
+	transition: opacity 200ms ease;
+	background: #5b8ba1;
+	opacity: 0;
+	height: 100%;
+	width: 100%;
   }
   .add-account-modal .account {
 	-webkit-transform: translate3d(-50%, -30%, 0);
@@ -414,34 +580,74 @@ input[type=date]::-webkit-inner-spin-button {
 	position: absolute;
 	z-index: 9001;
 	will-change: transform, opacity;
+  }
+    .add-account-modal-investments .account-investments {
+	-webkit-transform: translate3d(-50%, -30%, 0);
+	-moz-transform: translate3d(-50%, -30%, 0);
+	-ms-transform: translate3d(-50%, -30%, 0);
+	-o-transform: translate3d(-50%, -30%, 0);
+	transform: translate3d(-50%, -30%, 0);
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	transition: all 300ms ease;
 	
-	
-	/*
-	
-	*/
+	border-color: #83b3c9;
+	left: 50%;
+	top: 50%;
+	opacity: 0;
+	position: absolute;
+	z-index: 9001;
+	will-change: transform, opacity;
   }
   .add-account-modal .account-card-type {
 	border-radius: 5px;
 	float: left;
 	margin-left: 12px;
   }
+    .add-account-modal-investments .account-card-type-investments {
+	border-radius: 5px;
+	float: left;
+	margin-left: 12px;
+  }
+  
   .add-account-modal .account-card-type.is-visa {
+	margin-left: 0;
+  }
+    .add-account-modal-investments .account-card-type-investments.is-visa {
 	margin-left: 0;
   }
   .add-account-modal .account-card-type:hover {
 	border: 3px solid #ffcc66;
 	cursor: pointer;
   }
+    .add-account-modal-investments .account-card-type-investments:hover {
+	border: 3px solid #ffcc66;
+	cursor: pointer;
+  }
   .add-account-modal .account-card-type.is-selected {
+	border: 3px solid #ffcc66;
+  }
+    .add-account-modal-investments .account-card-type-investments.is-selected {
 	border: 3px solid #ffcc66;
   }
   .add-account-modal .account-number {
 	letter-spacing: 0.03em;
   }
+    .add-account-modal-investments .account-number-investments {
+	letter-spacing: 0.03em;
+  }
   .add-account-modal .account-expiration {
 	color: #444751;
   }
+    .add-account-modal-investments .account-expiration-investments {
+	color: #444751;
+  }
   .add-account-modal .has-error.account {
+	-webkit-animation: error 300ms ease forwards;
+	-moz-animation: error 300ms ease forwards;
+	animation: error 300ms ease forwards;
+  }
+    .add-account-modal-investments .has-error.account-investments {
 	-webkit-animation: error 300ms ease forwards;
 	-moz-animation: error 300ms ease forwards;
 	animation: error 300ms ease forwards;
@@ -458,14 +664,36 @@ input[type=date]::-webkit-inner-spin-button {
 	top: -20px;
 	right: -5px;
   }
+    .add-account-modal-investments button {
+	background-color: #ffa61b;
+	border-radius: 4px;
+	border: 4px;
+	color: #fff;
+	float: right;
+	font-size: 10px;
+	padding: 3px 10px;
+	position: relative;
+	top: -20px;
+	right: -5px;
+  }
   .add-account-modal button:hover {
+	background-color: #ffb31a;
+	cursor: pointer;
+  }
+    .add-account-modal-investments button:hover {
 	background-color: #ffb31a;
 	cursor: pointer;
   }
   .add-account-modal button:focus {
 	outline: none;
   }
+    .add-account-modal-investments button:focus {
+	outline: none;
+  }
   .add-account-modal.is-visible {
+	visibility: visible;
+  }
+    .add-account-modal-investments.is-visible {
 	visibility: visible;
   }
   .add-account-modal.is-visible .account {
@@ -476,9 +704,23 @@ input[type=date]::-webkit-inner-spin-button {
 	transform: translate3d(-50%, -50%, 0);
 	opacity: 1;
   }
+    .add-account-modal-investments.is-visible .account-investments {
+	-webkit-transform: translate3d(-50%, -50%, 0);
+	-moz-transform: translate3d(-50%, -50%, 0);
+	-ms-transform: translate3d(-50%, -50%, 0);
+	-o-transform: translate3d(-50%, -50%, 0);
+	transform: translate3d(-50%, -50%, 0);
+	opacity: 1;
+  }
   .add-account-modal.is-visible .overlay {
 	opacity: 0.8;
   }
+    .add-account-modal-investments.is-visible .overlay {
+	opacity: 0.8;
+  }
+  
+  */
+  
   
   .temp-account {
 	color: #b2b2b2;
