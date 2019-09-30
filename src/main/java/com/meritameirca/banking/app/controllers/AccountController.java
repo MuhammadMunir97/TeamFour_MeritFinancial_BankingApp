@@ -48,6 +48,19 @@ public class AccountController {
 		}
 	}
 	
+	@RequestMapping("/accountsInv")
+	public String showAccountsInv(HttpSession session , Model model ,  @ModelAttribute("accountInternal") AccountInternal accountInternal) {
+		Long userId = (Long) session.getAttribute("userId");
+		if(userId == null) {
+			return "redirect:/login";
+		}else {
+			User user = userService.findUserById(userId);
+			model.addAttribute("allAccounts", accountService.findAllUserAccount(user));
+			model.addAttribute("account_types", accountTypeService.findAllAccountTypes());
+			return "/view/UserAccountsInv.jsp";
+		}
+	}
+	
 	@RequestMapping("/newBankAccount")
 	public String newBankAccount(Model model, HttpSession session , @ModelAttribute("accountInternal") AccountInternal accountInternal) {
 		Long userId = (Long) session.getAttribute("userId");

@@ -100,11 +100,9 @@
 					<div class="form-group">
 					<div class="ifTransaction">
 					
-					
 				        <form:label class="translabel" path="AccountInternalTransferTo">Account Number</form:label>
 				        <form:errors class="errors" path="AccountInternalTransferTo"/>
 				        <form:input class="form-control input-lg" placeholder="Enter Account Number" path="AccountInternalTransferTo"/>
-				    
 				    
 				    </div>
 				    </div>
@@ -157,7 +155,6 @@
 			</nav>  
 	
 	    	<section role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">	
-	    		
 		      	<div class="card ml-3 mt-4">
 				  	<div class="card-header">
 				    	<h4 class="font-weight-light"><c:out value="${account.accountType.accTypeName}"/> <c:out value="...(${account.accountNumber})"/></h4>
@@ -181,7 +178,7 @@
 										    	<c:set var="total" value="${total + transaction.amount}" />
 										    </c:if>									    
 										</c:forEach>
-										+ <fmt:formatNumber type="currency" maxIntegerDigits="10" value="${total}" />
+										+ <fmt:formatNumber type="currency" maxIntegerDigits="12" value="${total}" />
 							       	</td>
 							       	<td class="accountInfo">
 							       		<c:set var="total" value="${0}"/>
@@ -190,9 +187,9 @@
 										    	<c:set var="total" value="${total + transaction.amount}" />
 										    </c:if>									    
 										</c:forEach>
-										<fmt:formatNumber type="currency" maxIntegerDigits="8" value="${total}" />
+										<fmt:formatNumber type="currency" maxIntegerDigits="12" value="${total}" />
 							       	</td>
-							       	<td class="accountInfo"><fmt:formatNumber type="currency" maxIntegerDigits="10" value="${account.presentBalance}" /></td>						  
+							       	<td class="accountInfo"><fmt:formatNumber type="currency" maxIntegerDigits="12" value="${account.presentBalance}" /></td>						  
 							       </tr>
 							    </tbody>
 							</table>
@@ -219,7 +216,7 @@
 								    <c:forEach items="${account.transactionLogs}" var="transaction">
 										<tr>
 											<td scope="row"><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
-											<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="10" value="${transaction.amount}" /></td>
+											<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="12" value="${transaction.amount}" /></td>
 											<td scope="row"><fmt:formatDate pattern="MM-dd-yyyy hh:mm a" value="${transaction.postDate}"/></td>
 										</tr>
 									</c:forEach>

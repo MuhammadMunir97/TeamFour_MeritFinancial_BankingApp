@@ -253,8 +253,8 @@
 		<div class="row mt-4">
 			<div class="col-2">
 			  <ul class="nav flex-column nav-tabs">
-			  	<li class="active"><a href="/accounts">Accounts</a></li>
-			  	<li class="inactive"><a href="/accountsInv">Investments</a></li>
+			  	<li class="inactive"><a href="/accounts">Accounts</a></li>
+			  	<li class="active"><a href="/accountsInv">Investments</a></li>
 			  </ul>
 		  	</div>
 		  	
@@ -264,120 +264,121 @@
 		      <div class="tab-pane fade show active" id="v-pills-accounts" role="tabpanel" aria-labelledby="v-pills-accounts-tab">
 				
 				<!-- Accounts Summary Section -->
-				<div class="container-fluid p-0 mt-3 my-wallet">
-					<div class="loading"></div>
-			
-					
-					<!-- Modal -->
-					<div class="modal fade" id="accountsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLongTitle">Create a New Account</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        <form:form action="/newBankAccount" method="POST" modelAttribute="accountInternal">
-								<form:select  path="accountType">								
-									<c:forEach items="${account_types}" var="type">
-										<c:if test="${type.id <=3}">
-											 <form:option value="${type.id}">
-											 	${type.accTypeName}
-											 </form:option>
-										</c:if>	 
-							    	</c:forEach>							    	
-								</form:select>
-							    <input class="btn btn-outline-primary btn-sm" type="submit" value="Create"/>							    
-							</form:form>
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-			
-					<div class="container my-wallet-sidebar">
-						<div class="row">
-							<div class="col-md-10">
-								<h1 class="my-wallet-title">Accounts<div class="add-account" data-toggle="modal" data-target="#accountsModal">&#43;</div></h1>
-					
-								<div class="active-account"></div>
-								<div class="accounts-container">
-									<c:forEach items="${allAccounts}" var="account">
-										<c:if test="${account.accountType.id <= 3}">
-											<div class="account" data-account="${account.id}">
-												${account.accountType.accTypeName}
-												<p>${account.accountNumber}</p>
-											</div>
-										</c:if>
-									</c:forEach>
+					<div class="container-fluid p-0 mt-3 my-wallet-investments">
+						<div class="loading-investments"></div>
+				
+						
+						<!-- Modal -->
+						<div class="modal fade" id="investmentsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title-investments" id="exampleModalLongTitle">Create a new Investment Account</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						        <form:form action="/newBankAccount" method="POST" modelAttribute="accountInternal">
+									<form:select  path="accountType">
+										<c:forEach items="${account_types}" var="type">
+											<c:if test="${type.id >=4}">
+												 <form:option value="${type.id}">
+												 	${type.accTypeName}
+												 </form:option>
+											</c:if>	 
+								    	</c:forEach>
+									</form:select>
+								    <input class="btn btn-outline-primary btn-sm" type="submit" value="Create"/>
+								</form:form>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						
+				
+						<div class="container my-wallet-sidebar-investments">
+							<div class="row">
+								<div class="col-md-10">
+									<h1 class="my-wallet-title-investments">Investments<div class="add-account-investments" data-toggle="modal" data-target="#investmentsModal">&#43;</div></h1>
+						
+									<div class="active-account-investments"></div>
+									<div class="accounts-container-investments">
+										<c:forEach items="${allAccounts}" var="account">
+											<c:if test="${account.accountType.id >= 4}">
+												<div class="account-investments" data-account="${account.id}">
+													${account.accountType.accTypeName}
+													<p>${account.accountNumber}</p>
+												</div>
+											</c:if>
+										</c:forEach>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-			
-					<div class="account-details-container">
-			
-						<c:forEach items="${allAccounts}" var="account">
-							<div class="account-details" data-account="${account.id}">
-								
-								
-								<div class="account-balance">
-									Current Balance
-									<div class="value-unit">
-										<fmt:formatNumber type="currency" maxIntegerDigits="12" value="${account.presentBalance}" />
-									</div>
+				
+						<div class="account-details-container-investments">
+				
+							<c:forEach items="${allAccounts}" var="account">
+								<div class="account-details-investments" data-account="${account.id}">
 									
-									<div class="more-details">
-										<a href="accounts/${account.id}">View More Details</a>
-									</div>
 									
-								</div>
-								
-								
-								<div class="transaction-history">
-									<div class="transaction">
-										<div class="table-responsive">
-											<table class="table table-sm table-hover">
-											    <thead class="thead-dark">
-											        <tr>
-											            <th scope="col">Transaction Type</th>
-											            <th scope="col">Amount</th>
-											            <th scope="col">Post Date</th>
-											        </tr>
-											    </thead>
-											    <tbody>
-												    <c:forEach items="${account.transactionLogs}" var="transaction" varStatus="status">
-														<tr>
-															<c:if test="${status.count <= 7}">
-																<td scope="row"><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
-																<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="12" value="${transaction.amount}" /></td>
-																<td scope="row"><fmt:formatDate pattern="MM-dd-yyyy hh:mm a" value="${transaction.postDate}"/></td>
-															</c:if>
-														</tr>
-													</c:forEach>
-											    </tbody>
-											</table>
+									<div class="account-balance-investments">
+										Current Balance
+										<div class="value-unit">
+											<fmt:formatNumber type="currency" maxIntegerDigits="12" value="${account.presentBalance}" />
 										</div>
+										
+										<div class="more-details-investments">
+											<a href="accounts/${account.id}">View More Details</a>
+										</div>
+										
 									</div>
 									
-									<form action="accounts/${account.id}" method="post">
-							   			<input type="hidden" name="_method" value="delete">
-							    		<input class="btn btn-danger mr-2 pull-right" type="submit" value="Delete"/>
-									</form>
 									
+									<div class="transaction-history-investments">
+										<div class="transaction-investments">
+											<div class="table-responsive">
+												<table class="table table-sm table-hover">
+												    <thead class="thead-dark">
+												        <tr>
+												            <th scope="col">Transaction Type</th>
+												            <th scope="col">Amount</th>
+												            <th scope="col">Post Date</th>
+												        </tr>
+												    </thead>
+												    <tbody>
+													    <c:forEach items="${account.transactionLogs}" var="transaction" varStatus="status">
+															<tr>
+																<c:if test="${status.count <= 7}">
+																	<td scope="row"><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
+																	<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="12" value="${transaction.amount}" /></td>
+																	<td scope="row"><fmt:formatDate pattern="MM-dd-yyyy hh:mm a" value="${transaction.postDate}"/></td>
+																</c:if>
+															</tr>
+														</c:forEach>
+												    </tbody>
+												</table>
+											</div>
+										</div>
+										
+										<form action="accounts/${account.id}" method="post">
+								   			<input type="hidden" name="_method" value="delete">
+								    		<input class="btn btn-danger mr-2 pull-right" type="submit" value="Delete"/>
+										</form>
+										
+									</div>
 								</div>
-							</div>
-						</c:forEach>
+							</c:forEach>
+						</div>
 					</div>
-				</div>
 				
 				
 		      </div>
+		      
 		      <span class="errors"><c:out value="${error}"/></span>
 		      
 		      <!-- Nav Tab for CD Rates if we want to move in the future
