@@ -47,27 +47,28 @@ input[type=date]::-webkit-inner-spin-button {
     background-color: #3794E0;
 }
 
-
-.nav-tabs > .active > a{
+.nav-tabs > .active a{
 	color: white;
+}
+.nav-tabs > .active {
 	background-color: #3794E0;
 	border-radius: 4px;
+	height: 39px;
+	width: 222px;
 	text-align: left;
-	padding: 9.5px 146px 9.5px 15px;
+	padding: 6px 0px 0px 15px;
+	/*
+	
+	*/
 }
 
 .nav-tabs > .inactive{
 	text-align: left;
-	height: 35px;
-	width: 230px;
-	padding: 4px 0px 8px 15px;
+	border-radius: 4px;
+	height: 39px;
+	width: 222px;
+	padding: 6px 0px 0px 15px;
 }
-
-
-
-
-
-
 
 
 

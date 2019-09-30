@@ -60,6 +60,7 @@ public class AccountController {
 			return "/view/UserAccountsInv.jsp";
 		}
 	}
+
 	
 	@RequestMapping("/newBankAccount")
 	public String newBankAccount(Model model, HttpSession session , @ModelAttribute("accountInternal") AccountInternal accountInternal) {

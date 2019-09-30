@@ -9,7 +9,7 @@
 <html>
 <head>
 
-	<title>Merit Bank | Update Profile</title>
+	<title>Merit Bank | Settings</title>
 	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,9 +52,6 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="/updateProfile">Settings</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="/cdRate">Predict CD Earnings</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-sub pull-right">

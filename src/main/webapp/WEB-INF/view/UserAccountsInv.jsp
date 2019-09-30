@@ -109,9 +109,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/updateProfile">Settings</a>
                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="/cdRate">Predict CD Earnings</a>
-                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-sub pull-right">
                     <li class="nav-item">
@@ -121,140 +118,17 @@
             </div>
         </nav>
     </section>
-
-
-	<!-- Accounts Summary Section
-	<div class="container-fluid p-0 mt-3 my-wallet">
-		<div class="loading"></div>
-	 -->
-		
-		<!-- Modal
-		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		  <div class="modal-dialog modal-dialog-centered" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle">Create a New Account</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-		        <form:form action="/newBankAccount" method="POST" modelAttribute="accountInternal">
-					<form:select  path="accountType">
-						<c:forEach items="${account_types}" var="type">
-							 <form:option value="${type.id}">
-							 	${type.accTypeName}
-							 </form:option>
-				    	</c:forEach>
-					</form:select>
-				    <input class="btn btn-outline-primary btn-sm" type="submit" value="Create"/>
-				</form:form>
-			   </div>
-			   <div class="modal-footer">
-			     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		
-
-		<div class="container my-wallet-sidebar">
-			<div class="row">
-				<div class="col-md-10">
-					<h1 class="my-wallet-title">My Accounts<div class="add-account" data-toggle="modal" data-target="#exampleModalCenter">&#43;</div></h1>
-		
-					<div class="active-account"></div>
-					<div class="accounts-container">
-						<c:forEach items="${allAccounts}" var="account">
-							<div class="account" data-account="${account.id}">
-								${account.accountType.accTypeName}
-								<p>${account.accountNumber}</p>
-							</div>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="account-details-container">
-
-			<c:forEach items="${allAccounts}" var="account">
-				<div class="account-details" data-account="${account.id}">
-					
-					
-					<div class="account-balance">
-						Current Balance
-						<div class="value-unit">
-							<fmt:formatNumber type="currency" maxIntegerDigits="12" value="${account.presentBalance}" />
-						</div>
-						
-						<div class="more-details">
-							<a href="accounts/${account.id}">View More Details</a>
-						</div>
-						
-					</div>
-					
-					
-					<div class="transaction-history">
-						<div class="transaction">
-							<div class="table-responsive">
-								<table class="table table-sm table-hover">
-								    <thead class="thead-dark">
-								        <tr>
-								            <th scope="col">Transaction Type</th>
-								            <th scope="col">Amount</th>
-								            <th scope="col">Post Date</th>
-								        </tr>
-								    </thead>
-								    <tbody>
-									    <c:forEach items="${account.transactionLogs}" var="transaction" varStatus="status">
-											<tr>
-												<c:if test="${status.count <= 7}">
-													<td scope="row"><c:out value="${transaction.transactionType.transactionTypeName}"/></td>
-													<td scope="row"><fmt:formatNumber type="currency" maxIntegerDigits="12" value="${transaction.amount}" /></td>
-													<td scope="row"><fmt:formatDate pattern="MM-dd-yyyy hh:mm a" value="${transaction.postDate}"/></td>
-												</c:if>
-											</tr>
-										</c:forEach>
-								    </tbody>
-								</table>
-							</div>
-						</div>
-						
-						<form action="accounts/${account.id}" method="post">
-				   			<input type="hidden" name="_method" value="delete">
-				    		<input class="btn btn-danger mr-2 pull-right" type="submit" value="Delete"/>
-						</form>
-						
-					</div>
-				</div>
-			</c:forEach>
-		</div>
-	</div>
-	<span class="errors"><c:out value="${error}"/></span>
-	 -->
-
 	
 	
 	<!-- Horizontal Tab Navigation Section --> 
-    <section class="container-fluid">
-    
-    	<!--
-    	<div class="row mt-3">
-		  <div class="col-2">
-		    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-		      <a class="nav-link active" id="v-pills-accounts-tab" data-toggle="pill" href="#v-pills-accounts" role="tab" aria-controls="v-pills-accounts" aria-selected="true">Accounts</a>
-		      <a class="nav-link" id="v-pills-investments-tab" data-toggle="pill" href="#v-pills-investments" role="tab" aria-controls="v-pills-investments" aria-selected="false">Investments</a>
-		        <a class="nav-link" id="v-pills-cdrates-tab" data-toggle="pill" href="#v-pills-cdrates" role="tab" aria-controls="v-pills-cdrates" aria-selected="false">CD Rates</a>  
-		    </div>
-		  </div>
-		  -->
+    <section class="container-fluid">    
 		  
-		<div class="row mt-4">
+		<div class="row mt-3">
 			<div class="col-2">
 			  <ul class="nav flex-column nav-tabs">
 			  	<li class="inactive"><a href="/accounts">Accounts</a></li>
 			  	<li class="active"><a href="/accountsInv">Investments</a></li>
+			  	<li class="inactive"><a href="/cdRate">CD Rates</a></li>
 			  </ul>
 		  	</div>
 		  	
@@ -287,7 +161,7 @@
 												 	${type.accTypeName}
 												 </form:option>
 											</c:if>	 
-								    	</c:forEach>
+							    		</c:forEach>	
 									</form:select>
 								    <input class="btn btn-outline-primary btn-sm" type="submit" value="Create"/>
 								</form:form>
@@ -381,13 +255,6 @@
 		      
 		      <span class="errors"><c:out value="${error}"/></span>
 		      
-		      <!-- Nav Tab for CD Rates if we want to move in the future
-		      <div class="tab-pane fade" id="v-pills-cdrates" role="tabpanel" aria-labelledby="v-pills-cdrates-tab">
-		      
-		      <p>content goes here</p>
-		      
-		      </div>
-		       -->
 		       
 		    </div>
 		  </div>
