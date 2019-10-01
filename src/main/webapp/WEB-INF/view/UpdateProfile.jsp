@@ -84,7 +84,7 @@
 				  	</div>
 					<div class="card-body">
 					    <form:form class="form-row" action="/updateProfile" method="POST" modelAttribute="user">
-							<input type="hidden" name="_method" value="put">
+							 <input type="hidden" name="_method" value="put">
 							
 							<div class="form-row">
 								<div class="form-group col-md-3">

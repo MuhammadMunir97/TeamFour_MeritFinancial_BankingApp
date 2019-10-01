@@ -75,8 +75,7 @@ public class User {
     private String ssn;
 	
 	@Column(columnDefinition = "VARCHAR(12)")
-	// in case we want to validate phone numbers at a later time
-	// @Pattern(regexp="(^$|[0-9]{12})")   
+	@NotBlank(message = "Please enter your phone number")  
     private String primaryPhone;
 	
 	@Column(columnDefinition = "VARCHAR(12)")
