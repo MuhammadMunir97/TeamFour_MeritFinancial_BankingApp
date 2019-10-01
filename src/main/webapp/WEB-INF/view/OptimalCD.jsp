@@ -125,8 +125,11 @@
 								<div class="card-body">
 								    
 								    <h5 class="card-title">Here are your earnings with the options you selected!</h5>
-								    <p id="earnings">${earnings} USD at Rate : ${interestRate} % for ${CalculateEarnings.month} months</p>
+								    <p id="earnings"><fmt:formatNumber type="currency" maxIntegerDigits="12" value="${earnings}" /> USD at Rate : ${interestRate} % for ${CalculateEarnings.month} months</p>
+								    
+								    <!-- 
 								    <a href="/accounts" class="btn btn-primary">Create Account</a>
+								     -->
 								    <br>
 								    
 								    

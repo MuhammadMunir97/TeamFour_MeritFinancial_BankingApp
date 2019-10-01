@@ -94,16 +94,22 @@ public class TransactionController {
 			if(accountFrom.getAccountType().getId() == 1) {
 				boolean isAccountClosable = accountService.isAccountClosable(accountFrom);
 				if(isAccountClosable) {
+					transactionService.deleteAllTransactions(accountFrom.getTransactionLogs());
 					accountService.deleteAccount(accountFrom);
 				}
 			}else {
 				AccountInternal savingsAccount = accountService.findByUserAndAccountTypeId(accountFrom.getUser(), savingAccountId);
 				boolean isClosingSuccessful = transactionService.performClosingTransaction(accountFrom , savingsAccount);
 				if(isClosingSuccessful) {
+					transactionService.deleteAllTransactions(accountFrom.getTransactionLogs());
 					accountService.deleteAccount(accountFrom);
 				}	
 			}
-			return "redirect:/accounts";
+			if(accountFrom.getAccountType().getId() == 1 || accountFrom.getAccountType().getId() == 2 || accountFrom.getAccountType().getId() == 3) {
+				return "redirect:/accounts";
+			}else {
+				return "redirect:/accountsInv";
+			}
 		}
 	}
 	

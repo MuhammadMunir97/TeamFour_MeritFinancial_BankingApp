@@ -104,7 +104,7 @@ public class TransactionService {
 			transactionLog.setAccountInternal(accountFrom);
 			return saveTransaction(transactionLog ,accountTo);
 		}
-		if(accountType.getId() == 5 || accountType.getId() == 6 || accountType.getId() == 7) {
+		if(accountType.getId() == 5 || accountType.getId() == 6 || accountType.getId() == 7 || accountType.getId() == 4) {
 			if(accountFrom.getPresentBalance() < 1) {
 				return true;
 			}
@@ -134,5 +134,9 @@ public class TransactionService {
 		}else {
 			return null;
 		}
+	}
+	
+	public void deleteAllTransactions(List<TransactionLog> allLogs ) {
+		transactionLogRepository.deleteAll(allLogs);
 	}
 }
