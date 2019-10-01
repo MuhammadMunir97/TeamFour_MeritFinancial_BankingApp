@@ -135,4 +135,8 @@ public class TransactionService {
 			return null;
 		}
 	}
+	
+	public void deleteAllTransactions(List<TransactionLog> allLogs ) {
+		transactionLogRepository.deleteAll(allLogs);
+	}
 }

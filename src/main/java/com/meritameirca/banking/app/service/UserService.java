@@ -60,7 +60,7 @@ public class UserService {
 	
 	public boolean isAccountDeletable(Long id) {
 		User user = findUserById(id);
-		if(user != null && user.getAccountInternals().size() == 1) {
+		if(user != null && user.getAccountInternals().size() == 0) {
 			return true;
 		}else {
 			return false;
