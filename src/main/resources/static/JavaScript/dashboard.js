@@ -88,23 +88,6 @@
 		});
 				
 		
-		/* 
-		var addAccountButton = $('.new-account button');
-		
-		addAccountButton.on('click', function() {
-			addAccount();
-			sortCards();
-		});
-		
-		
-		Close modal on overlay click
-		$('.add-account-modal .overlay').on('click', function () {
-			$('.add-account-modal').removeClass('is-visible');
-		});
-		
-		*/
-		
-		
 
 		
 	});

@@ -60,7 +60,7 @@ public class AccountInternal {
     
     @OneToMany(mappedBy="accountInternal", fetch = FetchType.LAZY)
     private List<TransactionLog> transactionLogs;
-    
+
     public AccountInternal() {
  
     }
