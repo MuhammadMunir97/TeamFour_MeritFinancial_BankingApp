@@ -60,10 +60,6 @@ public class User {
 	@NotBlank(message = "Please enter a valid password")
     private String password;
 	
-	@Transient
-	@Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
-    private String passwordConfirmation;
-	
 	//@NotNull(message = "Birthday can not be empty")
 	//@DateTimeFormat(pattern="mm-dd-yyyy")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -75,7 +71,7 @@ public class User {
     private String ssn;
 	
 	@Column(columnDefinition = "VARCHAR(12)")
-	@NotBlank(message = "Please enter your phone number")  
+	//@NotBlank(message = "Please enter your phone number")  
     private String primaryPhone;
 	
 	@Column(columnDefinition = "VARCHAR(12)")
@@ -152,9 +148,6 @@ public class User {
 	
 	public LocalDateTime getUpdatedAt() {return updatedAt;}
 	public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt = updatedAt;}
-
-	public String getPasswordConfirmation() {return passwordConfirmation;}
-	public void setPasswordConfirmation(String passwordConfirmation) {this.passwordConfirmation = passwordConfirmation;}
 
 	public UserAddress getUserAddress() {return userAddress;}
 	public void setUserAddress(UserAddress userAddress) {this.userAddress = userAddress;}

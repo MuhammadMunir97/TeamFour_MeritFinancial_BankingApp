@@ -97,7 +97,7 @@
 	
 				</div>
 				
-				
+				<input type="submit" value="Submit"/>
 				<div class="register-btn">
 	                <button class="btn btn-primary mr-2">Register User</button>
 	            </div>

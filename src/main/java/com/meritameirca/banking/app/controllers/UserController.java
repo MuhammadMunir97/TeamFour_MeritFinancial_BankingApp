@@ -54,6 +54,7 @@ public class UserController {
 	public String addAccount(@Valid @ModelAttribute("user") User user , BindingResult bindingResult, RedirectAttributes errorRedirect) {
 		if(bindingResult.hasErrors()) {
 			errorRedirect.addFlashAttribute("errors", bindingResult.getAllErrors());
+			System.out.println("errors");
 			return "/view/CreateAccount.jsp";
 		}else {
 			userService.registerUser(user);

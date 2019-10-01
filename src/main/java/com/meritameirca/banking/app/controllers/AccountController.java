@@ -60,6 +60,16 @@ public class AccountController {
 			return "/view/UserAccountsInv.jsp";
 		}
 	}
+	@RequestMapping("/newBankAccount")
+	public String newBankAccount(Model model, HttpSession session , @ModelAttribute("accountInternal") AccountInternal accountInternal) {
+		Long userId = (Long) session.getAttribute("userId");
+		if(userId == null) {
+			return "redirect:/login";
+		}else {
+			model.addAttribute("account_types", accountTypeService.findAllAccountTypes());
+			return "view/CreateBankAccountsForUser.jsp";
+		}
+	}
 	
 	@PostMapping("/newBankAccount")
 	public String addBankAccount(HttpSession session , Model model, @Valid @ModelAttribute("accountInternal") AccountInternal accountInternal , BindingResult bindingResult) {
