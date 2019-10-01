@@ -11,7 +11,7 @@
 	<title>Merit Bank | Transaction Details</title>
 
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
 	<!-- jQuery to initiate transaction controls -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -20,6 +20,7 @@
 	<!-- Custom CSS -->
 	<link rel='stylesheet' href='/CSS/trstyle.css' />
 	<link rel='stylesheet' href='/CSS/header-styles.css'/>
+	<link rel='stylesheet' href='/CSS/box-styles.css' />
 
 </head>
 <body class="background" onload="hideTransactionField()">
@@ -53,9 +54,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/updateProfile">Settings</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="/cdRate">Predict CD Earnings</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-sub pull-right">
