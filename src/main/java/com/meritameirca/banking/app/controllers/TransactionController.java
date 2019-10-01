@@ -103,7 +103,11 @@ public class TransactionController {
 					accountService.deleteAccount(accountFrom);
 				}	
 			}
-			return "redirect:/accounts";
+			if(accountFrom.getAccountType().getId() == 1 || accountFrom.getAccountType().getId() == 2 || accountFrom.getAccountType().getId() == 3) {
+				return "redirect:/accounts";
+			}else {
+				return "redirect:/accountsInv";
+			}
 		}
 	}
 	

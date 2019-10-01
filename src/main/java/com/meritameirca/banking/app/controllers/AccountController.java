@@ -86,7 +86,11 @@ public class AccountController {
 				accountInternal.setUser(user);
 				boolean accountCreated = accountService.createNewAccount(user, accountInternal);
 				if(accountCreated){
-					return "redirect:/accounts";
+					if(accountInternal.getAccountType().getId() == 1 || accountInternal.getAccountType().getId() == 2 || accountInternal.getAccountType().getId() == 3) {
+						return "redirect:/accounts";
+					}else {
+						return "redirect:/accountsInv";
+					}
 				}else {
 					model.addAttribute("error", "Request rejected! account could not be created");
 					model.addAttribute("allAccounts", accountService.findAllUserAccount(user));

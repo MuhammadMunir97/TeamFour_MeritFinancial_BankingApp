@@ -61,10 +61,6 @@ public class AccountInternal {
     @OneToMany(mappedBy="accountInternal", fetch = FetchType.LAZY)
     private List<TransactionLog> transactionLogs;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_address_id")
-    private UserAddress userAddress;
-    
     public AccountInternal() {
  
     }
@@ -105,13 +101,6 @@ public class AccountInternal {
 		presentBalance = process.processingMoney(money, presentBalance);
 	}
 	
-	public UserAddress getUserAddress() {
-		return userAddress;
-	}
-
-	public void setUserAddress(UserAddress userAddress) {
-		this.userAddress = userAddress;
-	}
 
 	@PrePersist
     protected void onCreate(){
