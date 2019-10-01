@@ -55,6 +55,7 @@ public class AddressController {
 		}else {
 			if(bindingResult.hasErrors()) {
 				errorRedirect.addFlashAttribute("errors", bindingResult.getAllErrors());
+				System.out.println("im here");
 				return "/view/UpdateProfile.jsp";
 			}else {
 				user.setId(userId);
